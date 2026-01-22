@@ -17,6 +17,7 @@ class Setting extends Model
         'twitter',
         'youtube',
         'copyright_link',
+        'map_iframe'
     ];
     public function translations()
     {

@@ -3,11 +3,22 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactSection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+    public function index(Request $request, $locale)
+    {
+        if (in_array($locale, ['az', 'en', 'ru'])) {
+            app()->setLocale($locale);
+        }
+         $contactSection = ContactSection::where('is_active', true)
+            ->with('translation')
+            ->first();
+        return view('client.pages.contact', compact('locale', 'contactSection'));
+    }
      public function send(Request $request, $locale)
     {
         if (in_array($locale, ['az', 'en', 'ru'])) {
@@ -33,5 +44,6 @@ class ContactController extends Controller
             'success' => true,
             'message' => __('contact.success'),
         ]);
+        return view('client.pages.contact', compact('locale'));
     }
 }

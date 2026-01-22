@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             ContactSectionSeeder::class,
             PageSeeder::class,
             ServiceProvidingQualitySeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class
 
         ]);
     }
