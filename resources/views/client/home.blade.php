@@ -119,12 +119,7 @@ $t = $about?->translation;
 <!--About One Start-->
 <section class="about-one">
 
-    <div class="about-one__bg wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms">
-        <img class="float-bob-y"
-            src="{{ asset('assets/images/backgrounds/about-v1-bg.png') }}"
-            alt="">
-    </div>
-
+    
     <div class="container">
         <div class="row">
 
@@ -174,7 +169,7 @@ $t = $about?->translation;
 
                     <div class="sec-title">
                         <div class="icon">
-                            <img src="{{ asset('assets/images/resources/sec-title-icon1.png') }}" alt="">
+                            <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
                         </div>
 
                         <span class="sec-title__tagline">
@@ -400,7 +395,7 @@ $t = $about?->translation;
         {{-- SECTION TITLE --}}
         <div class="sec-title text-center">
             <div class="icon">
-                <img src="{{ asset('assets/images/resources/sec-title-icon1.png') }}" alt="">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
             </div>
 
             <span class="sec-title__tagline">
@@ -472,7 +467,7 @@ $t = $about?->translation;
     <div class="auto-container">
         <div class="sec-title text-center">
             <div class="icon">
-                <img src="{{asset('assets/images/resources/sec-title-icon1.png')}}" alt="">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
             </div>
             <span class="sec-title__tagline">{{__('recently.work')}}</span>
             <h2 class="sec-title__title">{{__('explore.project')}}</h2>
@@ -570,7 +565,7 @@ $t = $about?->translation;
     <div class="container">
         <div class="sec-title text-center">
             <div class="icon">
-                <img src="{{asset('assets/images/resources/sec-title-icon1.png')}}" alt="">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
             </div>
             <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
             <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
@@ -611,7 +606,7 @@ $t = $about?->translation;
     <div class="container">
         <div class="sec-title text-center">
             <div class="icon">
-                <img src="{{asset('assets/images/resources/sec-title-icon1.png')}}" alt="">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
             </div>
             <span class="sec-title__tagline">{{__('contact_with_us')}}</span>
             <h2 class="sec-title__title">{{__('contact.desc')}}</h2>
