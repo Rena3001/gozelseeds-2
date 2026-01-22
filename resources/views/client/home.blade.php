@@ -587,7 +587,7 @@ $t = $about?->translation;
                             </span>
                         </div>
                         <div class="overlay-icon">
-                            <a href="{{ route('news.show', ['locale' => $locale, 'post' => $post->id]) }}">
+                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
                                 <i class="fa-solid fa-plus"></i>
                             </a>
 
@@ -595,11 +595,8 @@ $t = $about?->translation;
                     </div>
 
                     <div class="blog-one__single-content">
-                        <ul class="meta-info">
-                            <li><a href="{{ route('news.show', ['locale' => $locale, 'post' => $post->id]) }}"><i class="far fa-user-circle"></i>{{ $post->author }}</a></li>
-                            <li><a href="{{ route('news.show', ['locale' => $locale, 'post' => $post->id]) }}"><i class="far fa-comments"></i>{{ $post->comments_count }} {{__('comment')}}</a></li>
-                        </ul>
-                        <h2><a href="{{ route('news.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
+                     
+                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
                     </div>
                 </div>
             </div>

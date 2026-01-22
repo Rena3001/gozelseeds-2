@@ -37,7 +37,7 @@
                              <!--Start Footer Widget Column-->
                              <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
                                  <div class="footer-widget__column footer-widget__news">
-                                     <h2 class="footer-widget__title">{{ __('footer.news') }}</h2>
+                                     <h2 class="footer-widget__title">{{ __('footer.blogs') }}</h2>
                                      <ul class="footer-widget__news-list">
                                          @foreach($footerPosts as $post)
                                          <li class="footer-widget__news-list-item">
@@ -47,7 +47,7 @@
                                              <div class="footer-widget__news-list-item-title">
                                                  <p>{{ $post->published_at?->format('d M, Y') }}</p>
                                                  <h5>
-                                                     <a href="{{ route('news.show', ['locale'=>app()->getLocale(), 'post'=>$post->id]) }}">
+                                                     <a href="{{ route('blogs.show', ['locale'=>app()->getLocale(), 'post'=>$post->id]) }}">
                                                          {{ $post->translation?->title }}
                                                      </a>
                                                  </h5>
