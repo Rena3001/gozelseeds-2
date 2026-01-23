@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\ContactInfoSmtp;
 use App\Models\Translation;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +35,28 @@ class AppServiceProvider extends ServiceProvider
                 ], $locale);
             }
         }
+
+        if (Schema::hasTable('contact_info_smtps')) {
+
+        $smtp = ContactInfoSmtp::first();
+
+        if ($smtp) {
+
+            Config::set('mail.default', 'smtp');
+
+            Config::set('mail.mailers.smtp', [
+                'transport' => 'smtp',
+                'host' => $smtp->host,
+                'port' => $smtp->port,
+                'encryption' => $smtp->encryption,
+                'username' => $smtp->client_id, // OAuth üçün
+                'password' => $smtp->client_secret,
+            ]);
+
+            Config::set('mail.from.address', $smtp->from_email);
+            Config::set('mail.from.name', $smtp->from_name);
+        }
+    }
         
     }
 }
