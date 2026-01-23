@@ -44,9 +44,7 @@ class Setting extends Resource
             Text::make('Email')->sortable(),
             Text::make('Phone'),
             Text::make('Working Hours'),
-            Textarea::make('Address', 'address')
-                ->rows(3)
-                ->help('Ünvan (locale üzrə)'),
+            
             Textarea::make('Google Map Iframe', 'map_iframe')
                 ->rows(6)
                 ->help('Google Maps → Embed map → iframe kodunu tam şəkildə yapışdır')
