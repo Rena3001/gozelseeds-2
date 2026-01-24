@@ -44,7 +44,7 @@ class Setting extends Resource
             Text::make('Email')->sortable(),
             Text::make('Phone'),
             Text::make('Working Hours'),
-            
+
             Textarea::make('Google Map Iframe', 'map_iframe')
                 ->rows(6)
                 ->help('Google Maps → Embed map → iframe kodunu tam şəkildə yapışdır')
@@ -66,7 +66,10 @@ class Setting extends Resource
             // =====================
             Text::make('Facebook')->nullable(),
             Text::make('Instagram')->nullable(),
-            Text::make('Twitter')->nullable(),
+
+            Text::make('TikTok', 'tiktok')->nullable(),
+            Text::make('LinkedIn', 'linkedin')->nullable(),
+            Text::make('Telegram', 'telegram')->nullable(),
             Text::make('Youtube')->nullable(),
 
             // =====================

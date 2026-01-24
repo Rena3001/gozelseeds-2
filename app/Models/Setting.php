@@ -14,7 +14,9 @@ class Setting extends Model
         'logo_light',
         'facebook',
         'instagram',
-        'twitter',
+        'tiktok',
+        'linkedin',
+        'telegram',
         'youtube',
         'copyright_link',
         'map_iframe'

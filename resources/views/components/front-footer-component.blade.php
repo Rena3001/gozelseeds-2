@@ -107,11 +107,12 @@
                          </div>
                          <div class="footer-one__bottom-social-links">
                              <ul>
-                                 <li><a href="{{ $settings?->twitter ?? '#' }}"><i class="fab fa-twitter"></i></a></li>
                                  <li><a href="{{ $settings?->facebook ?? '#' }}"><i class="fab fa-facebook"></i></a></li>
                                  <li><a href="{{ $settings?->instagram ?? '#' }}"><i class="fab fa-instagram"></i></a></li>
-                                 <li><a href="{{ $settings?->pinterest ?? '#' }}"><i class="fab fa-pinterest-p"></i></a></li>
                                  <li><a href="{{ $settings?->youtube ?? '#' }}"><i class="fab fa-youtube"></i></a></li>
+                                 <li><a href="{{ $settings?->tiktok ?? '#' }}"><i class="fab fa-tiktok"></i></a></li>
+                                 <li><a href="{{ $settings?->linkedin ?? '#' }}"><i class="fab fa-linkedin"></i></a></li>
+                                 <li><a href="{{ $settings?->telegram ?? '#' }}"><i class="fab fa-telegram"></i></a></li>
                              </ul>
                          </div>
                      </div>
