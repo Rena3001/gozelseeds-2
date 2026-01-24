@@ -70,6 +70,7 @@ class Setting extends Resource
             Text::make('TikTok', 'tiktok')->nullable(),
             Text::make('LinkedIn', 'linkedin')->nullable(),
             Text::make('Telegram', 'telegram')->nullable(),
+            Text::make('WhatsApp', 'whatsapp')->nullable(),
             Text::make('Youtube')->nullable(),
 
             // =====================

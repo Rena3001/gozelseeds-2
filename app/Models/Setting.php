@@ -17,6 +17,7 @@ class Setting extends Model
         'tiktok',
         'linkedin',
         'telegram',
+        'whatsapp',
         'youtube',
         'copyright_link',
         'map_iframe'

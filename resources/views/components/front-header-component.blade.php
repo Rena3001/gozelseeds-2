@@ -16,6 +16,8 @@
                             <li><a href="{{ $settings?->tiktok ?? '#' }}"><i class="fab fa-tiktok"></i></a></li>
                             <li><a href="{{ $settings?->linkedin ?? '#' }}"><i class="fab fa-linkedin"></i></a></li>
                             <li><a href="{{ $settings?->telegram ?? '#' }}"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="{{ $settings?->whatsapp ?? '#' }}"><i class="fab fa-whatsapp"></i></a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -57,12 +59,12 @@
                                 <div class="logo">
                                     <a href="/{{ app()->getLocale() }}">
                                         <img class="dark-logo"
-                                             src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}"
-                                             alt="Logo">
+                                            src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}"
+                                            alt="Logo">
 
                                         <img class="light-logo"
-                                             src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}"
-                                             alt="Logo">
+                                            src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}"
+                                            alt="Logo">
                                     </a>
                                 </div>
                             </div>
@@ -84,18 +86,18 @@
                         <div class="logo">
                             <a href="/{{ app()->getLocale() }}">
                                 <img class="dark-logo"
-                                     src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}"
-                                     alt="Logo">
+                                    src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}"
+                                    alt="Logo">
 
                                 <img class="light-logo"
-                                     src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}"
-                                     alt="Logo">
+                                    src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}"
+                                    alt="Logo">
                             </a>
                         </div>
                     </div>
 
                     <div class="main-header--one__bottom-right clearfix">
-                        <div class="search-cart"> 
+                        <div class="search-cart">
                             <a href="#" class="search search-toggler"><span class="fa fa-magnifying-glass"></span></a>
                             <!-- <a href="#" class="cart mini-cart__toggler"><span class="icon-shopping-cart"></span></a> -->
                         </div>
