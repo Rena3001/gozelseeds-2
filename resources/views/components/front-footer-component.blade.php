@@ -19,13 +19,13 @@
 
                                      <div class="footer-widget__about-contact-box">
                                          <p class="phone">
-                                             <a href="tel:{{ $settings?->phone }}">
-                                                 <i class="fas fa-phone-square-alt"></i>{{ $settings?->phone }}
+                                             <a href="tel:{{ $settings?->phone ?? '123456789' }}">
+                                                 <i class="fas fa-phone-square-alt"></i>{{ $settings?->phone ?? '123456789' }}
                                              </a>
                                          </p>
                                          <p>
-                                             <a href="mailto:{{ $settings?->email }}">
-                                                 <i class="fa fa-envelope"></i>{{ $settings?->email }}
+                                             <a href="mailto:{{ $settings?->email ?? 'admin@admin.com' }}">
+                                                 <i class="fa fa-envelope"></i>{{ $settings?->email ?? 'admin@admin.com' }}
                                              </a>
                                          </p>
                                          <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address }}</p>
