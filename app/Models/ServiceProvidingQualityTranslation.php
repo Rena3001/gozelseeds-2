@@ -13,5 +13,10 @@ class ServiceProvidingQualityTranslation extends Model
     protected $fillable = [
         'service_providing_id','locale','tagline','title'
     ];
+     public function serviceProvidingQuality()
+    {
+        return $this->belongsTo(ServiceProvidingQuality::class);
+    }
 }
+
 
