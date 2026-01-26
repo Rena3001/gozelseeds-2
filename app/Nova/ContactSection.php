@@ -16,11 +16,19 @@ class ContactSection extends Resource
         return [
             Image::make('Image 1', 'image_1')
                 ->disk('public')
-                ->path('contact'),
+                ->path('contact')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Image::make('Image 2', 'image_2')
                 ->disk('public')
-                ->path('contact'),
+                ->path('contact')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Boolean::make('Active', 'is_active'),
 

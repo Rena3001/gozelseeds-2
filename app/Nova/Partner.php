@@ -19,13 +19,17 @@ class Partner extends Resource
         return [
             Image::make('Logo')
                 ->disk('public')
-                ->path('partners'),
+                ->path('partners')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Text::make('URL')->nullable(),
 
             Number::make('Order')->default(0),
 
-            Boolean::make('Active','is_active'),
+            Boolean::make('Active', 'is_active'),
         ];
     }
 }

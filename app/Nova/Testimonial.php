@@ -25,7 +25,14 @@ class Testimonial extends Resource
             Image::make('Image')
                 ->disk('public')
                 ->path('testimonials')
-                ->nullable(),
+                ->nullable()
+                ->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
             Number::make('Order')
                 ->default(0)

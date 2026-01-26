@@ -31,15 +31,27 @@ class ServiceProvidingQuality extends Resource
             new Panel('Main Section', [
                 Image::make('Background Image', 'bg_image')
                     ->disk('public')
-                    ->path('providing-quality'),
+                    ->path('providing-quality')
+                    ->nullable()
+                    ->prunable()
+                    ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                    ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
                 Image::make('Main Image', 'main_image')
                     ->disk('public')
-                    ->path('providing-quality'),
+                    ->path('providing-quality')
+                    ->nullable()
+                    ->prunable()
+                    ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                    ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
                 Image::make('Logo Image', 'logo_image')
                     ->disk('public')
-                    ->path('providing-quality'),
+                    ->path('providing-quality')
+                    ->nullable()
+                    ->prunable()
+                    ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                    ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
                 Boolean::make('Active', 'is_active')->default(true),
 

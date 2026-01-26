@@ -33,8 +33,15 @@ class VideoSection extends Resource
             Image::make('Background Image', 'background_image')
                 ->disk('public')
                 ->path('video-section')
-                ->creationRules('required')
-                ->prunable(),
+                ->creationRules('required')     // yalnız CREATE zamanı məcburidir
+                ->nullable()                    // köhnə record-lar üçün vacib
+                ->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
             Text::make('Button URL', 'button_url')
                 ->nullable(),
@@ -48,8 +55,9 @@ class VideoSection extends Resource
             // 🌐 AZ
             new Panel('AZ Content', [
                 Text::make('Title (AZ)', 'az_title')
-                    ->resolveUsing(fn () => $this->translation('az')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                    ->resolveUsing(fn() => $this->translation('az')?->title)
+                    ->fillUsing(
+                        fn($req, $model, $attr, $reqAttr) =>
                         $this->saveTranslation($model, 'az', 'title', $req[$reqAttr])
                     ),
 
@@ -59,8 +67,9 @@ class VideoSection extends Resource
             // 🌐 EN
             new Panel('EN Content', [
                 Text::make('Title (EN)', 'en_title')
-                    ->resolveUsing(fn () => $this->translation('en')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                    ->resolveUsing(fn() => $this->translation('en')?->title)
+                    ->fillUsing(
+                        fn($req, $model, $attr, $reqAttr) =>
                         $this->saveTranslation($model, 'en', 'title', $req[$reqAttr])
                     ),
 
@@ -70,8 +79,9 @@ class VideoSection extends Resource
             // 🌐 RU
             new Panel('RU Content', [
                 Text::make('Title (RU)', 'ru_title')
-                    ->resolveUsing(fn () => $this->translation('ru')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                    ->resolveUsing(fn() => $this->translation('ru')?->title)
+                    ->fillUsing(
+                        fn($req, $model, $attr, $reqAttr) =>
                         $this->saveTranslation($model, 'ru', 'title', $req[$reqAttr])
                     ),
 

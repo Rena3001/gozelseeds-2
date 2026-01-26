@@ -32,7 +32,10 @@ class Product extends Resource
             Image::make('Image')
                 ->disk('public')
                 ->path('products')
-                ->prunable(),
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Text::make('Slug')
                 ->rules('required', 'unique:products,slug,{{resourceId}}'),

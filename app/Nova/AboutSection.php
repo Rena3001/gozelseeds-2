@@ -29,12 +29,18 @@ class AboutSection extends Resource
                 Image::make('Main Image', 'main_image')
                     ->disk('public')
                     ->path('about')
-                    ->prunable(),
+                    ->nullable()
+                    ->prunable()
+                    ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                    ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
                 Image::make('Video Image', 'video_image')
                     ->disk('public')
                     ->path('about')
-                    ->prunable(),
+                    ->nullable()
+                    ->prunable()
+                    ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                    ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
             ]),
 
             new Panel('Counter & Video', [

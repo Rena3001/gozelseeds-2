@@ -26,7 +26,11 @@ class Service extends Resource
             Image::make('Image')
                 ->disk('public')
                 ->path('services')
-                ->creationRules('required'),
+                ->creationRules('required')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Text::make('Icon')
                 ->help('FontAwesome class (fa-solid fa-seedling)')

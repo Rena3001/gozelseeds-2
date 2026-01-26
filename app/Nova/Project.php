@@ -36,8 +36,10 @@ class Project extends Resource
             Image::make('Image', 'image')
                 ->disk('public')
                 ->path('projects')
-                ->prunable(),
-
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
             Text::make('Category'),
 
             Number::make('Order')->default(0),

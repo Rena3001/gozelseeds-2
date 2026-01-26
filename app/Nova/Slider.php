@@ -28,8 +28,14 @@ class Slider extends Resource
             Image::make('Background Image', 'image')
                 ->disk('public')
                 ->path('sliders')
+                ->nullable()              // 🔑 ÇOX VACİB
                 ->prunable()
-                ->rules('required'),
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
             Text::make('Button URL', 'button_url')
                 ->nullable(),

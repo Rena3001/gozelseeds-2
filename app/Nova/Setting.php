@@ -52,15 +52,29 @@ class Setting extends Resource
 
             // =====================
             // LOGOS
-            // =====================
             Image::make('Dark Logo', 'logo_dark')
                 ->disk('public')
-                ->path('settings'),
+                ->path('settings')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
             Image::make('Light Logo', 'logo_light')
                 ->disk('public')
-                ->path('settings'),
-
+                ->path('settings')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
             // =====================
             // SOCIAL LINKS
             // =====================

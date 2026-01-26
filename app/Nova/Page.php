@@ -38,18 +38,27 @@ class Page extends Resource
             // =====================
             Image::make('Header Background', 'header_bg')
                 ->disk('public')
-                ->path('pages'),
+                ->path('pages')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
-            // =====================
-            // ABOUT SECTION IMAGES
-            // =====================
             Image::make('Main Image', 'image_main')
                 ->disk('public')
-                ->path('pages'),
+                ->path('pages')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Image::make('Icon Image', 'image_icon')
                 ->disk('public')
-                ->path('pages'),
+                ->path('pages')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             // =====================
             // TRANSLATIONS

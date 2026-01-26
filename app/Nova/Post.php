@@ -27,7 +27,10 @@ class Post extends Resource
             Image::make('Image')
                 ->disk('public')
                 ->path('blog')
-                ->nullable(),
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Text::make('Author')
                 ->default('Admin'),

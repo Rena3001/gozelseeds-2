@@ -18,23 +18,29 @@ class Feature extends Resource
     public static $title = 'id';
 
     public static $search = ['id'];
- 
+
 
     public function fields(NovaRequest $request)
     {
         return [
 
             ID::make()->sortable(),
-
             Image::make('Image', 'image')
                 ->disk('public')
                 ->path('features')
-                ->required(),
+                ->creationRules('required')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Image::make('Background Image', 'background_image')
                 ->disk('public')
                 ->path('features')
-                ->nullable(),
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
             Text::make('Link')
                 ->nullable(),
