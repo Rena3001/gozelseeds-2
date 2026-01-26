@@ -216,7 +216,7 @@
          {{-- SECTION TITLE --}}
          <div class="sec-title text-center">
              <div class="icon">
-                 <img src="{{ asset('assets/images/resources/sec-title-icon1.png') }}" alt="">
+                 <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
              </div>
 
              <span class="sec-title__tagline">

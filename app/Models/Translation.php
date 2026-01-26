@@ -12,4 +12,5 @@ class Translation extends Model
         'locale',
         'value',
     ];
+    
 }

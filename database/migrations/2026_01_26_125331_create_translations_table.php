@@ -6,27 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->string('group'); // menu, header, footer
-            $table->string('key');   // home, about, services
-            $table->string('locale'); // az, en, ru
-            $table->text('value');
+
+            $table->string('group');
+            $table->string('key');
+
+            // Nova dummy insert üçün default VERİLİR
+                  // Nova dummy insert üçün
+            $table->string('locale')->default('az');
+
+            // TEXT default ola bilməz → nullable
+            $table->text('value')->nullable();
             $table->timestamps();
 
+            // Unikal kombinasiya
             $table->unique(['group', 'key', 'locale']);
         });
     }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('translations');

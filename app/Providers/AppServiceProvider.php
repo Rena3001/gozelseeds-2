@@ -10,12 +10,33 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Extensions\DatabaseTranslator;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Filesystem\Filesystem;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
      */
+    public function register()
+    {
+        $this->app->singleton('translator', function ($app) {
+            $loader = new FileLoader(
+                new Filesystem,
+                $app['path.lang']
+            );
+
+            $translator = new DatabaseTranslator(
+                $loader,
+                $app['config']['app.locale']
+            );
+
+            $translator->setFallback($app['config']['app.fallback_locale']);
+
+            return $translator;
+        });
+    }
     public function boot(): void
     {
         if (Schema::hasTable('translations')) {
@@ -38,25 +59,24 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('contact_info_smtps')) {
 
-        $smtp = ContactInfoSmtp::first();
+            $smtp = ContactInfoSmtp::first();
 
-        if ($smtp) {
+            if ($smtp) {
 
-            Config::set('mail.default', 'smtp');
+                Config::set('mail.default', 'smtp');
 
-            Config::set('mail.mailers.smtp', [
-                'transport' => 'smtp',
-                'host' => $smtp->host,
-                'port' => $smtp->port,
-                'encryption' => $smtp->encryption,
-                'username' => $smtp->client_id, // OAuth üçün
-                'password' => $smtp->client_secret,
-            ]);
+                Config::set('mail.mailers.smtp', [
+                    'transport' => 'smtp',
+                    'host' => $smtp->host,
+                    'port' => $smtp->port,
+                    'encryption' => $smtp->encryption,
+                    'username' => $smtp->client_id, // OAuth üçün
+                    'password' => $smtp->client_secret,
+                ]);
 
-            Config::set('mail.from.address', $smtp->from_email);
-            Config::set('mail.from.name', $smtp->from_name);
+                Config::set('mail.from.address', $smtp->from_email);
+                Config::set('mail.from.name', $smtp->from_name);
+            }
         }
-    }
-        
     }
 }
