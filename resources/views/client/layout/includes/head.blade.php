@@ -3,8 +3,8 @@
 
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/images/favicons/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/favicons/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicons/favicon-16x16.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}">
     <link rel="manifest" href="{{asset('assets/images/favicons/site.webmanifest')}}">
     <meta name="description" content="Agriox HTML Template For Agriculture Farming Services">
 
