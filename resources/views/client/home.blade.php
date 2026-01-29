@@ -141,15 +141,13 @@ $t = $about?->translation;
                         data-wow-delay="100ms"
                         data-wow-duration="1500ms">
 
-                        <div class="icon">
-                            <span class="fa fa-dollar"></span>
-                        </div>
+                       
 
                         <div class="title">
                             <h2>
                                 <span class="odometer"
                                     data-count="{{ $about?->counter_number ?? 87600 }}">
-                                    00
+                                    00 
                                 </span>
                             </h2>
 
