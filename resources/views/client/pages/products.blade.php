@@ -1,30 +1,27 @@
- @extends('client.layout.master')
- @section('page_title', 'Products')
+@extends('client.layout.master') 
+@section('page_title', 'Products') 
+@section('content') 
+@php 
+use Illuminate\Support\Str; 
+use App\Models\Translation; 
+$locale = app()->getLocale(); 
+@endphp
 
- @section('content')
- @php
- use Illuminate\Support\Str;
-
- use App\Models\Translation;
- $locale = app()->getLocale();
- @endphp
-
-
-
-
- <!--Page Header Start-->
- <section class="page-header clearfix" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
-     <div class="container">
-         <div class="page-header__inner text-center clearfix">
-             <ul class="thm-breadcrumb">
-                 <li><a href="index-main.html">{{ __('breadcrumb.home') }}</a></li>
-                 <li>{{ __('breadcrumb.products') }}</li>
-             </ul>
-             <h2>{{ __('product.title') }}</h2>
-         </div>
-     </div>
- </section>
- <!--Page Header End-->
+<!-- Page Header -->
+<section class="page-header clearfix" style="background-image: url({{ asset('assets/images/backgrounds/page-header-bg.jpg') }});">
+    <div class="container">
+        <div class="page-header__inner text-center clearfix">
+            <ul class="thm-breadcrumb">
+                <li>
+                    <a href="/{{ $locale }}">{{ __('breadcrumb.home') }}</a>
+                </li>
+                <li>{{ __('breadcrumb.products') }}</li>
+            </ul>
+            <h2>{{ __('product.title') }}</h2>
+        </div>
+    </div>
+</section>
+<!-- Page Header End -->
 
 <section class="shop-one">
     <div class="container">
@@ -36,11 +33,11 @@
 
                     <!-- SEARCH -->
                     <div class="shop-one__sidebar__item shop-one__sidebar__search">
-                        <form action="{{ route('products',app()->getLocale()) }}" method="GET">
+                        <form action="{{ route('products', $locale) }}" method="GET">
                             <input type="text"
-                                   name="search"
-                                   value="{{ request('search') }}"
-                                   placeholder="{{ __('product.search_placeholder') }}">
+                                name="search"
+                                value="{{ request('search') }}"
+                                placeholder="{{ __('product.search_placeholder') }}">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -55,16 +52,15 @@
 
                         <ul class="list-unstyled shop-one__sidebar__category__list">
                             @foreach($categories as $category)
-                                <li>
-                                    <a href="{{ route('shop.category', [
-    'locale' => app()->getLocale(),
-    'slug'   => $category->slug
-]) }}"
-class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
-
-                                        {{ $category->translation?->title }}
-                                    </a>
-                                </li>
+                            <li>
+                                <a href="{{ route('shop.category', [
+                                            'locale' => $locale,
+                                            'slug'   => $category->slug
+                                        ]) }}"
+                                    class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
+                                    {{ $category->translation?->title }}
+                                </a>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -80,9 +76,16 @@ class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
                 <div class="row">
                     <div class="col-lg-12 shop-one__sorter">
                         <p class="shop-one__product-count">
-                            Showing
+                            @if(request()->filled('search'))
+                            {{ __('product.search_results_for') }}
+                            "<strong>{{ request('search') }}</strong>" —
+                            {{ $products->total() }} {{ __('product.results_found') }}
+                            @else
+                            {{ __('product.showing') }}
                             {{ $products->firstItem() }}–{{ $products->lastItem() }}
-                            of {{ $products->total() }} results
+                            {{ __('product.of') }} {{ $products->total() }}
+                            {{ __('product.results') }}
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -90,32 +93,38 @@ class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
                 <!-- PRODUCT LIST -->
                 <div class="row">
                     @forelse($products as $product)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="shop-one__item">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="shop-one__item">
 
-                                <div class="shop-one__image">
-                                    <img src="{{ asset('storage/'.$product->image) }}"
-                                         alt="{{ $product->translation?->title }}">
-                                </div>
-
-                                <div class="shop-one__content text-center">
-                                    <h3 class="shop-one__title">
-                                        <a href="{{ route('product.show', [
-                                        'locale' => app()->getLocale(),
-                                        'slug'   => $product->slug
-                                    ]) }}">
-
-                                            {{ $product->translation?->title }}
-                                        </a>
-                                    </h3>
-                                </div>
-
+                            <div class="shop-one__image">
+                                <img src="{{ asset('storage/'.$product->image) }}"
+                                    alt="{{ $product->translation?->title }}">
                             </div>
+
+                            <div class="shop-one__content text-center">
+                                <h3 class="shop-one__title">
+                                    <a href="{{ route('product.show', [
+                                                'locale' => $locale,
+                                                'slug'   => $product->slug
+                                            ]) }}">
+                                        {{ $product->translation?->title }}
+                                    </a>
+                                </h3>
+                            </div>
+
                         </div>
+                    </div>
                     @empty
-                        <div class="col-12">
-                            <p>{{ __('product.no_products') }}</p>
-                        </div>
+                    <div class="col-12">
+                        @if(request()->filled('search'))
+                        <p>
+                            "{{ request('search') }}" —
+                            {{ __('product.no_search_results') }}
+                        </p>
+                        @else
+                        <p>{{ __('product.no_products') }}</p>
+                        @endif
+                    </div>
                     @endforelse
                 </div>
 
@@ -133,4 +142,4 @@ class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
     </div>
 </section>
 
- @endsection
+@endsection

@@ -14,6 +14,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class ProductTranslation extends Resource
 {
     public static $model = \App\Models\ProductTranslation::class;
+    public static $displayInNavigation = false;
+
 
     public static function label()
     {

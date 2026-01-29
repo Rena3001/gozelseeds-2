@@ -18,10 +18,32 @@ class Category extends Resource
 {
     public static $model = \App\Models\Category::class;
 
+   public function title()
+{
+    return optional($this->translation)->title
+        ?? optional($this->translations->first())->title
+        ?? 'No title';
+}
+public static function relatableProducts(NovaRequest $request, $query)
+{
+    return $query->with(['translation', 'translations']);
+}
+
+    public static $search = [
+        'id',
+        'slug',
+    ];
+
+
     public static function label()
     {
         return 'Categories';
     }
+public static function relatableCategories(NovaRequest $request, $query)
+{
+    return $query->with('translation');
+}
+
 
     public function fields(NovaRequest $request)
     {

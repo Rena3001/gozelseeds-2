@@ -23,6 +23,13 @@ class Product extends Resource
         return 'Products';
     }
 
+public static $title = 'slug';
+
+public static function relatableCategories(NovaRequest $request, $query)
+{
+    return $query->with('translation');
+}
+
     public function fields(NovaRequest $request)
     {
         return [
@@ -43,7 +50,7 @@ class Product extends Resource
             Boolean::make('Active', 'is_active')
                 ->default(true),
 
-            BelongsToMany::make(
+            BelongsToMany::make( 
                 'Categories',
                 'categories',
                 Category::class

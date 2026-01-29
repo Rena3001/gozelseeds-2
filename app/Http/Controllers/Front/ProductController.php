@@ -10,23 +10,27 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(Request $request)
-    {
-        $products = Product::with(['translation', 'categories.translation'])
-            ->where('is_active', true)
-            ->when($request->filled('search'), function ($query) use ($request) {
-                $query->whereHas('translations', function ($q) use ($request) {
-                    $q->where('locale', app()->getLocale())
-                        ->where('title', 'LIKE', '%' . $request->search . '%');
-                });
-            })
-            ->paginate(9)
-            ->withQueryString(); // search pagination-da itmir
-        $categories = Category::with('translation')->get();
+{
+    $products = Product::with(['translation', 'categories.translation'])
+        ->where('is_active', true)
+        ->when($request->filled('search'), function ($query) use ($request) {
+            $query->whereHas('translation', function ($q) use ($request) {
+                $q->where('title', 'LIKE', '%' . $request->search . '%')
+                  ->orWhere('description', 'LIKE', '%' . $request->search . '%');
+            });
+        })
+        ->paginate(9)
+        ->withQueryString();
 
-        return view('client.pages.products', compact('products', 'categories'));
-    }
+    $categories = Category::with('translation')->get();
+
+    return view('client.pages.products', compact('products', 'categories'));
+}
+
     public function show($locale, $slug)
     {
+
+        app()->setLocale($locale); // ❗ BUNU ƏLAVƏ ET
         $product = Product::with(['translation', 'categories.translation'])
             ->where('slug', $slug)
             ->where('is_active', true)
@@ -34,6 +38,7 @@ class ProductController extends Controller
 
         return view('client.pages.product-details', compact('product'));
     }
+    
     public function category($locale, $slug)
     {
         app()->setLocale($locale);
