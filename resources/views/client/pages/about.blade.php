@@ -33,7 +33,7 @@ $locale = app()->getLocale();
                 <div class="about-three__content-box">
                     <div class="sec-title">
                         <div class="icon">
-                            <img src="assets/images/resources/sec-title-icon1.png" alt="">
+                            <img src="{{$page->header_bg}}" alt="">
                         </div>
                         <span class="sec-title__tagline">
                             {{ $page->translation->tagline }}
@@ -75,10 +75,10 @@ $locale = app()->getLocale();
             <!--Start About Three Img Box-->
             <div class="col-xl-6 col-lg-5">
                 <div class="about-three__img-box">
-                    <img src="assets/images/resources/about-3-icon-1-1.png" class="about-three__img-icon" alt="">
+                    <img src="{{ asset('storage/'.$page->image_icon) }}" class="about-three__img-icon" alt="">
                     <div class="about-three__img-box-img">
                         <div class="about-three__img-box-img-inner">
-                            <img src="assets/images/about/about-v3-img1.jpg" alt="">
+                            <img src="{{ asset('storage/'.$page->image_main) }}" alt="">
                         </div>
                     </div>
                 </div>
