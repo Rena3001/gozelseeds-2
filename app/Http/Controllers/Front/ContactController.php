@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactSection;
+use App\Models\Setting;
 use App\Services\MicrosoftMailerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -19,7 +20,9 @@ class ContactController extends Controller
         $contactSection = ContactSection::where('is_active', true)
             ->with('translation')
             ->first();
-        return view('client.pages.contact', compact('locale', 'contactSection'));
+        $settings = Setting::with('translation')->first();
+
+        return view('client.pages.contact', compact('locale', 'contactSection', 'settings'));
     }
 
 
