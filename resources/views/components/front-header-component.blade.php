@@ -1,3 +1,8 @@
+ @php
+ use App\Models\Translation;
+ $locale = app()->getLocale();
+ @endphp
+
 <header class="main-header main-header--one clearfix">
     <div class="main-header--one__wrapper">
         <div class="main-header--one__top clearfix">

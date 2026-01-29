@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
             $translator = new DatabaseTranslator(
                 $loader,
-                $app['config']['app.locale']
+                App::getLocale() // ✅
             );
 
             $translator->setFallback($app['config']['app.fallback_locale']);
@@ -39,11 +39,12 @@ class AppServiceProvider extends ServiceProvider
     }
     public function boot(): void
     {
+        App::setLocale(request()->segment(1) ?? config('app.locale'));
         if (Schema::hasTable('translations')) {
             $locale = App::getLocale();
 
             $translations = Cache::remember(
-                "translations_{$locale}",
+                "translations_db_{$locale}",
                 3600,
                 function () use ($locale) {
                     return Translation::where('locale', $locale)->get();

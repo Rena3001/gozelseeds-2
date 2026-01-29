@@ -1,3 +1,8 @@
+ 
+  @php
+ use App\Models\Translation;
+ $locale = app()->getLocale();
+ @endphp
  <!--Start Footer One-->
  <footer class="footer-one">
      <div class="footer-one__top">
