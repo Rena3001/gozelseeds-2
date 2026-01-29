@@ -131,7 +131,7 @@ $locale = app()->getLocale();
                                 </div>
                                 <div class="title">
                                     <span>{{__('visit.store')}}</span>
-                                    <p>{{ $settings?->address ?? '88 broklyn street, New York' }}</p>
+                                    <p>{{ $settings?->translation?->address }}</p>
                                 </div>
                             </li>
 
