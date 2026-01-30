@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
             PageSeeder::class,
             ServiceProvidingQualitySeeder::class,
             CategorySeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            TranslationsSeeder::class,
 
         ]);
     }

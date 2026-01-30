@@ -39,7 +39,7 @@ $locale = app()->getLocale();
             <div class="icon">
                 <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
             </div>
-            <span class="sec-title__tagline">{{__('contact_with_us')}}</span>
+            <span class="sec-title__tagline">{{__('contact.with_us')}}</span>
             <h2 class="sec-title__title">{{__('contact.desc')}}</h2>
         </div>
         <div class="row">

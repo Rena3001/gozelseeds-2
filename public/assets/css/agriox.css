@@ -93,6 +93,7 @@ h6 {
     color: var(--agriox-primary, #334b35);
     font-weight: 700;
     font-family: var(--agriox-font-2, "Averia Sans Libre", cursive);
+    font-family: "Merienda", cursive;
     margin: 0;
 }
 
@@ -271,7 +272,7 @@ button {
     color: var(--agriox-primary, #334b35);
     font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
+    font-family: "Merienda", cursive;
     padding: 18px 50px 18px;
     border-radius: 10px;
     letter-spacing: 0.1em;
@@ -338,6 +339,7 @@ button {
     line-height: 20px;
     font-weight: 500;
     text-transform: uppercase;
+    font-family: "Merienda", cursive;
     letter-spacing: 0.1em;
 }
 
@@ -2040,8 +2042,8 @@ button {
     font-size: 16px;
     line-height: 26px;
     font-weight: 500;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
+    font-family: "Merienda", cursive;
     opacity: 0;
     -webkit-transition: all 1000ms ease;
     transition: all 1000ms ease;
@@ -2080,7 +2082,7 @@ button {
     color: #ffffff;
     font-size: 100px;
     line-height: 1em;
-    font-family: var(--agriox-font-3, "Shadows Into Light", cursive);
+    font-family: "Merienda", cursive;
     margin-top: 22px;
     margin-bottom: 34px;
     opacity: 0;
@@ -2842,6 +2844,7 @@ button {
     line-height: 1.2em;
     font-weight: 400;
     font-family: var(--agriox-font-3, "Shadows Into Light", cursive);
+    font-family: "Merienda", cursive;
     margin-bottom: 0;
 }
 
