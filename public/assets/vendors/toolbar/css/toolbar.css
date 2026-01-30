@@ -34,7 +34,6 @@
 
 .style-switcher h3 {
 	margin: 0;
-	text-transform: uppercase;
 	color: var(--toolbar-black);
 	font-size: 20px;
 	letter-spacing: var(--toolbar-letter-spacing);
