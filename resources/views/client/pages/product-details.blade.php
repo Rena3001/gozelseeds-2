@@ -24,7 +24,7 @@ $locale = app()->getLocale();
                 </li>
 
                 <li>
-                    <a href="{{ route('shop.index', app()->getLocale()) }}">
+                    <a href="{{ route('products', app()->getLocale()) }}">
                         {{ __('breadcrumb.products') }}
                     </a>
                 </li>
