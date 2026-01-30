@@ -192,7 +192,7 @@ $locale = app()->getLocale();
                         <div class="icon">
                             <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
                         </div>
-                        <span class="sec-title__tagline">{{__('our_testimonials')}}</span>
+                        <span class="sec-title__tagline">{{__('our.testimonials')}}</span>
                         <h2 class="sec-title__title">{{__('testimonials.desc')}}</h2>
                     </div>
                 </div>
