@@ -70,7 +70,7 @@
 
                      <div class="service-details__sidebar-single">
                          <div class="service-details__sidebar-title">
-                             <h3>{{ __('service_overview') }}</h3>
+                             <h3>{{ __('service.overview') }}</h3>
                          </div>
 
                          <div class="service-details__sidebar-text">
