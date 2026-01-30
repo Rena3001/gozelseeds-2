@@ -2333,7 +2333,6 @@ button {
     font-size: 14px;
     line-height: 24px;
     font-weight: 500;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
     font-family: var(--agriox-font, "DM Sans", sans-serif);
 }
