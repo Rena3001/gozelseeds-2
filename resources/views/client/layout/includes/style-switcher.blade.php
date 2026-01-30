@@ -2,7 +2,7 @@
     <div class="style-switcher">
         <a href="#" id="switcher-toggler"><i class="fa fa-cog"></i></a>
 
-        <h3>{{ __('layout.options') }}</h3>
+        <h3>{{ __('language.switcher') }}</h3>
 
         <!-- Language Switch -->
         <div class="language-feature">
