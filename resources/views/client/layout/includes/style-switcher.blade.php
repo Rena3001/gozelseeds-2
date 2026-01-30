@@ -19,15 +19,5 @@
     </a>
 </div>
 
-
-        <!-- Theme Switch -->
-        <div class="layout-feature" id="colorMode">
-            <a href="#" class="dark-switcher" data-theme="agriox-dark">
-                {{ __('theme.dark') }}
-            </a>
-            <a href="#" class="light-switcher" data-theme="agriox-light">
-                {{ __('theme.light') }}
-            </a>
-        </div>
     </div>
     <!-- end style switcher -->
