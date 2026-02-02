@@ -1,5 +1,4 @@
- 
-  @php
+ @php
  use App\Models\Translation;
  $locale = app()->getLocale();
  @endphp
@@ -34,6 +33,11 @@
                                              </a>
                                          </p>
                                          <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address }}</p>
+                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_turkey }}</p>
+                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_spain }}</p>
+                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_uzbekistan }}</p>
+
+
                                      </div>
                                  </div>
                              </div>

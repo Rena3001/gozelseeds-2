@@ -127,12 +127,16 @@ $locale = app()->getLocale();
                         <ul>
                             <li>
                                 <div class="icon">
-                                    <span class="fa fa-map"></span>
+                                    <span class="fas fa-globe"></span>
                                 </div>
                                 <div class="title">
                                     <span>{{__('visit.store')}}</span>
                                     <p>{{ $settings?->translation?->address }}</p>
+                                    <p>{{ $settings?->translation?->address_turkey }}</p>
+                                    <p>{{ $settings?->translation?->address_spain }}</p>
+                                    <p>{{ $settings?->translation?->address_uzbekistan }}</p>
                                 </div>
+
                             </li>
 
                             <li>

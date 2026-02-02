@@ -2,8 +2,7 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
@@ -11,25 +10,17 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Panel;
 
-
 class Project extends Resource
 {
     public static $model = \App\Models\Project::class;
 
-    /**
-     * The single value used to represent the resource.
-     */
     public static $title = 'id';
 
-    /**
-     * The columns that should be searched.
-     */
     public static $search = [
         'id',
     ];
 
-
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
 
@@ -38,8 +29,9 @@ class Project extends Resource
                 ->path('projects')
                 ->nullable()
                 ->prunable()
-                ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
-                ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
+                ->thumbnail(fn ($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn ($value) => $value ? asset('storage/' . $value) : null),
+
             Text::make('Category'),
 
             Number::make('Order')->default(0),
@@ -49,42 +41,58 @@ class Project extends Resource
             new Panel('Titles (AZ / EN / RU)', [
 
                 Text::make('Title (AZ)', 'title_az')
-                    ->resolveUsing(fn() => $this->translation('az')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $key) =>
-                        $this->saveTranslation($model, 'az', ['title' => $req[$key]])
-                    ),
+                    ->resolveUsing(fn () => $this->translation('az')?->title)
+                    ->fillUsing(fn () => null),
 
                 Text::make('Title (EN)', 'title_en')
-                    ->resolveUsing(fn() => $this->translation('en')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $key) =>
-                        $this->saveTranslation($model, 'en', ['title' => $req[$key]])
-                    ),
+                    ->resolveUsing(fn () => $this->translation('en')?->title)
+                    ->fillUsing(fn () => null),
 
                 Text::make('Title (RU)', 'title_ru')
-                    ->resolveUsing(fn() => $this->translation('ru')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $key) =>
-                        $this->saveTranslation($model, 'ru', ['title' => $req[$key]])
-                    ),
+                    ->resolveUsing(fn () => $this->translation('ru')?->title)
+                    ->fillUsing(fn () => null),
             ]),
         ];
     }
 
-    protected function translation($locale)
+    protected function translation(string $locale)
     {
-        return $this->resource->translations()->where('locale', $locale)->first();
+        return $this->resource
+            ->translations()
+            ->where('locale', $locale)
+            ->first();
     }
 
-    protected function saveTranslation($model, $locale, array $data)
+    /**
+     * CREATE-dən sonra
+     */
+    public static function afterCreate(NovaRequest $request, $model)
     {
-        if (!$data['title']) return;
+        static::saveTranslations($request, $model);
+    }
 
-        $model->translations()
-            ->updateOrCreate(
-                ['locale' => $locale],
-                $data
-            );
+    /**
+     * UPDATE-dən sonra
+     */
+    public static function afterUpdate(NovaRequest $request, $model)
+    {
+        static::saveTranslations($request, $model);
+    }
+
+    /**
+     * 🔥 Translation save OLDUĞU YER
+     */
+    protected static function saveTranslations(NovaRequest $request, $model)
+    {
+        foreach (['az', 'en', 'ru'] as $locale) {
+            $key = 'title_' . $locale;
+
+            if ($request->filled($key)) {
+                $model->translations()->updateOrCreate(
+                    ['locale' => $locale],
+                    ['title' => $request->input($key)]
+                );
+            }
+        }
     }
 }

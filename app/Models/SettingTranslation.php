@@ -8,6 +8,10 @@ class SettingTranslation extends Model
 {
     public $timestamps = false;
 
+    protected $casts = [
+    'addresses' => 'array',
+];
+
     protected $fillable = [
         'setting_id',
         'locale',

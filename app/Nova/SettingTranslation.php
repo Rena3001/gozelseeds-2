@@ -30,8 +30,17 @@ class SettingTranslation extends Resource
                 ->rules('required')
                 ->help('az / en / ru'),
 
-            Text::make('Address')
+            Text::make('Address (Azerbaijan)', 'address')
                 ->rules('required'),
+
+            Text::make('Address (Turkey)', 'address_turkey'),
+
+            Text::make('Address (Spain)', 'address_spain'),
+
+            Text::make('Address (Uzbekistan)', 'address_uzbekistan'),
+
+
+
         ];
     }
 }
