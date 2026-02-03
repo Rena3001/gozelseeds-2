@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactMessage;
 use App\Models\ContactSection;
 use App\Models\Setting;
 use App\Services\MicrosoftMailerService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Mime\Email;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -22,41 +22,44 @@ class ContactController extends Controller
             ->first();
         $settings = Setting::with('translation')->first();
 
-        return view('client.pages.contact', compact('locale', 'contactSection', 'settings'));
+        return view('client.pages.contact', compact('contactSection', 'settings', 'locale'));
     }
 
-
-
-    public function send(Request $request, $locale, MicrosoftMailerService $mailer)
+    public function send(Request $request)
     {
-        if (in_array($locale, ['az', 'en', 'ru'])) {
-            app()->setLocale($locale);
+        try {
+            // Validation (error göstərmədən)
+            $data = $request->validate([
+                'name'    => 'required|string|max:255',
+                'email'   => 'required|email|max:255',
+                'message' => 'required|string|min:3',
+                'cv'      => 'nullable|file|mimes:pdf,doc,docx|max:5120',
+            ]);
+
+            // CV upload
+            if ($request->hasFile('cv')) {
+                $data['cv'] = $request->file('cv')->store('cvs', 'public');
+            }
+
+            // DB save
+            \App\Models\ContactMessage::create($data);
+            try {
+                $mailer = app(MicrosoftMailerService::class);
+
+                $email = (new Email())
+                    ->from(config('mail.from.address'))
+                    ->to(config('mail.from.address'))
+                    ->subject('New Contact Message')
+                    ->text($data['message']);
+
+                $mailer->mailer()->send($email);
+            } catch (\Throwable $e) {
+                // LOG-la, amma user-a hiss etdirmə
+                \Log::error('Microsoft mail error: ' . $e->getMessage());
+            }
+            return back()->with('status', 'success');
+        } catch (\Throwable $e) {
+            return back()->with('status', 'error');
         }
-
-        $data = $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email',
-            'message' => 'required|string',
-        ]);
-
-        // ✅ Symfony Email (OAuth uyğun)
-        $email = (new Email())
-            ->from(config('mail.from.address'))
-            ->replyTo($data['email'])
-            ->to(config('mail.from.address'))
-            ->subject('New Contact Message')
-            ->text(
-                "Name: {$data['name']}\n" .
-                    "Email: {$data['email']}\n\n" .
-                    "Message:\n{$data['message']}"
-            );
-
-        // ✅ Microsoft OAuth SMTP ilə göndər
-        $mailer->mailer()->send($email);
-
-        return response()->json([
-            'success' => true,
-            'message' => __('contact.success'),
-        ]);
     }
 }

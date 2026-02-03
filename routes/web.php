@@ -32,10 +32,17 @@ Route::group([
         ->name('shop.category');
     Route::get('products', [ProductController::class, 'index'])->name('products');
     Route::get('products/{slug}', [ProductController::class, 'show'])->name('product.show');
+
+
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    Route::post('/contact/send', [ContactController::class, 'send'])
-        ->where(['locale' => 'az|en|ru'])
-        ->name('contact.send');
+    Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact-test-post', function () {
+    dd('POST ROUTE WORKS');
+});
+
+
+
+
     Route::post('/subscribe', [SubscribeController::class, 'store'])
         ->name('subscribe.store');
 });

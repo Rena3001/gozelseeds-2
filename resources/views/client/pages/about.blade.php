@@ -24,6 +24,7 @@ $locale = app()->getLocale();
 <!--Page Header End-->
 
 <!--About Three Start-->
+<!--About Three Start-->
 <section class="about-three">
     <div class="about-three__shape"></div><!-- /.about-three__shape -->
     <div class="container">
@@ -33,8 +34,9 @@ $locale = app()->getLocale();
                 <div class="about-three__content-box">
                     <div class="sec-title">
                         <div class="icon">
-                            <img src="{{$page->header_bg}}" alt="">
+                            <img src="{{ $page->header_bg }}" alt="">
                         </div>
+
                         <span class="sec-title__tagline">
                             {{ $page->translation->tagline }}
                         </span>
@@ -43,30 +45,23 @@ $locale = app()->getLocale();
                             {{ $page->translation->content_title }}
                         </h2>
                     </div>
+
                     <div class="about-three__content-box-inner">
                         <h2>{{ $page->translation->subtitle }}</h2>
-                        <p>{{ $page->translation->description }}</p>
 
+                        <p>
+                            {{ $page->translation->description }}
+                        </p>
 
-                        <div class="about-three__products-list">
-                            <ul>
-                                <li>
-                                   
-                                    <h3>{{ $page->translation->feature_1_title }}</h3>
-                                    <p>{{ $page->translation->feature_1_text }}</p>
-                                </li>
-
-                                <li>
-                                    
-                                    <h3>{{ $page->translation->feature_2_title }}</h3>
-                                    <p>{{ $page->translation->feature_2_text }}</p>
-                                </li>
-                            </ul>
-                        </div>
+                        
                     </div>
+
                     <div class="about-three__content-box-btn">
-                        <a href="{{ route('services', app()->getLocale()) }}" class="thm-btn">{{__('discover.more')}}</a>
+                        <a href="{{ route('services', app()->getLocale()) }}" class="thm-btn">
+                            {{ __('discover.more') }}
+                        </a>
                     </div>
+
                     <div class="about-three__arrow float-bob-y"></div><!-- /.about-three__arrow -->
                 </div>
             </div>
@@ -75,18 +70,41 @@ $locale = app()->getLocale();
             <!--Start About Three Img Box-->
             <div class="col-xl-6 col-lg-5">
                 <div class="about-three__img-box">
-                    <img src="{{ asset('storage/'.$page->image_icon) }}" class="about-three__img-icon" alt="">
+                    <img src="{{ asset('storage/' . $page->image_icon) }}"
+                         class="about-three__img-icon"
+                         alt="">
+
                     <div class="about-three__img-box-img">
                         <div class="about-three__img-box-img-inner">
-                            <img src="{{ asset('storage/'.$page->image_main) }}" alt="">
+                            <img src="{{ asset('storage/' . $page->image_main) }}" alt="">
                         </div>
                     </div>
                 </div>
             </div>
             <!--End About Three Img Box-->
+            <div class="about-three__products-list">
+                            <ul>
+                                <li>
+                                    <h3>{{ $page->translation->feature_1_title }}</h3>
+                                    <p>
+                                        {{ $page->translation->feature_1_text }}
+
+                                    </p>
+                                </li>
+
+                                <li>
+                                    <h3>{{ $page->translation->feature_2_title }}</h3>
+                                    <p>
+                                        {{ $page->translation->feature_2_text }}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
         </div>
     </div>
 </section>
+<!--About Three End-->
+
 <!--About Three End-->
 
 

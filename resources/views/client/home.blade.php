@@ -72,7 +72,7 @@ $icons = $services->pluck('icon')->toArray();
 
                                 </div>
 
-                                <div class="main-slider__button-box">
+                                <!-- <div class="main-slider__button-box">
                                     <div class="arrow-icon">
                                         <img src="{{ asset('assets/images/icon/main-slider__button-arrow.png') }}" alt="">
                                     </div>
@@ -81,7 +81,7 @@ $icons = $services->pluck('icon')->toArray();
                                     <a href="{{ $slider->button_url ?? '#' }}" class="thm-btn">
                                         {{ __('discover.more')}}
                                     </a>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -119,7 +119,7 @@ $t = $about?->translation;
 <!--About One Start-->
 <section class="about-one">
 
-    
+
     <div class="container">
         <div class="row">
 
@@ -137,26 +137,7 @@ $t = $about?->translation;
                         </div>
                     </div>
 
-                    <div class="about-one__left-overlay wow slideInLeft"
-                        data-wow-delay="100ms"
-                        data-wow-duration="1500ms">
 
-                       
-
-                        <div class="title">
-                            <h2>
-                                <span class="odometer"
-                                    data-count="{{ $about?->counter_number ?? 87600 }}">
-                                    00 
-                                </span>
-                            </h2>
-
-                            <p>
-                                {{ $t?->counter_text ?? 'Successfully Project Completed' }}
-                            </p>
-                        </div>
-
-                    </div>
                 </div>
             </div>
             <!--End About One Left-->
@@ -425,8 +406,9 @@ $t = $about?->translation;
                     <div class="services-one__single-content text-center">
 
                         <div class="services-one__single-img-icon">
-                            <span class="{{ $service->icon }}"></span>
+                            <img src="{{ asset('storage/'.$service->icon) }}" alt="" class="service-icon-img">
                         </div>
+
 
 
 
@@ -588,7 +570,7 @@ $t = $about?->translation;
                     </div>
 
                     <div class="blog-one__single-content">
-                     
+
                         <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
                     </div>
                 </div>
@@ -648,30 +630,58 @@ $t = $about?->translation;
                 <!-- /.contact-one__content -->
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-6">
+                @if(session('status') === 'success')
+                <div class="alert alert-success">
+                    {{ __('contact.success') }}
+                </div>
+                @endif
 
-                <form method="POST" action="{{ route('contact.send', ['locale' => app()->getLocale()]) }}" class="contact-one__form comment-one__form contact-form-validated" novalidate="novalidate">
+                @if(session('status') === 'error')
+                <div class="alert alert-danger">
+                    {{ __('contact.error') }}
+                </div>
+                @endif
+                <form method="POST"
+                    action="{{ route('contact.send', ['locale' => app()->getLocale()]) }}"
+                    class="contact-one__form comment-one__form"
+                    enctype="multipart/form-data">
+
+
                     @csrf
+
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
-                                <input type="text" placeholder="{{ __('contact.name') }}" name="name">
+                                <input type="text" placeholder="{{ __('contact.name') }}" name="name" required>
                             </div>
                         </div>
+
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
-                                <input type="email" placeholder="{{ __('contact.email') }}" name="email">
+                                <input type="email" placeholder="{{ __('contact.email') }}" name="email" required>
+                            </div>
+                        </div>
+
+                        <!-- CV upload -->
+                        <div class="col-xl-12">
+                            <div class="comment-form__input-box">
+                                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
                             <div class="comment-form__input-box">
-                                <textarea name="message" placeholder="{{ __('contact.message') }}"></textarea>
+                                <textarea name="message" placeholder="{{ __('contact.message') }}" required></textarea>
                             </div>
-                            <button type="submit" class="thm-btn comment-form__btn">{{ __('contact.send') }}</button>
+                            <button type="submit" class="thm-btn comment-form__btn">
+                                {{ __('contact.send') }}
+                            </button>
                         </div>
                     </div>
                 </form>
+
 
                 <div class="result"></div>
 

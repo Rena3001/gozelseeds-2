@@ -93,8 +93,12 @@
                                          <input type="email" name="email" placeholder="{{ __('footer.email_placeholder') }}" required>
                                          <button type="submit">{{__('footer.go')}}</button>
                                      </form>
-
-                                 </div>
+                                     
+                                     
+                                     <div class="footer-widget__about-logo azerbaijan-logo">
+                                         <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
+                                     </div>
+                                    </div>
                              </div>
                              <!--End Footer Widget Column-->
                          </div>

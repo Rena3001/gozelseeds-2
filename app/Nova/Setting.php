@@ -75,6 +75,21 @@ class Setting extends Resource
                 ->preview(function ($value) {
                     return $value ? asset('storage/' . $value) : null;
                 }),
+
+
+
+            Image::make('AZ Logo', 'az_logo')
+                ->disk('public')
+                ->path('settings')
+                ->nullable()
+                ->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
+
             // =====================
             // SOCIAL LINKS
             // =====================
@@ -86,7 +101,9 @@ class Setting extends Resource
             Text::make('Telegram', 'telegram')->nullable(),
             Text::make('WhatsApp', 'whatsapp')->nullable(),
             Text::make('Youtube')->nullable(),
-
+            Text::make('Catalog Link', 'catalog_link')
+                ->hideFromIndex()
+                ->rules('nullable', 'url'),
             // =====================
             // FOOTER
             // =====================

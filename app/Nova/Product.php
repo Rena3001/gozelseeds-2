@@ -27,7 +27,7 @@ public static $title = 'slug';
 
 public static function relatableCategories(NovaRequest $request, $query)
 {
-    return $query->with('translation');
+    return $query->with('translations');
 }
 
     public function fields(NovaRequest $request)

@@ -32,9 +32,18 @@ class Service extends Resource
                 ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
                 ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
-            Text::make('Icon')
-                ->help('FontAwesome class (fa-solid fa-seedling)')
-                ->rules('required'),
+           Image::make('Icon')
+    ->disk('public')
+    ->path('services/icons')
+    ->prunable()
+    ->rules('required')
+    ->help('PNG/JPG ikon yüklə (SVG yox)')
+    ->thumbnail(function ($value) {
+        return $value ? asset('storage/' . $value) : null;
+    })
+    ->preview(function ($value) {
+        return $value ? asset('storage/' . $value) : null;
+    }),
 
             Text::make('Link')
                 ->default('services-details.html'),

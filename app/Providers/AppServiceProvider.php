@@ -4,13 +4,16 @@ namespace App\Providers;
 
 use App\Models\ContactInfoSmtp;
 use App\Models\Translation;
+use App\Models\Language;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 use App\Extensions\DatabaseTranslator;
+use App\Models\Category;
 use App\Observers\TranslationObserver;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Filesystem\Filesystem;
@@ -85,5 +88,32 @@ class AppServiceProvider extends ServiceProvider
 
         // 4️⃣ Translation observer
         Translation::observe(TranslationObserver::class);
+        View::composer('*', function ($view) {
+
+            $languages = Language::where('is_active', true)
+                ->orderBy('order')
+                ->get();
+
+            $segments = request()->segments();
+            $cleanPath = isset($segments[1])
+                ? '/' . implode('/', array_slice($segments, 1))
+                : '/';
+
+            $view->with(compact('languages', 'cleanPath'));
+        });
+        View::composer('*', function ($view) {
+            $view->with(
+                'categories',
+                Category::get()
+            );
+        });
+        View::composer('*', function ($view) {
+            $view->with(
+                'menuCategories',
+                Category::with(['children.translation', 'translation'])
+                    ->whereNull('parent_id')
+                    ->get()
+            );
+        });
     }
 }

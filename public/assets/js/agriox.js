@@ -565,7 +565,7 @@
                 {
                     scrollTop: $(target).offset().top,
                 },
-                1000
+                500
             );
         });
     }
@@ -1079,25 +1079,26 @@
 
     // window scroll event
 
-    $(window).on("scroll", function () {
-        if ($(".stricked-menu").length) {
-            var headerScrollPos = 130;
-            var stricky = $(".stricked-menu");
-            if ($(window).scrollTop() > headerScrollPos) {
-                stricky.addClass("stricky-fixed");
-            } else if ($(this).scrollTop() <= headerScrollPos) {
-                stricky.removeClass("stricky-fixed");
-            }
+$(window).on("scroll", function () {
+    if ($(".stricked-menu").length) {
+        var headerScrollPos = 130;
+        var stricky = $(".stricked-menu");
+        if ($(window).scrollTop() > headerScrollPos) {
+            stricky.addClass("stricky-fixed");
+        } else if ($(this).scrollTop() <= headerScrollPos) {
+            stricky.removeClass("stricky-fixed");
         }
-        if ($(".scroll-to-top").length) {
-            var strickyScrollPos = 100;
-            if ($(window).scrollTop() > strickyScrollPos) {
-                $(".scroll-to-top").fadeIn(500);
-            } else if ($(this).scrollTop() <= strickyScrollPos) {
-                $(".scroll-to-top").fadeOut(500);
-            }
+    }
+    if ($(".scroll-to-top").length) {
+        var strickyScrollPos = 100;
+        if ($(window).scrollTop() > strickyScrollPos) {
+            $(".scroll-to-top").fadeIn(50);
+        } else if ($(this).scrollTop() <= strickyScrollPos) {
+            $(".scroll-to-top").fadeOut(50);
         }
-    });
+    }
+});
+
 
     if ($(".before-after-twentytwenty").length) {
         $(".before-after-twentytwenty").each(function () {

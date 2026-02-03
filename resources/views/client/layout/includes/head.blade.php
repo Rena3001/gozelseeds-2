@@ -50,3 +50,42 @@
 
     <!-- toolbar css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/toolbar/css/toolbar.css')}}">
+
+    @push('styles')
+    <style>
+        .menu-item-has-children {
+    position: relative;
+}
+
+.menu-item-has-children > .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.menu-item-has-children:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.sub-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+}
+
+.sub-menu li a:hover {
+    background: #f5f5f5;
+}
+
+    </style>
+    @endpush

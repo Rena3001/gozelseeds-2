@@ -1,10 +1,10 @@
-@extends('client.layout.master') 
-@section('page_title', 'Products') 
-@section('content') 
-@php 
-use Illuminate\Support\Str; 
-use App\Models\Translation; 
-$locale = app()->getLocale(); 
+@extends('client.layout.master')
+@section('page_title', 'Products')
+@section('content')
+@php
+use Illuminate\Support\Str;
+use App\Models\Translation;
+$locale = app()->getLocale();
 @endphp
 
 <!-- Page Header -->
@@ -51,18 +51,33 @@ $locale = app()->getLocale();
                         </h3>
 
                         <ul class="list-unstyled shop-one__sidebar__category__list">
-                            @foreach($categories as $category)
+                            @foreach($categories->whereNull('parent_id') as $category)
                             <li>
-                                <a href="{{ route('shop.category', [
-                                            'locale' => $locale,
-                                            'slug'   => $category->slug
-                                        ]) }}"
+                                <a href="{{ route('shop.category', ['locale' => $locale,
+                                            'slug'   => $category->slug]) }}"
                                     class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
                                     {{ $category->translation?->title }}
                                 </a>
+
+                                {{-- Subkateqoriyalar --}}
+                                @if($category->children->count())
+                                <ul class="list-unstyled pl-3 mt-2">
+                                    @foreach($category->children as $child)
+                                    <li>
+                                        <a href="{{ route('shop.category', ['locale' => $locale,
+                                            'slug'   => $child->slug]) }}"
+                                            class="{{ request()->route('slug') === $child->slug ? 'active' : '' }}">
+                                            — {{ $child->translation?->title }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                @endif
                             </li>
                             @endforeach
                         </ul>
+
+
                     </div>
 
                 </div>

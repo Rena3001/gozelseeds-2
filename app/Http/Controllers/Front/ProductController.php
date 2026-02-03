@@ -43,7 +43,10 @@ class ProductController extends Controller
     {
         app()->setLocale($locale);
 
-        $categories = Category::with('translation')->get();
+        $categories = Category::with(['children.translation', 'translation'])
+    ->whereNull('parent_id')
+    ->get();
+
 
         $category = Category::where('slug', $slug)->firstOrFail();
 

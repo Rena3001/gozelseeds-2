@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Nova\CategoryTranslation as NovaCategoryTranslation;
 use App\Nova\Product as NovaProduct;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -17,17 +18,13 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class Category extends Resource
 {
     public static $model = \App\Models\Category::class;
+ public static $title = 'nova_title';
 
-   public function title()
-{
-    return optional($this->translation)->title
-        ?? optional($this->translations->first())->title
-        ?? 'No title';
-}
-public static function relatableProducts(NovaRequest $request, $query)
-{
-    return $query->with(['translation', 'translations']);
-}
+
+    public static function relatableProducts(NovaRequest $request, $query)
+    {
+        return $query->with(['translation', 'translations']);
+    }
 
     public static $search = [
         'id',
@@ -39,10 +36,10 @@ public static function relatableProducts(NovaRequest $request, $query)
     {
         return 'Categories';
     }
-public static function relatableCategories(NovaRequest $request, $query)
-{
-    return $query->with('translation');
-}
+    public static function relatableCategories(NovaRequest $request, $query)
+    {
+        return $query->with('translation');
+    }
 
 
     public function fields(NovaRequest $request)
@@ -51,6 +48,11 @@ public static function relatableCategories(NovaRequest $request, $query)
 
             ID::make()->sortable(),
 
+            BelongsTo::make(
+                'Parent Category',
+                'parent',
+                Category::class
+            )->nullable(),
             Text::make('Slug')
                 ->rules('required', 'unique:categories,slug,{{resourceId}}')
                 ->help('URL üçün istifadə olunur'),

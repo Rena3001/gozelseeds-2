@@ -15,7 +15,7 @@
 <body class="boxed-wrapper">
     <div class="page-wrapper">
 
-        @include('client.layout.includes.style-switcher')
+        
         @include('client.layout.includes.preloader')
         
 

@@ -81,25 +81,44 @@ $locale = app()->getLocale();
                 <!-- /.contact-one__content -->
             </div><!-- /.col-lg-6 -->
             <div class="col-lg-6">
+                @if(session('status') === 'success')
+                <div class="alert alert-success">
+                    {{ __('contact.success') }}
+                </div>
+                @endif
 
-                <form method="POST" action="{{ route('contact.send', ['locale' => app()->getLocale()]) }}" class="contact-one__form comment-one__form contact-form-validated" novalidate="novalidate">
+                @if(session('status') === 'error')
+                <div class="alert alert-danger">
+                    {{ __('contact.error') }}
+                </div>
+                @endif
+                <form method="POST"
+                    action="{{ route('contact.send', ['locale' => app()->getLocale()]) }}"
+                    class="contact-one__form comment-one__form"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
-                                <input type="text" placeholder="{{ __('contact.name') }}" name="name">
+                                <input type="text" placeholder="{{ __('contact.name') }}" name="name" required>
                             </div>
                         </div>
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
-                                <input type="email" placeholder="{{ __('contact.email') }}" name="email">
+                                <input type="email" placeholder="{{ __('contact.email') }}" name="email" required>
+                            </div>
+                        </div>
+                        <!-- CV upload -->
+                        <div class="col-xl-12">
+                            <div class="comment-form__input-box">
+                                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
                             <div class="comment-form__input-box">
-                                <textarea name="message" placeholder="{{ __('contact.message') }}"></textarea>
+                                <textarea name="message" placeholder="{{ __('contact.message') }}" required></textarea>
                             </div>
                             <button type="submit" class="thm-btn comment-form__btn">{{ __('contact.send') }}</button>
                         </div>
