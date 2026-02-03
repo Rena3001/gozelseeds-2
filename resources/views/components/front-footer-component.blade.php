@@ -15,7 +15,7 @@
                              <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
                                  <div class="footer-widget__column footer-widget__about">
                                      <div class="footer-widget__about-logo">
-                                         <a href="/{{ app()->getLocale() }}"><img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt=""></a>
+                                         <a href="/{{ app()->getLocale() }}"><img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt=""></a>
                                      </div>
                                      <p class="footer-widget__about-text">
                                          {{ __('footer.about_text') }}
