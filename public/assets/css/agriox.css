@@ -452,7 +452,7 @@ button {
     outline: none;
     border-color: #5bb98a;
     box-shadow: 0 0 4px rgba(91, 185, 138, 0.4);
-}
+} 
 
 .owl-carousel.owl-dot-type1 .owl-stage-outer {
     position: relative;
@@ -2883,8 +2883,7 @@ button {
     font-size: 28px;
     line-height: 1.2em;
     font-weight: 400;
-    font-family: var(--agriox-font-3, "Shadows Into Light", cursive);
-    font-family: "Merienda", cursive;
+    font-family: var(--agriox-font);
     margin-bottom: 0;
 }
 
