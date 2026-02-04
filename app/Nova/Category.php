@@ -2,28 +2,24 @@
 
 namespace App\Nova;
 
-use App\Models\CategoryTranslation;
-use App\Models\Product;
-use App\Nova\CategoryTranslation as NovaCategoryTranslation;
-use App\Nova\Product as NovaProduct;
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
+use App\Nova\Category as NovaCategory;
+
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-// App\Nova\Category.php
 class Category extends Resource
 {
     public static $model = \App\Models\Category::class;
- public static $title = 'nova_title';
 
+    public static $title = 'nova_title';
 
-    public static function relatableProducts(NovaRequest $request, $query)
+    public static function relatableQuery(NovaRequest $request, $query)
     {
-        return $query->with(['translation', 'translations']);
+        return $query->with('translations');
     }
 
     public static $search = [
@@ -31,16 +27,10 @@ class Category extends Resource
         'slug',
     ];
 
-
     public static function label()
     {
         return 'Categories';
     }
-    public static function relatableCategories(NovaRequest $request, $query)
-    {
-        return $query->with('translation');
-    }
-
 
     public function fields(NovaRequest $request)
     {
@@ -48,26 +38,44 @@ class Category extends Resource
 
             ID::make()->sortable(),
 
-            BelongsTo::make(
+            BelongsToMany::make(
                 'Parent Category',
                 'parent',
-                Category::class
+                NovaCategory::class
             )->nullable(),
+
+
             Text::make('Slug')
-                ->rules('required', 'unique:categories,slug,{{resourceId}}')
-                ->help('URL üçün istifadə olunur'),
+                ->rules('required', 'unique:categories,slug,{{resourceId}}'),
 
-            HasMany::make(
-                'Translations',
-                'translations',
-                NovaCategoryTranslation::class
-            ),
+            /* ===== INLINE TRANSLATIONS ===== */
 
-            BelongsToMany::make(
-                'Products',
-                'products',
-                NovaProduct::class
-            ),
+            Text::make('Title (AZ)', 'title_az')
+                ->onlyOnForms()
+                ->rules('required')
+                ->resolveUsing(
+                    fn() =>
+                    optional($this->translations->firstWhere('locale', 'az'))->title
+                )
+                ->fillUsing(fn() => null),
+
+            Text::make('Title (EN)', 'title_en')
+                ->onlyOnForms()
+                ->rules('required')
+                ->resolveUsing(
+                    fn() =>
+                    optional($this->translations->firstWhere('locale', 'en'))->title
+                )
+                ->fillUsing(fn() => null),
+
+            Text::make('Title (RU)', 'title_ru')
+                ->onlyOnForms()
+                ->rules('required')
+                ->resolveUsing(
+                    fn() =>
+                    optional($this->translations->firstWhere('locale', 'ru'))->title
+                )
+                ->fillUsing(fn() => null),
         ];
     }
 }
