@@ -21,7 +21,7 @@ class Category extends Resource
     {
         return $query->with('translations');
     }
-
+ 
     public static $search = [
         'id',
         'slug',
@@ -38,11 +38,11 @@ class Category extends Resource
 
             ID::make()->sortable(),
 
-            BelongsToMany::make(
-                'Parent Category',
-                'parent',
-                NovaCategory::class
-            )->nullable(),
+            BelongsTo::make(
+    'Parent Category',
+    'parent',
+    NovaCategory::class
+)->nullable(),
 
 
             Text::make('Slug')
