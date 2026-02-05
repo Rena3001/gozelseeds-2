@@ -74,7 +74,7 @@
                                      <h2 class="footer-widget__title">{{ __('footer.explore') }}</h2>
                                      <ul class="footer-widget__explore-list">
                                          <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>
-                                         <li><a href="{{ route('services', app()->getLocale()) }}">{{ __('footer.links.services') }}</a></li>
+                                         <li><a href="{{ $settings->catalog_link }}">{{ __('footer.links.services') }}</a></li>
                                          <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('footer.links.about') }}</a></li>
                                          <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('footer.links.contact') }}</a></li>
                                      </ul>

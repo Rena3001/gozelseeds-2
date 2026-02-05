@@ -170,7 +170,7 @@ $t = $about?->translation;
                     </p>
 
                     {{-- STATIK CHECKLIST (istəsən sonra admin-ə bağlayarıq) --}}
-                    <ul class="about-one__content-list">
+                    <!-- <ul class="about-one__content-list">
 
                         @forelse($about?->listItems as $item)
                         <li>
@@ -209,7 +209,7 @@ $t = $about?->translation;
                         </li>
                         @endforelse
 
-                    </ul>
+                    </ul> -->
 
                     <!-- Video Box -->
                     <div class="about-one__content-video-box">

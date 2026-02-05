@@ -3,7 +3,7 @@
 namespace App\Nova;
 
 use App\Models\VideoSection as Model;
-use Illuminate\Http\Request;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -33,65 +33,75 @@ class VideoSection extends Resource
             Image::make('Background Image', 'background_image')
                 ->disk('public')
                 ->path('video-section')
-                ->creationRules('required')     // yalnız CREATE zamanı məcburidir
-                ->nullable()                    // köhnə record-lar üçün vacib
-                ->prunable()
-                ->thumbnail(function ($value) {
-                    return $value ? asset('storage/' . $value) : null;
-                })
-                ->preview(function ($value) {
-                    return $value ? asset('storage/' . $value) : null;
-                }),
-
-            Text::make('Button URL', 'button_url')
-                ->nullable(),
-
-            Text::make('Video URL', 'video_url')
-                ->creationRules('required'),
+                ->creationRules('required')
+                ->nullable()
+                ->prunable(),
 
             Boolean::make('Active', 'is_active')
                 ->default(true),
 
-            // 🌐 AZ
+            /* ================= AZ ================= */
             new Panel('AZ Content', [
                 Text::make('Title (AZ)', 'az_title')
-                    ->resolveUsing(fn() => $this->translation('az')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'az', 'title', $req[$reqAttr])
+                    ->resolveUsing(fn () => $this->getTranslation('az')?->title)
+                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                        $this->saveTranslation($model, 'az', [
+                            'title' => $req[$reqAttr],
+                            'button_url' => $req['az_button_url'] ?? null,
+                            'video_url' => $req['az_video_url'] ?? null,
+                        ])
                     ),
 
+                Text::make('Button URL (AZ)', 'az_button_url')
+                    ->resolveUsing(fn () => $this->getTranslation('az')?->button_url),
 
+                Text::make('Video URL (AZ)', 'az_video_url')
+                    ->resolveUsing(fn () => $this->getTranslation('az')?->video_url),
             ]),
 
-            // 🌐 EN
+            /* ================= EN ================= */
             new Panel('EN Content', [
                 Text::make('Title (EN)', 'en_title')
-                    ->resolveUsing(fn() => $this->translation('en')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'en', 'title', $req[$reqAttr])
+                    ->resolveUsing(fn () => $this->getTranslation('en')?->title)
+                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                        $this->saveTranslation($model, 'en', [
+                            'title' => $req[$reqAttr],
+                            'button_url' => $req['en_button_url'] ?? null,
+                            'video_url' => $req['en_video_url'] ?? null,
+                        ])
                     ),
 
+                Text::make('Button URL (EN)', 'en_button_url')
+                    ->resolveUsing(fn () => $this->getTranslation('en')?->button_url),
 
+                Text::make('Video URL (EN)', 'en_video_url')
+                    ->resolveUsing(fn () => $this->getTranslation('en')?->video_url),
             ]),
 
-            // 🌐 RU
+            /* ================= RU ================= */
             new Panel('RU Content', [
                 Text::make('Title (RU)', 'ru_title')
-                    ->resolveUsing(fn() => $this->translation('ru')?->title)
-                    ->fillUsing(
-                        fn($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'ru', 'title', $req[$reqAttr])
+                    ->resolveUsing(fn () => $this->getTranslation('ru')?->title)
+                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
+                        $this->saveTranslation($model, 'ru', [
+                            'title' => $req[$reqAttr],
+                            'button_url' => $req['ru_button_url'] ?? null,
+                            'video_url' => $req['ru_video_url'] ?? null,
+                        ])
                     ),
 
+                Text::make('Button URL (RU)', 'ru_button_url')
+                    ->resolveUsing(fn () => $this->getTranslation('ru')?->button_url),
+
+                Text::make('Video URL (RU)', 'ru_video_url')
+                    ->resolveUsing(fn () => $this->getTranslation('ru')?->video_url),
             ]),
         ];
     }
 
     /* ================= HELPERS ================= */
 
-    protected function translation(string $locale)
+    protected function getTranslation(string $locale)
     {
         return $this->resource
             ->translations()
@@ -99,14 +109,13 @@ class VideoSection extends Resource
             ->first();
     }
 
-    protected function saveTranslation($model, $locale, $field, $value)
+    protected function saveTranslation($model, string $locale, array $data)
     {
-        if (!$value) return;
+        if (!array_filter($data)) return;
 
-        $translation = $model->translations()
-            ->firstOrCreate(['locale' => $locale]);
-
-        $translation->$field = $value;
-        $translation->save();
+        $model->translations()->updateOrCreate(
+            ['locale' => $locale],
+            $data
+        );
     }
 }

@@ -12,6 +12,8 @@ class VideoSectionTranslation extends Model
         'video_section_id',
         'locale',
         'title',
+        'button_url',
+        'video_url',
         'video_title',
     ];
 

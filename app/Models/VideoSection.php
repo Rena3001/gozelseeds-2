@@ -8,8 +8,6 @@ class VideoSection extends Model
 {
     protected $fillable = [
         'background_image',
-        'button_url',
-        'video_url',
         'is_active',
     ];
 
