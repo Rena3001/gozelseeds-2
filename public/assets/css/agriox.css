@@ -3486,6 +3486,7 @@ button {
     display: block;
     border-radius: 10px;
     overflow: hidden;
+        height: 345px;
 }
 
 .projects-one__single-img img {
@@ -10801,6 +10802,7 @@ Sidebar
 .shop-one__image {
     overflow: hidden;
     border-radius: 10px;
+        height: 312px;
     position: relative;
     margin-bottom: 20px;
 }
