@@ -8289,6 +8289,8 @@ Sidebar
     position: relative;
     display: block;
     border-radius: 10px;
+    height: 66px;
+    width: 115px;
     overflow: hidden;
 }
 
