@@ -96,14 +96,14 @@ $icons = $services->pluck('icon')->toArray();
         <!-- If we need navigation buttons -->
         <div class="swiper-pagination" id="main-slider-pagination"></div>
 
-        <div class="main-slider__nav">
+        <!-- <div class="main-slider__nav">
             <div class="swiper-button-prev" id="main-slider__swiper-button-prev">
                 <span class="fa fa-angle-left"></span>
             </div>
             <div class="swiper-button-next" id="main-slider__swiper-button-next">
                 <span class="fa fa-angle-left"></span>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </section>
