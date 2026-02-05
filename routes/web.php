@@ -36,9 +36,7 @@ Route::group([
 
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
-Route::post('/contact-test-post', function () {
-    dd('POST ROUTE WORKS');
-});
+
 
 
 
