@@ -4,25 +4,19 @@ namespace App\Nova;
 
 use App\Models\VideoSection as Model;
 use Laravel\Nova\Resource;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Panel;
+use Laravel\Nova\Fields\Panel;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel as NovaPanel;
 
 class VideoSection extends Resource
 {
     public static $model = Model::class;
-
     public static $title = 'id';
-
     public static $search = ['id'];
-
-    public static function label()
-    {
-        return 'Video Section';
-    }
 
     public function fields(NovaRequest $request)
     {
@@ -30,78 +24,65 @@ class VideoSection extends Resource
 
             ID::make()->sortable(),
 
-            Image::make('Background Image', 'background_image')
+            Image::make('Background Video', 'background_image')
                 ->disk('public')
                 ->path('video-section')
-                ->creationRules('required')
-                ->nullable()
-                ->prunable(),
+                ->acceptedTypes('video/mp4')->prunable()
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
-            Boolean::make('Active', 'is_active')
-                ->default(true),
+            Boolean::make('Active', 'is_active')->default(true),
 
-            /* ================= AZ ================= */
-            new Panel('AZ Content', [
-                Text::make('Title (AZ)', 'az_title')
-                    ->resolveUsing(fn () => $this->getTranslation('az')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'az', [
-                            'title' => $req[$reqAttr],
-                            'button_url' => $req['az_button_url'] ?? null,
-                            'video_url' => $req['az_video_url'] ?? null,
-                        ])
-                    ),
-
-                Text::make('Button URL (AZ)', 'az_button_url')
-                    ->resolveUsing(fn () => $this->getTranslation('az')?->button_url),
-
-                Text::make('Video URL (AZ)', 'az_video_url')
-                    ->resolveUsing(fn () => $this->getTranslation('az')?->video_url),
-            ]),
-
-            /* ================= EN ================= */
-            new Panel('EN Content', [
-                Text::make('Title (EN)', 'en_title')
-                    ->resolveUsing(fn () => $this->getTranslation('en')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'en', [
-                            'title' => $req[$reqAttr],
-                            'button_url' => $req['en_button_url'] ?? null,
-                            'video_url' => $req['en_video_url'] ?? null,
-                        ])
-                    ),
-
-                Text::make('Button URL (EN)', 'en_button_url')
-                    ->resolveUsing(fn () => $this->getTranslation('en')?->button_url),
-
-                Text::make('Video URL (EN)', 'en_video_url')
-                    ->resolveUsing(fn () => $this->getTranslation('en')?->video_url),
-            ]),
-
-            /* ================= RU ================= */
-            new Panel('RU Content', [
-                Text::make('Title (RU)', 'ru_title')
-                    ->resolveUsing(fn () => $this->getTranslation('ru')?->title)
-                    ->fillUsing(fn ($req, $model, $attr, $reqAttr) =>
-                        $this->saveTranslation($model, 'ru', [
-                            'title' => $req[$reqAttr],
-                            'button_url' => $req['ru_button_url'] ?? null,
-                            'video_url' => $req['ru_video_url'] ?? null,
-                        ])
-                    ),
-
-                Text::make('Button URL (RU)', 'ru_button_url')
-                    ->resolveUsing(fn () => $this->getTranslation('ru')?->button_url),
-
-                Text::make('Video URL (RU)', 'ru_video_url')
-                    ->resolveUsing(fn () => $this->getTranslation('ru')?->video_url),
-            ]),
+            $this->localePanel('az', 'AZ'),
+            $this->localePanel('en', 'EN'),
+            $this->localePanel('ru', 'RU'),
         ];
+    }
+
+    /* ================= LOCALE PANEL ================= */
+
+    protected function localePanel(string $locale, string $label)
+    {
+        return new NovaPanel($label . ' Content', [
+
+            Text::make('Title')
+                ->resolveUsing(fn() => $this->tr($locale)?->title)
+                ->fillUsing(
+                    fn($req, $model) =>
+                    $this->saveTranslation($model, $locale, [
+                        'title'       => $req->input("title_$locale"),
+                        'video_title' => $req->input("video_title_$locale"),
+                        'button_url'  => $req->input("button_url_$locale"),
+                        'video_url'   => $req->input("video_url_$locale"),
+                    ])
+                )
+                ->onlyOnForms()
+                ->withMeta(['extraAttributes' => ['name' => "title_$locale"]]),
+
+            Text::make('Video Title')
+                ->resolveUsing(fn() => $this->tr($locale)?->video_title)
+                ->fillUsing(function () {}) // 🔥 ƏSAS FIX
+                ->onlyOnForms(),
+
+            Text::make('Button URL')
+                ->resolveUsing(fn() => $this->tr($locale)?->button_url)
+                ->fillUsing(function () {}) // 🔥
+                ->onlyOnForms(),
+
+            Text::make('Video URL')
+                ->resolveUsing(fn() => $this->tr($locale)?->video_url)
+                ->fillUsing(function () {}) // 🔥
+                ->onlyOnForms(),
+        ]);
     }
 
     /* ================= HELPERS ================= */
 
-    protected function getTranslation(string $locale)
+    protected function tr(string $locale)
     {
         return $this->resource
             ->translations()

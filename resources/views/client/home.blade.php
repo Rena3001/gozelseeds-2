@@ -212,13 +212,13 @@ $t = $about?->translation;
                     </ul> -->
 
                     <!-- Video Box -->
-                    <div class="about-one__content-video-box">
+                    <!-- <div class="about-one__content-video-box">
                         <div class="about-one__content-video-box-img-wrapper">
                             <div class="about-one__content-video-box-img">
 
                                 <img
                                     src="{{ $about?->video_image
-                                            ? asset('storage/'.$about->video_image)
+                                            ? asset('storage/'. $videoSection?->background_image)
                                             : asset('assets/images/resources/about-v1-video-img.jpg') }}"
                                     alt="">
 
@@ -239,7 +239,7 @@ $t = $about?->translation;
                             <h3>{{ $t?->video_title ?? 'Tips for Ripening your Fruits' }}</h3>
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -253,7 +253,7 @@ $t = $about?->translation;
 
 
 <!--Features One Start xidmetler-->
-<section class="features-one clearfix">
+<!-- <section class="features-one clearfix">
     <div class="container">
         <div class="row">
 
@@ -317,12 +317,16 @@ $t = $about?->translation;
 
         </div>
     </div>
-</section>
+</section> -->
 <!--Features One End-->
 
 
 <!--Video One Start-->
-<section class="video-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{ asset('storage/'.$videoSection?->background_image) }})">
+<section class="video-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%">
+      <video class="video-bg__video" autoplay muted loop playsinline>
+        <source src="{{ asset('storage/'.$videoSection?->background_image) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="video-one-border"></div>
     <div class="video-one-border video-one-border-two"></div>
     <div class="video-one-border video-one-border-three"></div>
@@ -362,6 +366,147 @@ $t = $about?->translation;
     </div>
 </section>
 <!--Video One End-->
+
+
+
+
+
+<!--Projects One Start xeberler-->
+<!-- <section class="projects-one">
+    <div class="auto-container">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
+            </div>
+            <span class="sec-title__tagline">{{__('recently.work')}}</span>
+            <h2 class="sec-title__title">{{__('explore.project')}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="projects-one__carousel owl-carousel owl-theme owl-dot-type1">
+                    @foreach($projects as $project)
+                    <div class="projects-one__single wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="projects-one__single-img">
+                            <img src="{{ asset('storage/'.$project->image) }}" alt="">
+                            <div class="overlay-content">
+                                <p>{{ $project->category }}</p>
+                                <h3><a href="projects-details.html">{!! $project->translation?->title ?? 'Default title' !!}</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--Projects One End-->
+
+<!--Testimonials One Start-->
+<!--
+<section class="testimonials-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{asset('assets/images/backgrounds/Testimonials-v1-bg.jpg')}}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="testimonials-one__left">
+                    <div class="testimonials-one__left-bg"></div>
+                    <div class="sec-title">
+                        <div class="icon">
+                            <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
+                        </div>
+                        <span class="sec-title__tagline">{{__('our.testimonials')}}</span>
+                        <h2 class="sec-title__title">{{__('testimonials.desc')}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="testimonials-one__right">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="testimonials-one__carousel owl-carousel owl-theme">
+                                @foreach($testimonials as $testimonial)
+                                @if($testimonial->translation)
+                                <div class="testimonials-one__single">
+                                    <p class="testimonials-one__single-text">{{ $testimonial->translation->comment }}</p>
+                                    <div class="testimonials-one__single-client-info">
+                                        <div class="testimonials-one__single-client-info-img">
+                                            <div class="testimonials-one__single-client-info-img-inner">
+                                                <img src="{{ asset('storage/'.$testimonial->image) }}" alt="">
+                                            </div>
+                                            <div class="icon">
+                                                <span class="fa-solid fa-quote-right"></span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonials-one__single-client-info-title">
+                                            <h4>{{ $testimonial->translation->name }}</h4>
+                                            <p>{{ $testimonial->translation->position }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+-->
+<!--Testimonials One End-->
+
+
+
+
+
+<!--Blog One Start-->
+<section class="blog-one">
+    <div class="blog-one__bg wow slideInDown" data-wow-delay="100ms" data-wow-duration="2500ms"></div>
+    <div class="blog-one__shape"></div><!-- /.blog-one__shape -->
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
+            </div>
+            <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
+            <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
+        </div>
+        <div class="row">
+            @foreach($posts as $post)
+            <!--Start Single Blog One-->
+            <div class="col-xl-4 col-lg-4  wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="blog-one__single">
+                    <div class="blog-one__single-img">
+                        <img src="{{ asset('storage/'.$post->image) }}" alt="">
+                        <div class="date-box">
+                            <span>{{ $post->published_at?->translatedFormat('d F, Y') }}
+                            </span>
+                        </div>
+                        <div class="overlay-icon">
+                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="blog-one__single-content">
+
+                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Blog One-->
+            @endforeach
+        </div>
+    </div>
+</section>
+<!--Blog One End-->
+
+
 
 <!--Kateqoriyalar start-->
 <section class="services-one">
@@ -441,147 +586,7 @@ $t = $about?->translation;
 <!--Kateqoriyalar end-->
 
 
-
-<!--Projects One Start xeberler-->
-<section class="projects-one">
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <div class="icon">
-                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div>
-            <span class="sec-title__tagline">{{__('recently.work')}}</span>
-            <h2 class="sec-title__title">{{__('explore.project')}}</h2>
-        </div>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="projects-one__carousel owl-carousel owl-theme owl-dot-type1">
-                    @foreach($projects as $project)
-                    <!--Start Single Projects One-->
-                    <div class="projects-one__single wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="projects-one__single-img">
-                            <img src="{{ asset('storage/'.$project->image) }}" alt="">
-                            <div class="overlay-content">
-                                <p>{{ $project->category }}</p>
-                                <h3><a href="projects-details.html">{!! $project->translation?->title ?? 'Default title' !!}</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Projects One-->
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Projects One End-->
-
-<!--Testimonials One Start-->
-<section class="testimonials-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{asset('assets/images/backgrounds/Testimonials-v1-bg.jpg')}}">
-    <div class="container">
-        <div class="row">
-            <!--Start Testimonials One Left-->
-            <div class="col-xl-4">
-                <div class="testimonials-one__left">
-                    <div class="testimonials-one__left-bg"></div>
-                    <div class="sec-title">
-                        <div class="icon">
-                            <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-                        </div>
-                        <span class="sec-title__tagline">{{__('our.testimonials')}}</span>
-                        <h2 class="sec-title__title">{{__('testimonials.desc')}}</h2>
-                    </div>
-                </div>
-            </div>
-            <!--End Testimonials One Left-->
-
-            <!--Start Testimonials One Right-->
-            <div class="col-xl-8">
-                <div class="testimonials-one__right">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="testimonials-one__carousel owl-carousel owl-theme">
-                                @foreach($testimonials as $testimonial)
-                                @if($testimonial->translation)
-                                <!--Start Single Testimonials One-->
-                                <div class="testimonials-one__single">
-                                    <p class="testimonials-one__single-text">{{ $testimonial->translation->comment }}</p>
-                                    <div class="testimonials-one__single-client-info">
-                                        <div class="testimonials-one__single-client-info-img">
-                                            <div class="testimonials-one__single-client-info-img-inner">
-                                                <img src="{{ asset('storage/'.$testimonial->image) }}" alt="">
-                                            </div>
-                                            <div class="icon">
-                                                <span class="fa-solid fa-quote-right"></span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonials-one__single-client-info-title">
-                                            <h4>{{ $testimonial->translation->name }}</h4>
-                                            <p>{{ $testimonial->translation->position }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Testimonials One Right-->
-        </div>
-    </div>
-</section>
-<!--Testimonials One End-->
-
-
-
-
-
-<!--Blog One Start-->
-<section class="blog-one">
-    <div class="blog-one__bg wow slideInDown" data-wow-delay="100ms" data-wow-duration="2500ms"></div>
-    <div class="blog-one__shape"></div><!-- /.blog-one__shape -->
-    <div class="container">
-        <div class="sec-title text-center">
-            <div class="icon">
-                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div>
-            <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
-            <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
-        </div>
-        <div class="row">
-            @foreach($posts as $post)
-            <!--Start Single Blog One-->
-            <div class="col-xl-4 col-lg-4  wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="blog-one__single">
-                    <div class="blog-one__single-img">
-                        <img src="{{ asset('storage/'.$post->image) }}" alt="">
-                        <div class="date-box">
-                            <span>{{ $post->published_at?->translatedFormat('d F, Y') }}
-                            </span>
-                        </div>
-                        <div class="overlay-icon">
-                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="blog-one__single-content">
-
-                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog One-->
-            @endforeach
-        </div>
-    </div>
-</section>
-<!--Blog One End-->
-
+<!-- 
 <section class="contact-one">
     <div class="container">
         <div class="sec-title text-center">
@@ -627,8 +632,8 @@ $t = $about?->translation;
 
                 </div>
                 @endif
-                <!-- /.contact-one__content -->
-            </div><!-- /.col-lg-6 -->
+             
+            </div>
             <div class="col-lg-6">
                 @if(session('status') === 'success')
                 <div class="alert alert-success">
@@ -662,7 +667,6 @@ $t = $about?->translation;
                             </div>
                         </div>
 
-                        <!-- CV upload -->
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
                                 <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
@@ -685,11 +689,12 @@ $t = $about?->translation;
 
                 <div class="result"></div>
 
-                <div class="result"></div><!-- /.result -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.contact-one -->
+                <div class="result"></div>
+            </div>
+        </div>
+    </div>
+</section> 
+-->
 
 
 <!--Company Logos One Start-->

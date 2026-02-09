@@ -156,7 +156,11 @@ $locale = app()->getLocale();
 <!--Company Logos One End-->
 
 <!--Video One Start-->
-<section class="video-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{ asset('storage/'.$videoSection?->background_image) }})">
+<section class="video-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%">
+      <video class="video-bg__video" autoplay muted loop playsinline>
+        <source src="{{ asset('storage/'.$videoSection?->background_image) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="video-one-border"></div>
     <div class="video-one-border video-one-border-two"></div>
     <div class="video-one-border video-one-border-three"></div>
@@ -199,10 +203,9 @@ $locale = app()->getLocale();
 
 
 <!--Testimonials One Start-->
-<section class="testimonials-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{asset('assets/images/backgrounds/Testimonials-v1-bg.jpg')}}">
+<!-- <section class="testimonials-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%" style="background-image: url({{asset('assets/images/backgrounds/Testimonials-v1-bg.jpg')}}">
     <div class="container">
         <div class="row">
-            <!--Start Testimonials One Left-->
             <div class="col-xl-4">
                 <div class="testimonials-one__left">
                     <div class="testimonials-one__left-bg"></div>
@@ -215,9 +218,6 @@ $locale = app()->getLocale();
                     </div>
                 </div>
             </div>
-            <!--End Testimonials One Left-->
-
-            <!--Start Testimonials One Right-->
             <div class="col-xl-8">
                 <div class="testimonials-one__right">
                     <div class="row">
@@ -225,7 +225,6 @@ $locale = app()->getLocale();
                             <div class="testimonials-one__carousel owl-carousel owl-theme">
                                 @foreach($testimonials as $testimonial)
                                 @if($testimonial->translation)
-                                <!--Start Single Testimonials One-->
                                 <div class="testimonials-one__single">
                                     <p class="testimonials-one__single-text">{{ $testimonial->translation->comment }}</p>
                                     <div class="testimonials-one__single-client-info">
@@ -250,10 +249,9 @@ $locale = app()->getLocale();
                     </div>
                 </div>
             </div>
-            <!--End Testimonials One Right-->
         </div>
     </div>
-</section>
+</section> -->
 <!--Testimonials One End-->
 
 

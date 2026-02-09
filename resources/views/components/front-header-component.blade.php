@@ -9,9 +9,9 @@
              <div class="auto-container">
 
                  <div class="main-header--one__top-left">
-                     <div class="text">
+                     <!-- <div class="text">
                          <p>{{ __('welcome.theme') }}</p>
-                     </div>
+                     </div> -->
 
                      <div class="social-link clearfix">
                          <ul>
@@ -101,17 +101,17 @@
                                          </a>
 
                                          <ul class="sub-menu">
-    @foreach($categories as $category)
-        @if(is_null($category->parent_id))
-            <li>
-                <a href="{{ route('shop.category', ['locale' => $locale,
+                                             @foreach($categories as $category)
+                                             @if(is_null($category->parent_id))
+                                             <li>
+                                                 <a href="{{ route('shop.category', ['locale' => $locale,
                                             'slug'   => $category->slug]) }}">
-                    {{ $category->translation?->title }}
-                </a>
-            </li>
-        @endif
-    @endforeach
-</ul>
+                                                     {{ $category->translation?->title }}
+                                                 </a>
+                                             </li>
+                                             @endif
+                                             @endforeach
+                                         </ul>
 
                                      </li>
 
