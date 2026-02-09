@@ -465,7 +465,7 @@ $t = $about?->translation;
 <!--Blog One Start-->
 <section class="blog-one">
     <div class="blog-one__bg wow slideInDown" data-wow-delay="100ms" data-wow-duration="2500ms"></div>
-    <div class="blog-one__shape"></div><!-- /.blog-one__shape -->
+    
     <div class="container">
         <div class="sec-title text-center">
             <div class="icon">

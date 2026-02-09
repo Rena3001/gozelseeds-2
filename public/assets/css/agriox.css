@@ -3228,9 +3228,13 @@ button {
 
 /* responsive */
 @media (max-width: 1520px) {
+    .video-one{
+        margin: 0;
+        padding: 35px 0;
+    }
     .video-one .video-bg__video {
         width: 100%;
-        height: 39.3vw; /* 598 / 1520 */
+        height: 135vh; /* 598 / 1520 */
         max-height: 598px;
     }
 }
@@ -9893,6 +9897,9 @@ Sidebar
         font-size: 42px;
     }
     /** Main Header One**/
+    .main-slider-one{
+        padding: 0;
+    }
     .main-header--one__top {
         display: none;
     }
@@ -9960,7 +9967,7 @@ Sidebar
         display: none;
     }
     #main-slider-pagination {
-        display: none;
+        /* display: none; */
     }
     .main-slider__nav {
         width: 100px;
