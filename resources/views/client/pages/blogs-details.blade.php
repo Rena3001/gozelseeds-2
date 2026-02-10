@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('blogs', $locale) }}">
+                    <a href="{{ route('news', $locale) }}">
                         {{ __('breadcrumb.blogs') }}
                     </a>
                 </li>
