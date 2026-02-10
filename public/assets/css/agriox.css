@@ -4926,6 +4926,7 @@ button {
 .footer-widget__news-list-item-title h5 {
     font-size: 16px;
     line-height: 26px;
+    width: 92%;
     font-weight: 700;
     font-family: var(--agriox-font, "DM Sans", sans-serif);
 }
@@ -10153,9 +10154,7 @@ Sidebar
     .blog-one__single-content h2 {
         font-size: 23px;
     }
-    .footer-widget__news-list-item-title h5{
-        width: 92%;
-    }
+    
     .shop-one__image {
         width: 360px;
     height: 427px;
