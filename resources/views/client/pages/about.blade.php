@@ -56,11 +56,11 @@ $locale = app()->getLocale();
                         
                     </div>
 
-                    <div class="about-three__content-box-btn">
+                    <!-- <div class="about-three__content-box-btn">
                         <a href="{{ route('services', app()->getLocale()) }}" class="thm-btn">
                             {{ __('discover.more') }}
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="about-three__arrow float-bob-y"></div><!-- /.about-three__arrow -->
                 </div>
