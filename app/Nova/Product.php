@@ -8,24 +8,21 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Trix;
-use App\Nova\Category as NovaCategory;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use App\Models\Category;
 
 class Product extends Resource
 {
+    public static $with = ['translations'];
     public static $model = \App\Models\Product::class;
 
-    // Nova dropdown və relation label üçün
-    public static $title = 'nova_title';
+    // Nova index-də title kimi nə göstərilsin
+    public static $title = 'slug';
 
     public static function label()
     {
         return 'Products';
     }
-
 
     public function fields(NovaRequest $request)
     {
@@ -33,114 +30,141 @@ class Product extends Resource
 
             ID::make()->sortable(),
 
+            /* ================= INDEX TABLE ================= */
+
+            Text::make('Title (AZ)')
+                ->onlyOnIndex()
+                ->sortable()
+                ->resolveUsing(fn() => $this->getTranslationValue('az', 'title') ?? '-'),
+
+            Text::make('Slug')
+                ->sortable()
+                ->rules('required', 'unique:products,slug,{{resourceId}}'),
+
+            Boolean::make('Active', 'is_active'),
+
+            /* ================= IMAGE ================= */
+
             Image::make('Image')
                 ->disk('public')
                 ->path('products')
                 ->nullable()
                 ->prunable(),
 
-            Text::make('Slug')
-                ->rules('required', 'unique:products,slug,{{resourceId}}'),
+            /* ================= CATEGORIES ================= */
 
-
-            Boolean::make('Active', 'is_active')
-                ->default(true),
-
-            /* ================= CREATE ÜÇÜN CATEGORY ================= */
-
-
-
-            /* ================= UPDATE ÜÇÜN CATEGORIES ================= */
-
-            BelongsToMany::make(
-                'Categories',
-                'categories',
-                \App\Nova\Category::class
-            )
-                ->rules('required')
-                ->help('Məhsulun aid olduğu kateqoriyanı seçin'),
-
+            BelongsToMany::make('Categories'),
 
             /* ================= AZ ================= */
 
-            Text::make('Title (AZ)', 'title_az')
+            Text::make('Title (AZ)')
                 ->onlyOnForms()
                 ->rules('required')
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'az'))->title
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'az')
+                    )->title
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Short Description (AZ)', 'short_description_az')
+            Trix::make('Short Description (AZ)')
                 ->onlyOnForms()
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'az'))->short_description
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'az')
+                    )->short_description
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Description (AZ)', 'description_az')
+            Trix::make('Description (AZ)')
                 ->onlyOnForms()
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'az'))->description
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'az')
+                    )->description
                 )
                 ->fillUsing(fn() => null),
 
-            /* ================= EN ================= */
-
-            Text::make('Title (EN)', 'title_en')
-                ->onlyOnForms()
-                ->rules('required')
-                ->resolveUsing(
-                    fn() =>
-                    optional($this->translations->firstWhere('locale', 'en'))->title
-                )
-                ->fillUsing(fn() => null),
-
-            Trix::make('Short Description (EN)', 'short_description_en')
-                ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
-                    optional($this->translations->firstWhere('locale', 'en'))->short_description
-                )
-                ->fillUsing(fn() => null),
-
-            Trix::make('Description (EN)', 'description_en')
-                ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
-                    optional($this->translations->firstWhere('locale', 'en'))->description
-                )
-                ->fillUsing(fn() => null),
-
-            /* ================= RU ================= */
-
-            Text::make('Title (RU)', 'title_ru')
+            Text::make('Title (EN)')
                 ->onlyOnForms()
                 ->rules('required')
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'ru'))->title
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'en')
+                    )->title
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Short Description (RU)', 'short_description_ru')
+            Trix::make('Short Description (EN)')
                 ->onlyOnForms()
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'ru'))->short_description
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'en')
+                    )->short_description
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Description (RU)', 'description_ru')
+            Trix::make('Description (EN)')
                 ->onlyOnForms()
                 ->resolveUsing(
                     fn() =>
-                    optional($this->translations->firstWhere('locale', 'ru'))->description
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'en')
+                    )->description
                 )
                 ->fillUsing(fn() => null),
+            Text::make('Title (RU)')
+                ->onlyOnForms()
+                ->rules('required')
+                ->resolveUsing(
+                    fn() =>
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'ru')
+                    )->title
+                )
+                ->fillUsing(fn() => null),
+
+            Trix::make('Short Description (RU)')
+                ->onlyOnForms()
+                ->resolveUsing(
+                    fn() =>
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'ru')
+                    )->short_description
+                )
+                ->fillUsing(fn() => null),
+
+            Trix::make('Description (RU)')
+                ->onlyOnForms()
+                ->resolveUsing(
+                    fn() =>
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'ru')
+                    )->description
+                )
+                ->fillUsing(fn() => null),
+
         ];
+    }
+
+    /* ================= HELPERS ================= */
+
+    protected function getTranslationValue(string $locale, string $field)
+    {
+        if (!$this->resource || !$this->resource->exists) {
+            return null;
+        }
+
+        return optional(
+            $this->resource
+                ->translations()
+                ->where('locale', $locale)
+                ->first()
+        )->{$field};
     }
 }

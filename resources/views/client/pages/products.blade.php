@@ -112,8 +112,11 @@ $locale = app()->getLocale();
                         <div class="shop-one__item">
 
                             <div class="shop-one__image">
-                                <img src="{{ asset('storage/'.$product->image) }}"
-                                    alt="{{ $product->translation?->title }}">
+                                <a href="{{ route('product.show', [
+                                                'locale' => $locale,
+                                                'slug'   => $product->slug
+                                            ]) }}"><img src="{{ asset('storage/'.$product->image) }}"
+                                    alt="{{ $product->translation?->title }}"></a>
                             </div>
 
                             <div class="shop-one__content text-center">

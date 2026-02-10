@@ -6,8 +6,11 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="/{{ app()->getLocale() }}" aria-label="logo image"><img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" width="155" alt=""></a>
-            </div>
+                <a href="/{{ app()->getLocale() }}" aria-label="logo image">
+                   <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 
+                                            'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
+                </a>
+            </div> 
             <!-- /.logo-box -->
             <div class="mobile-nav__container"></div>
             <!-- /.mobile-nav__container -->
