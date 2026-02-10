@@ -2046,7 +2046,7 @@ button {
         transform 7000ms ease,
         -webkit-transform 7000ms ease;
     z-index: 1;
-        width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -2448,12 +2448,12 @@ button {
 
 .about-one__left::before {
     content: "";
-    width: 10000px;
-    height: 100%;
+    width: 266%;
+    height: 108%;
     position: absolute;
-    right: 50%;
+    right: -30%;
     top: -140px;
-    background-color: #f6f4ec;
+    /* background-color: #f6f4ec; */
 }
 
 .about-one__left-img {
@@ -3229,7 +3229,7 @@ button {
 
 /* responsive */
 @media (max-width: 1520px) {
-    .video-one{
+    .video-one {
         margin: 0;
         padding: 35px 0;
     }
@@ -3278,7 +3278,7 @@ button {
     bottom: 0;
     width: 100%;
     height: 508px;
-    background: #f6f4ec;
+    /* background: #f6f4ec; */
     z-index: -1;
     background-image: url(../images/backgrounds/service-top-bg-1-1.png);
     background-repeat: repeat-x;
@@ -4125,7 +4125,7 @@ button {
     bottom: 0;
     width: 100%;
     height: 557px;
-    background: #f6f4ec;
+    /* background: #f6f4ec; */
     background-image: url(../images/icon/blog-bg-top-1-1.png);
     z-index: -1;
 }
@@ -4738,15 +4738,15 @@ button {
     display: block;
     margin-top: -15px;
 }
-.azerbaijan-logo{
+.azerbaijan-logo {
     width: 160px;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-.footer-widget__about-logo, .logo {
+.footer-widget__about-logo,
+.logo {
     width: 200px;
     height: 100px;
     position: relative;
@@ -4756,13 +4756,13 @@ button {
     align-items: center;
     margin-bottom: 17px;
 }
-.logo img{
-     width: 100%;
+.logo img {
+    width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: center;
 }
-.footer-widget__about-logo img{
+.footer-widget__about-logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -4770,6 +4770,7 @@ button {
 }
 .azerbaijan-logo {
     margin-top: 46px;
+    margin-left: 115px;
 }
 .azerbaijan-logo img {
     width: 160px;
@@ -7097,8 +7098,8 @@ button {
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-.about-three__img-box-img-inner img{
-        width: 100%;
+.about-three__img-box-img-inner img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -7774,6 +7775,8 @@ button {
     position: relative;
     display: block;
     background: #ffffff;
+    padding-bottom: 62px;
+
 }
 
 .contact-page__contact-info .auto-container {
@@ -7896,6 +7899,7 @@ button {
     font-size: 18px;
     line-height: 22px;
     font-weight: 700;
+    width: 185px;
 }
 
 .contact-page__contact-info-list ul li .title p a {
@@ -8102,6 +8106,7 @@ button {
     -webkit-box-shadow: none;
     box-shadow: none;
     padding: 20px 0px 0px;
+    height: 39%;
 }
 
 .news-sidebar__left .blog-one__single-content h2 {
@@ -9922,7 +9927,7 @@ Sidebar
         font-size: 42px;
     }
     /** Main Header One**/
-    .main-slider-one{
+    .main-slider-one {
         padding: 0;
     }
     .main-header--one__top {
@@ -10934,7 +10939,7 @@ Sidebar
 }
 
 .shop-one__image img {
-        width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;

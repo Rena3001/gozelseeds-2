@@ -19,7 +19,7 @@ class ViewServiceProvider extends ServiceProvider
             $footerPosts = Post::where('is_active', true)
                 ->with('translation')
                 ->orderByDesc('published_at')
-                ->take(2)
+                ->take(3)
                 ->get();
 
 

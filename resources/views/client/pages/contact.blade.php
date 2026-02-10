@@ -33,7 +33,7 @@ $locale = app()->getLocale();
     </div>
 </section>
 <!--Page Header End-->
-<section class="contact-one">
+<!-- <section class="contact-one">
     <div class="container">
         <div class="sec-title text-center">
             <div class="icon">
@@ -78,8 +78,8 @@ $locale = app()->getLocale();
 
                 </div>
                 @endif
-                <!-- /.contact-one__content -->
-            </div><!-- /.col-lg-6 -->
+              
+            </div>
             <div class="col-lg-6">
                 @if(session('status') === 'success')
                 <div class="alert alert-success">
@@ -108,7 +108,7 @@ $locale = app()->getLocale();
                                 <input type="email" placeholder="{{ __('contact.email') }}" name="email" required>
                             </div>
                         </div>
-                        <!-- CV upload -->
+                     
                         <div class="col-xl-12">
                             <div class="comment-form__input-box">
                                 <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
@@ -127,11 +127,12 @@ $locale = app()->getLocale();
 
                 <div class="result"></div>
 
-                <div class="result"></div><!-- /.result -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.contact-one -->
+                <div class="result"></div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- /.contact-one -->
 
 <section class="contact-page__contact-info clearfix">
     <div class="auto-container">
@@ -186,7 +187,18 @@ $locale = app()->getLocale();
 </section>
 
 <section class="contact-page-google-map">
-    <iframe src="{!! $settings?->map_iframe !!}" class="contact-page-google-map__one" allowfullscreen=""></iframe>
+    @if(!empty($settings?->map_iframe))
+        <iframe
+            src="{{ $settings->map_iframe }}"
+            width="100%"
+            height="455"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    @endif
 </section>
+
 
 @endsection

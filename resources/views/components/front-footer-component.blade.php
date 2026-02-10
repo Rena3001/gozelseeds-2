@@ -17,9 +17,9 @@
                                      <div class="footer-widget__about-logo">
                                          <a href="/{{ app()->getLocale() }}"><img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt=""></a>
                                      </div>
-                                     <p class="footer-widget__about-text">
+                                     <!-- <p class="footer-widget__about-text">
                                          {{ __('footer.about_text') }}
-                                     </p>
+                                     </p> -->
 
                                      <div class="footer-widget__about-contact-box">
                                          <p class="phone">
@@ -74,6 +74,8 @@
                                      <h2 class="footer-widget__title">{{ __('footer.explore') }}</h2>
                                      <ul class="footer-widget__explore-list">
                                          <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>
+                                         <li><a href="{{ route('news', app()->getLocale()) }}">{{ __('menu.news') }}</a></li>
+
                                          <li><a href="{{ $settings->catalog_link }}">{{ __('footer.links.services') }}</a></li>
                                          <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('footer.links.about') }}</a></li>
                                          <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('footer.links.contact') }}</a></li>
@@ -93,12 +95,12 @@
                                          <input type="email" name="email" placeholder="{{ __('footer.email_placeholder') }}" required>
                                          <button type="submit">{{__('footer.go')}}</button>
                                      </form>
-                                     
-                                     
+
+
                                      <div class="footer-widget__about-logo azerbaijan-logo">
                                          <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
                                      </div>
-                                    </div>
+                                 </div>
                              </div>
                              <!--End Footer Widget Column-->
                          </div>

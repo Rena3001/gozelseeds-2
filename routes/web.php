@@ -22,8 +22,8 @@ Route::group([
 ], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs');
-    Route::get('/blogs/{post}', [BlogsController::class, 'show'])
+    Route::get('/news', [BlogsController::class, 'index'])->name('news');
+    Route::get('/news/{post}', [BlogsController::class, 'show'])
         ->name('blogs.show');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/services', [ServiceController::class, 'index'])->name('services');

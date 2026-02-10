@@ -115,7 +115,7 @@
 
                                      </li>
 
-                                     <li><a href="{{ route('blogs', app()->getLocale()) }}">{{ __('menu.blogs') }}</a></li>
+                                     <li><a href="{{ route('news', app()->getLocale()) }}">{{ __('menu.news') }}</a></li>
                                      <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('menu.contact') }}</a></li>
                                  </ul>
                              </div>
