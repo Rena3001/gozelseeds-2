@@ -13199,9 +13199,7 @@ Sidebar
 }
 .blog-one__single-content{
         height: 188px;
-            display: flex;
-    justify-content: center;
-    align-items: center;
+      
 }
 
 /*--------------------------------------------------------------
