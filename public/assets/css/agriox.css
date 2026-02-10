@@ -13181,6 +13181,12 @@ Sidebar
     font-size: 20px;
     line-height: 1.5em;
 }
+.blog-one__single-content{
+        height: 188px;
+            display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /*--------------------------------------------------------------
 # Boxed Version
