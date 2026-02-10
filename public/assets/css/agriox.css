@@ -3331,8 +3331,9 @@ button {
 }
 
 .services-one__single-img-inner {
-    width: 268px;
-    height: 219px;
+      width: 359px;
+    height: 294px;
+
     position: relative;
     display: flex;
     justify-self: center;
@@ -4086,7 +4087,7 @@ button {
     position: relative;
     display: block;
     background: #ffffff;
-    padding: 120px 0px 20px 90px;
+    padding: 120px 0px 20px 0px;
     overflow: hidden;
     z-index: 1;
 }
@@ -4739,13 +4740,7 @@ button {
     display: block;
     margin-top: -15px;
 }
-.azerbaijan-logo {
-    width: 160px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .footer-widget__about-logo,
 .logo {
     width: 200px;
@@ -4756,6 +4751,13 @@ button {
     justify-content: center;
     align-items: center;
     margin-bottom: 17px;
+}
+.azerbaijan-logo {
+    width: 160px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logo img {
     width: 100%;
@@ -10148,6 +10150,19 @@ Sidebar
     }
     .blog-one__single-content h2 {
         font-size: 23px;
+    }
+    .footer-widget__news-list-item-title h5{
+        width: 92%;
+    }
+    .shop-one__image {
+        width: 360px;
+    height: 427px;
+    }
+
+ 
+    .azerbaijan-logo{
+        margin-left: 175px;
+}
     }
     /**Cta One**/
     .cta-one__wrapper {
