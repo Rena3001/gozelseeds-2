@@ -11,7 +11,7 @@ $locale = app()->getLocale();
 
 {{-- PAGE HEADER --}}
 <section class="page-header clearfix"
-    style="background-image: url({{ asset('assets/images/backgrounds/page-header-bg.jpg') }});">
+    style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
     <div class="container">
         <div class="page-header__inner text-center clearfix">
 

@@ -9,7 +9,7 @@
              <div class="row">
                  <div class="col-xl-12">
                      <div class="footer-one__top-wrapper">
-                         <div class="footer-one__bg"><img src="assets/images/backgrounds/footer-one-bg.png" alt=""></div>
+                         <!-- <div class="footer-one__bg"><img src="assets/images/backgrounds/footer-one-bg.png" alt=""></div> -->
                          <div class="row">
                              <!--Start Footer Widget Column-->
                              <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">

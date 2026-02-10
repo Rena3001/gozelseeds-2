@@ -8,7 +8,7 @@ $locale = app()->getLocale();
 @endphp
 
 <!-- Page Header -->
-<section class="page-header clearfix" style="background-image: url({{ asset('assets/images/backgrounds/page-header-bg.jpg') }});">
+<section class="page-header clearfix" style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
     <div class="container">
         <div class="page-header__inner text-center clearfix">
             <ul class="thm-breadcrumb">
