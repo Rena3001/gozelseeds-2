@@ -123,33 +123,14 @@ $t = $about?->translation;
     <div class="container">
         <div class="row">
 
-            <!--Start About One Left-->
-            <div class="col-xl-6">
-                <div class="about-one__left">
-
-                    <div class="about-one__left-img">
-                        <div class="about-one__left-img-inner">
-                            <img
-                                src="{{ $about?->main_image
-                                        ? asset('storage/'.$about->main_image)
-                                        : asset('assets/images/about/about-v1-img1.jpg') }}"
-                                alt="">
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-            <!--End About One Left-->
-
-            <!--Start About One Content-->
+         <!--Start About One Content-->
             <div class="col-xl-6">
                 <div class="about-one__content">
 
                     <div class="sec-title">
-                        <div class="icon">
+                        <!-- <div class="icon">
                             <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-                        </div>
+                        </div> -->
 
                         <span class="sec-title__tagline">
                             {{ $t?->tagline ?? 'Our introduction' }}
@@ -244,6 +225,26 @@ $t = $about?->translation;
                 </div>
             </div>
             <!--End About One Content-->
+
+            <!--Start About One Left-->
+            <div class="col-xl-6">
+                <div class="about-one__left">
+
+                    <div class="about-one__left-img">
+                        <div class="about-one__left-img-inner">
+                            <img
+                                src="{{ $about?->main_image
+                                        ? asset('storage/'.$about->main_image)
+                                        : asset('assets/images/about/about-v1-img1.jpg') }}"
+                                alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!--End About One Left-->
+ 
 
         </div>
     </div>
@@ -468,9 +469,9 @@ $t = $about?->translation;
     
     <div class="container">
         <div class="sec-title text-center">
-            <div class="icon">
+            <!-- <div class="icon">
                 <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div>
+            </div> -->
             <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
             <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
         </div>
@@ -518,9 +519,9 @@ $t = $about?->translation;
 
         {{-- SECTION TITLE --}}
         <div class="sec-title text-center">
-            <div class="icon">
+            <!-- <div class="icon">
                 <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div>
+            </div> -->
 
             <span class="sec-title__tagline">
                 {{ $serviceSection->translation?->tagline ?? 'What we’re doing' }}

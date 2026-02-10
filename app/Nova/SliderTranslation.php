@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SliderTranslation extends Resource
@@ -40,7 +41,7 @@ class SliderTranslation extends Resource
             Text::make('Title')
                 ->rules('required'),
 
-            Textarea::make('Text')->nullable(),
+            Trix::make('Text')->nullable(),
         ];
     }
 }

@@ -1597,7 +1597,7 @@ button {
     position: relative;
     display: block;
     background: #fff;
-    padding: 5px 40px 4px;
+    padding: 5px 61px 4px;
     margin-left: -60px;
 }
 
@@ -2021,7 +2021,7 @@ button {
 .main-slider .swiper-slide {
     position: relative;
     width: 1421px;
-    height: 684px;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2487,7 +2487,7 @@ button {
 
 .about-one__left-img-inner {
     width: 570px;
-    height: 651px;
+    height: 600px;
     position: relative;
     display: flex;
     align-items: center;
@@ -2606,6 +2606,7 @@ button {
     max-width: 485px;
     width: 100%;
     margin-left: 70px;
+    z-index: 1;
 }
 
 .about-one__content-title {
@@ -4084,7 +4085,7 @@ button {
     position: relative;
     display: block;
     background: #ffffff;
-    padding: 120px 0px 90px;
+    padding: 120px 0px 20px 90px;
     overflow: hidden;
     z-index: 1;
 }
@@ -4419,7 +4420,7 @@ button {
 .company-logos-one {
     position: relative;
     display: block;
-    padding: 77px 0px 77px;
+    /* padding: 77px 0px 77px; */
     border-top: 1px solid #eceae0;
 }
 
@@ -4737,11 +4738,35 @@ button {
     display: block;
     margin-top: -15px;
 }
+.azerbaijan-logo{
+    width: 160px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.footer-widget__about-logo {
+}
+.footer-widget__about-logo, .logo {
+    width: 200px;
+    height: 100px;
     position: relative;
     display: inline-block;
-    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 17px;
+}
+.logo img{
+     width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.footer-widget__about-logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 .azerbaijan-logo {
     margin-top: 46px;
