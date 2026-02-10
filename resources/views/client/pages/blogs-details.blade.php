@@ -93,7 +93,7 @@
 
                     <!-- SEARCH -->
                     <div class="sidebar__single sidebar__search">
-                        <form action="{{ route('blogs', $locale) }}" method="GET"
+                        <form action="{{ route('news', $locale) }}" method="GET"
                               class="sidebar__search-form">
                             <input type="search"
                                    name="search"
