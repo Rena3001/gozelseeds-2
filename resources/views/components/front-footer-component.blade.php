@@ -16,9 +16,9 @@
                                  <div class="footer-widget__column footer-widget__about">
                                      <div class="footer-widget__about-logo">
                                          <a href="/{{ app()->getLocale() }}">
-                                            <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 
+                                             <img src="{{ $settings?->logo_light ? asset('storage/'.$settings->logo_light) : 
                                             'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-                                        </a>
+                                         </a>
                                      </div>
                                      <!-- <p class="footer-widget__about-text">
                                          {{ __('footer.about_text') }}
@@ -100,8 +100,10 @@
                                      </form>
 
 
-                                     <div class="footer-widget__about-logo azerbaijan-logo">
-                                         <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
+                                     <div class="footer_azerbaijan">
+                                         <div class="footer-widget__about-logo azerbaijan-logo">
+                                             <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
+                                         </div>
                                      </div>
                                  </div>
                              </div>
