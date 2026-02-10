@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feature;
+use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\ServiceProvidingQuality;
@@ -32,6 +33,10 @@ class ServiceController extends Controller
         $partners = Partner::where('is_active', true)
             ->orderBy('order')
             ->get();
+             $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
         $section = ServiceProvidingQuality::where('id', 1)
             ->where('is_active', true)
             ->with([
@@ -45,17 +50,21 @@ class ServiceController extends Controller
             ->first();
         $settings = Setting::with('translation')->first();
 
-        return view('client.pages.services', compact('serviceSection', 'features', 'services', 'partners', 'section'));
+        return view('client.pages.services', compact('serviceSection', 'features', 'services', 'partners', 'section','page'));
     }
 
   public function show($locale,$slug)
 {
+     $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
     $feature = Feature::withoutGlobalScopes()
         ->with('translation')
         ->where('slug', $slug)
         ->first();
 
-    return view('client.pages.service-detail', compact('feature'));
+    return view('client.pages.service-detail', compact('feature','page'));
 }
 
 }

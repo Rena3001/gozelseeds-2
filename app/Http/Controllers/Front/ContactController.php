@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
 use App\Models\ContactSection;
+use App\Models\Page;
 use App\Models\Setting;
 use App\Services\MicrosoftMailerService;
 use Symfony\Component\Mime\Email;
@@ -14,6 +15,10 @@ class ContactController extends Controller
 {
     public function index(Request $request, $locale)
     {
+         $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
         if (in_array($locale, ['az', 'en', 'ru'])) {
             app()->setLocale($locale);
         }
@@ -22,7 +27,7 @@ class ContactController extends Controller
             ->first();
         $settings = Setting::with('translation')->first();
 
-        return view('client.pages.contact', compact('contactSection', 'settings', 'locale'));
+        return view('client.pages.contact', compact('contactSection', 'settings', 'locale','page'));
     }
 
     public function send(Request $request)

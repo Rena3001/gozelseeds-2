@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,20 @@ class BlogsController extends Controller
             ->orderBy('order')
             ->orderByDesc('published_at')
             ->get();
+             $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
 
-        return view('client.pages.blogs', compact('posts', 'locale'));
+        return view('client.pages.blogs', compact('posts', 'locale','page'));
     }
     public function show($locale, $post)
     {
         app()->setLocale($locale);
-
+ $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
         $post = Post::with('translation')
             ->where('id', $post)
             ->where('is_active', true)
@@ -37,6 +45,6 @@ class BlogsController extends Controller
             ->limit(3)
             ->get();
 
-        return view('client.pages.blogs-details', compact('post', 'latestPosts'));
+        return view('client.pages.blogs-details', compact('post', 'latestPosts','page'));
     }
 }

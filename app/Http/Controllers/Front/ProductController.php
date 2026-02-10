@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,10 @@ class ProductController extends Controller
 {
     public function index(Request $request)
 {
+     $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
     $products = Product::with(['translation', 'categories.translation'])
         ->where('is_active', true)
         ->when($request->filled('search'), function ($query) use ($request) {
@@ -24,7 +29,7 @@ class ProductController extends Controller
 
     $categories = Category::with('translation')->get();
 
-    return view('client.pages.products', compact('products', 'categories'));
+    return view('client.pages.products', compact('products', 'categories','page'));
 }
 
     public function show($locale, $slug)
@@ -35,8 +40,11 @@ class ProductController extends Controller
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
-
-        return view('client.pages.product-details', compact('product'));
+ $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
+        return view('client.pages.product-details', compact('product','page'));
     }
     
     public function category($locale, $slug)
