@@ -50,7 +50,10 @@ class Product extends Resource
             Image::make('Image')
                 ->disk('public')
                 ->path('products')
-                ->nullable(),
+                ->nullable()
+                ->prunable()
+                ->thumbnail(fn ($value) => $value ? asset('storage/' . $value) : null)
+                ->preview(fn ($value) => $value ? asset('storage/' . $value) : null),
 
             BelongsToMany::make('Categories'),
 
