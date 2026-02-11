@@ -11,26 +11,26 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(Request $request)
-{
-     $page = Page::where('slug', 'about')
+    {
+        $page = Page::where('slug', 'about')
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
-    $products = Product::with(['translation', 'categories.translation'])
-        ->where('is_active', true)
-        ->when($request->filled('search'), function ($query) use ($request) {
-            $query->whereHas('translation', function ($q) use ($request) {
-                $q->where('title', 'LIKE', '%' . $request->search . '%')
-                  ->orWhere('description', 'LIKE', '%' . $request->search . '%');
-            });
-        })
-        ->paginate(9)
-        ->withQueryString();
+        $products = Product::with(['translation', 'categories.translation'])
+            ->where('is_active', true)
+            ->when($request->filled('search'), function ($query) use ($request) {
+                $query->whereHas('translation', function ($q) use ($request) {
+                    $q->where('title', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('description', 'LIKE', '%' . $request->search . '%');
+                });
+            })
+            ->paginate(9)
+            ->withQueryString();
 
-    $categories = Category::with('translation')->get();
+        $categories = Category::with('translation')->get();
 
-    return view('client.pages.products', compact('products', 'categories','page'));
-}
+        return view('client.pages.products', compact('products', 'categories', 'page'));
+    }
 
     public function show($locale, $slug)
     {
@@ -40,20 +40,20 @@ class ProductController extends Controller
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
- $page = Page::where('slug', 'about')
+        $page = Page::where('slug', 'about')
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
-        return view('client.pages.product-details', compact('product','page'));
+        return view('client.pages.product-details', compact('product', 'page'));
     }
-    
+
     public function category($locale, $slug)
     {
         app()->setLocale($locale);
 
         $categories = Category::with(['children.translation', 'translation'])
-    ->whereNull('parent_id')
-    ->get();
+            ->whereNull('parent_id')
+            ->get();
 
 
         $category = Category::where('slug', $slug)->firstOrFail();
@@ -63,7 +63,11 @@ class ProductController extends Controller
             ->where('is_active', true)
             ->paginate(9)
             ->withQueryString();
+             $page = Page::where('slug', 'about')
+            ->with('translation')
+            ->where('is_active', true)
+            ->firstOrFail();
 
-        return view('client.pages.products', compact('products', 'categories'));
+        return view('client.pages.products', compact('products', 'categories','page'));
     }
 }

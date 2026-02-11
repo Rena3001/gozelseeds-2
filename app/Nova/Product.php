@@ -13,10 +13,10 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Product extends Resource
 {
-    public static $with = ['translations'];
     public static $model = \App\Models\Product::class;
 
-    // Nova index-də title kimi nə göstərilsin
+    public static $with = ['translations'];
+
     public static $title = 'slug';
 
     public static function label()
@@ -35,7 +35,11 @@ class Product extends Resource
             Text::make('Title (AZ)')
                 ->onlyOnIndex()
                 ->sortable()
-                ->resolveUsing(fn() => $this->getTranslationValue('az', 'title') ?? '-'),
+                ->resolveUsing(fn() =>
+                    optional(
+                        $this->resource->translations->firstWhere('locale', 'az')
+                    )->title ?? '-'
+                ),
 
             Text::make('Slug')
                 ->sortable()
@@ -43,128 +47,102 @@ class Product extends Resource
 
             Boolean::make('Active', 'is_active'),
 
-            /* ================= IMAGE ================= */
-
             Image::make('Image')
                 ->disk('public')
                 ->path('products')
-                ->nullable()
-                ->prunable(),
-
-            /* ================= CATEGORIES ================= */
+                ->nullable(),
 
             BelongsToMany::make('Categories'),
 
             /* ================= AZ ================= */
 
-            Text::make('Title (AZ)')
+            Text::make('Title (AZ)', 'title_az')
                 ->onlyOnForms()
                 ->rules('required')
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'az')
                     )->title
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Short Description (AZ)')
+            Trix::make('Short Description (AZ)', 'short_description_az')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'az')
                     )->short_description
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Description (AZ)')
+            Trix::make('Description (AZ)', 'description_az')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'az')
                     )->description
                 )
                 ->fillUsing(fn() => null),
 
-            Text::make('Title (EN)')
+            /* ================= EN ================= */
+
+            Text::make('Title (EN)', 'title_en')
                 ->onlyOnForms()
                 ->rules('required')
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'en')
                     )->title
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Short Description (EN)')
+            Trix::make('Short Description (EN)', 'short_description_en')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'en')
                     )->short_description
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Description (EN)')
+            Trix::make('Description (EN)', 'description_en')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'en')
                     )->description
                 )
                 ->fillUsing(fn() => null),
-            Text::make('Title (RU)')
+
+            /* ================= RU ================= */
+
+            Text::make('Title (RU)', 'title_ru')
                 ->onlyOnForms()
                 ->rules('required')
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'ru')
                     )->title
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Short Description (RU)')
+            Trix::make('Short Description (RU)', 'short_description_ru')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'ru')
                     )->short_description
                 )
                 ->fillUsing(fn() => null),
 
-            Trix::make('Description (RU)')
+            Trix::make('Description (RU)', 'description_ru')
                 ->onlyOnForms()
-                ->resolveUsing(
-                    fn() =>
+                ->resolveUsing(fn() =>
                     optional(
                         $this->resource->translations->firstWhere('locale', 'ru')
                     )->description
                 )
                 ->fillUsing(fn() => null),
-
         ];
-    }
-
-    /* ================= HELPERS ================= */
-
-    protected function getTranslationValue(string $locale, string $field)
-    {
-        if (!$this->resource || !$this->resource->exists) {
-            return null;
-        }
-
-        return optional(
-            $this->resource
-                ->translations()
-                ->where('locale', $locale)
-                ->first()
-        )->{$field};
     }
 }

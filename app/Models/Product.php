@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ProductTranslation;
-use App\Models\Category;
 
 class Product extends Model
-
 {
-    
     protected $fillable = [
         'slug',
         'image',
@@ -23,28 +19,27 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-public function translations()
-{
-    return $this->hasMany(ProductTranslation::class);
-}
-public function translation()
-{
-    return $this->hasOne(ProductTranslation::class)
-        ->where('locale', app()->getLocale());
-}
+    public function translations()
+    {
+        return $this->hasMany(ProductTranslation::class);
+    }
 
-
+    public function translation()
+    {
+        return $this->hasOne(ProductTranslation::class)
+            ->where('locale', app()->getLocale());
+    }
 
     /* ================= NOVA TITLE ================= */
 
-  public function getNovaTitleAttribute()
-{
-    return optional(
-        $this->translations()
-            ->where('locale', app()->getLocale())
-            ->first()
-    )->title ?? $this->slug;
-}
+    public function getNovaTitleAttribute()
+    {
+        return optional(
+            $this->translations
+                ->where('locale', app()->getLocale())
+                ->first()
+        )->title ?? $this->slug;
+    }
 
     /* ================= AUTO SAVE TRANSLATIONS ================= */
 
@@ -52,39 +47,24 @@ public function translation()
     {
         static::saved(function (Product $product) {
 
-            // Nova / HTTP yoxdursa çıx
-            if (!request()) {
-                return;
-            }
+            if (!request()) return;
 
-            $data = [
-                'az' => [
-                    'title' => request()->input('title_az'),
-                    'short_description' => request()->input('short_description_az'),
-                    'description' => request()->input('description_az'),
-                ],
-                'en' => [
-                    'title' => request()->input('title_en'),
-                    'short_description' => request()->input('short_description_en'),
-                    'description' => request()->input('description_en'),
-                ],
-                'ru' => [
-                    'title' => request()->input('title_ru'),
-                    'short_description' => request()->input('short_description_ru'),
-                    'description' => request()->input('description_ru'),
-                ],
-            ];
+            $locales = ['az', 'en', 'ru'];
 
-            foreach ($data as $locale => $fields) {
-                if (!empty($fields['title'])) {
-                    ProductTranslation::updateOrCreate(
-                        [
-                            'product_id' => $product->id,
-                            'locale' => $locale,
-                        ],
-                        $fields
-                    );
-                }
+            foreach ($locales as $locale) {
+
+                $title = request()->input("title_$locale");
+
+                if (!$title) continue;
+
+                $product->translations()->updateOrCreate(
+                    ['locale' => $locale],
+                    [
+                        'title' => $title,
+                        'short_description' => request()->input("short_description_$locale"),
+                        'description' => request()->input("description_$locale"),
+                    ]
+                );
             }
         });
     }
