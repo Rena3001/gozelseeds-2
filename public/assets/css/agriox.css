@@ -12079,6 +12079,7 @@ Sidebar
         -ms-flex-align: baseline;
         align-items: baseline;
         margin-top: -10px;
+        flex-direction: column;
     }
 }
 
