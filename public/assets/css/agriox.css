@@ -10964,6 +10964,11 @@ Sidebar
     position: relative;
     margin-bottom: 20px;
 }
+.shop-one__image a{
+     display: block;
+    width: 100%;
+    height: 100%;
+}
 
 .shop-one__image img {
     width: 100%;
