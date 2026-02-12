@@ -488,7 +488,7 @@ $t = $about?->translation;
                             </span>
                         </div>
                         <div class="overlay-icon">
-                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
+                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->slug]) }}">
                                 <i class="fa-solid fa-plus"></i>
                             </a>
 
@@ -497,7 +497,7 @@ $t = $about?->translation;
 
                     <div class="blog-one__single-content">
 
-                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
+                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->slug]) }}">{{ $post->translation->title }}</a></h2>
                     </div>
                 </div>
             </div>
