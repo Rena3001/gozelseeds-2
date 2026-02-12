@@ -3,6 +3,7 @@
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
         <!-- /.mobile-nav__overlay -->
         <div class="mobile-nav__content">
+            
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
@@ -11,6 +12,26 @@
                                             'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
                 </a>
             </div> 
+            <div class="language-switcher-select">
+                         @php
+                         $currentLang = $languages->firstWhere('code', app()->getLocale());
+                         @endphp
+                         <img src="{{ $currentLang->flag }}" class="lang-flag">
+
+                         <select id="langSwitcher" class="lang-dropdown"
+                             onchange="location.href=this.value">
+                             @foreach($languages as $lang)
+
+                             <option value="/{{ $lang->code }}{{ $cleanPath }}"
+
+                                 {{ app()->getLocale() === $lang->code ? 'selected' : '' }}>
+                                 <img src="{{ $currentLang->flag }}" class="lang-flag">
+
+                                 {{ $lang->label }}
+                             </option>
+                             @endforeach
+                         </select>
+                     </div>
             <!-- /.logo-box -->
             <div class="mobile-nav__container"></div>
             <!-- /.mobile-nav__container -->

@@ -453,6 +453,13 @@ button {
     border-color: #5bb98a;
     box-shadow: 0 0 4px rgba(91, 185, 138, 0.4);
 }
+.mobile-nav__content .language-switcher-select {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
 
 .owl-carousel.owl-dot-type1 .owl-stage-outer {
     position: relative;
