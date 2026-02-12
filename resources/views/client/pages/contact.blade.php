@@ -1,6 +1,6 @@
 @extends('client.layout.master')
 
-@section('page_title', 'Contact us')
+@section('title', __('menu.contact'))
 
 @section('content')
 @php
@@ -152,9 +152,9 @@ $locale = app()->getLocale();
                                 <div class="title">
                                     <span>{{__('visit.store')}}</span>
                                     <p>{{ $settings?->translation?->address }}</p>
-                                    <p>{{ $settings?->translation?->address_turkey }}</p>
+                                    <!-- <p>{{ $settings?->translation?->address_turkey }}</p>
                                     <p>{{ $settings?->translation?->address_spain }}</p>
-                                    <p>{{ $settings?->translation?->address_uzbekistan }}</p>
+                                    <p>{{ $settings?->translation?->address_uzbekistan }}</p> -->
                                 </div>
 
                             </li>

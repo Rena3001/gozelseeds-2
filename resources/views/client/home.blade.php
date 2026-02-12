@@ -1,5 +1,6 @@
 @extends('client.layout.master')
-@section('page_title', 'GozelSeeds')
+@section('title', __('menu.home'))
+
 
 @section('content')
 @php

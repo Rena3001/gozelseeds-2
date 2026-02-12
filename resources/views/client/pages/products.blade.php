@@ -1,5 +1,6 @@
 @extends('client.layout.master')
-@section('page_title', 'Products')
+@section('title', __('menu.products'))
+
 @section('content')
 @php
 use Illuminate\Support\Str;

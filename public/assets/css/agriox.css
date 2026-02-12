@@ -10379,24 +10379,20 @@ Sidebar
         margin-bottom: 50px;
     }
     /**Contact Page Contact Info**/
-    .contact-page__contact-info-wrapper {
+   
+    /* .contact-page__contact-info-list ul {
         display: block;
-        padding: 60px 0px 60px;
-        text-align: center;
-    }
-    .contact-page__contact-info-list ul {
-        display: block;
-    }
-    .contact-page__contact-info-list ul li {
-        display: block;
+    } */
+    /* .contact-page__contact-info-list ul li {
+   
         border-right: 0px solid #eceae0;
         margin-left: 0px;
         padding-right: 0px;
         margin-top: 35px;
-    }
-    .contact-page__contact-info-title {
+    } */
+    /* .contact-page__contact-info-title {
         padding-right: 0px;
-    }
+    } */
     .contact-page__contact-info-list ul li .icon {
         margin-bottom: 20px;
     }

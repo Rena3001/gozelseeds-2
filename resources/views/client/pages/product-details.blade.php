@@ -1,5 +1,5 @@
 @extends('client.layout.master')
-@section('page_title', 'Product Details')
+@section('title', __('menu.products'))
 
 @section('content')
 @php
