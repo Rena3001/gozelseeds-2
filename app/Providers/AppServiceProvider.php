@@ -16,6 +16,8 @@ use App\Extensions\DatabaseTranslator;
 use App\Models\Category;
 use App\Observers\TranslationObserver;
 use Illuminate\Translation\FileLoader;
+use Illuminate\Pagination\Paginator;
+
 use Illuminate\Filesystem\Filesystem;
 
 class AppServiceProvider extends ServiceProvider
@@ -49,6 +51,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         // 1️⃣ Locale-ni erkən set et
         App::setLocale(request()->segment(1) ?? config('app.locale'));
 
