@@ -39,7 +39,9 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/twentytwenty/twentytwenty.css')}}">
 
     <!-- template styles -->
-    <link rel="stylesheet" href="{{asset('assets/css/agriox.css')}}">
+   <link rel="stylesheet" 
+      href="{{ asset('assets/css/agriox.css') }}?v={{ filemtime(public_path('assets/css/agriox.css')) }}">
+
 
     <!-- RTL CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/agriox-rtl.css')}}">
