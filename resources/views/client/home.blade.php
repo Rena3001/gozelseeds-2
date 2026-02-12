@@ -346,12 +346,12 @@ $t = $about?->translation;
                             ?? 'Agriculture Matters to <br>the Future of Development' !!}
                         </h2>
                         <div class="video-one__btn">
-                            <a href="{{ $videoSection->button_url ?? '#' }}" class="thm-btn">{{__('discover.more')}}</a>
+                            <a href="{{ $videoSection->translation?->button_url }}" class="thm-btn">{{__('discover.more')}}</a>
                         </div>
                     </div>
                     <div class="video-one__right">
                         <div class="icon wow zoomIn" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <a class="video-popup" title=" Video" href="{{ $videoSection->video_url ?? '#' }}">
+                            <a class="video-popup" title=" Video" href="{{ $videoSection->translation?->video_url }}">
                                 <span class="fa fa-play"></span>
                             </a>
                             <span class="border-animation border-1"></span>
