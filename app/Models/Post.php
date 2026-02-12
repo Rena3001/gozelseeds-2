@@ -9,7 +9,7 @@ class Post extends Model
     protected $fillable = [
         'image',
         'author',
-        'comments_count',
+        'comments_count', 
         'published_at',
         'order',
         'is_active',

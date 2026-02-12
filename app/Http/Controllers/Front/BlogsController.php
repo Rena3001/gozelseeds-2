@@ -15,7 +15,7 @@ class BlogsController extends Controller
         if (in_array($locale, ['az', 'en', 'ru'])) {
             app()->setLocale($locale);
         }
-        $posts = Post::where('is_active', true)
+        $posts = Post::with('translations')->where('is_active', true)
             ->orderBy('order')
             ->orderByDesc('published_at')
             ->get();
@@ -33,12 +33,12 @@ class BlogsController extends Controller
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
-        $post = Post::with('translation')
+        $post = Post::with('translations')
             ->where('id', $post)
             ->where('is_active', true)
             ->firstOrFail();
 
-        $latestPosts = Post::with('translation')
+        $latestPosts = Post::with('translations')
             ->where('is_active', true)
             ->where('id', '!=', $post->id)
             ->latest()
