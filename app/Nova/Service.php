@@ -27,23 +27,24 @@ class Service extends Resource
                 ->disk('public')
                 ->path('services')
                 ->creationRules('required')
-                ->nullable()
+                ->updateRules('nullable')
                 ->prunable()
                 ->thumbnail(fn($value) => $value ? asset('storage/' . $value) : null)
                 ->preview(fn($value) => $value ? asset('storage/' . $value) : null),
 
-           Image::make('Icon')
-    ->disk('public')
-    ->path('services/icons')
-    ->prunable()
-    ->rules('required')
-    ->help('PNG/JPG ikon yüklə (SVG yox)')
-    ->thumbnail(function ($value) {
-        return $value ? asset('storage/' . $value) : null;
-    })
-    ->preview(function ($value) {
-        return $value ? asset('storage/' . $value) : null;
-    }),
+            Image::make('Icon')
+                ->disk('public')
+                ->path('services/icons')
+                ->prunable()
+                ->creationRules('required')   // ✔ yalnız create üçün
+                ->updateRules('nullable')
+                ->help('PNG/JPG ikon yüklə (SVG yox)')
+                ->thumbnail(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                })
+                ->preview(function ($value) {
+                    return $value ? asset('storage/' . $value) : null;
+                }),
 
             Text::make('Link')
                 ->default('services-details.html'),
