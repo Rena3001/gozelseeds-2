@@ -9998,6 +9998,9 @@ Sidebar
     display: none;
   }
   /**Main Slider One**/
+  .main-slider-one{
+        padding: 0 13px;
+  }
   .main-slider__title span.leaf {
     display: none;
   }
@@ -10018,7 +10021,8 @@ Sidebar
     display: none;
   }
   #main-slider-pagination {
-    display: none;
+    /* display: none; */
+        bottom: 40px;
   }
   .main-slider__nav {
     width: 100px;
