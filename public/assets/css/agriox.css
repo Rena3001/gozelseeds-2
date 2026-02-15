@@ -4292,10 +4292,13 @@ button {
     display: flex;
     flex-direction: column;
     /* text-align: center; */
-    justify-content: flex-start;
+    justify-content: center;
     align-items: self-start;
 }
+.blog-details{
+    justify-content: flex-start;
 
+}
 .blog-one__single-content:hover {
     -webkit-box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
