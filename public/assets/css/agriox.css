@@ -4295,9 +4295,8 @@ button {
     justify-content: center;
     align-items: self-start;
 }
-.blog-details{
+.blog-details {
     justify-content: flex-start;
-
 }
 .blog-one__single-content:hover {
     -webkit-box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.1);
@@ -4973,6 +4972,18 @@ button {
     position: relative;
     display: block;
     margin-top: -4px;
+}
+.footer-widget__explore-list a{
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+.footer-widget__explore-list a:hover {
+    color: #fff;
+    transition: all 200ms linear;
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
 }
 
 .footer-widget__explore-list-item {
