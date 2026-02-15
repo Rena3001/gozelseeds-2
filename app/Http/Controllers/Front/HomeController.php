@@ -64,7 +64,8 @@ class HomeController extends Controller
             ->with(['translation'])
             ->orderBy('order')
             ->get();
-        $posts = Post::where('is_active', true)
+        $posts = Post::with('translation')
+            ->where('is_active', true)
             ->orderBy('order')
             ->orderByDesc('published_at')
             ->take(3)

@@ -38,7 +38,7 @@ $locale = app()->getLocale();
             @foreach($posts as $post)
             <!--Start Single Blog One-->
             <div class="col-xl-4 col-lg-4  wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="blog-one__single">
+                <div class="blog-one__single"> 
                     <div class="blog-one__single-img">
                         <img src="{{ asset('storage/'.$post->image) }}" alt="">
                         <div class="date-box">
@@ -55,7 +55,9 @@ $locale = app()->getLocale();
 
                     <div class="blog-one__single-content">
                         
-                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation->title }}</a></h2>
+                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
+                            {{ $post->translation->title }}
+                        </a></h2>
                     </div>
                 </div>
             </div>

@@ -15,10 +15,12 @@ class BlogsController extends Controller
         if (in_array($locale, ['az', 'en', 'ru'])) {
             app()->setLocale($locale);
         }
-        $posts = Post::with('translations')->where('is_active', true)
-            ->orderBy('order')
-            ->orderByDesc('published_at')
-            ->get();
+     $posts = Post::with('translation')
+    ->where('is_active', true)
+    ->orderBy('order')
+    ->orderByDesc('published_at')
+    ->get();
+
              $page = Page::where('slug', 'about')
             ->with('translation')
             ->where('is_active', true)
