@@ -90,14 +90,14 @@
                              <!--Start Footer Widget Column-->
                              <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.7s">
                                  <div class="footer-widget__column footer-widget__newletter">
-                                     <h2 class="footer-widget__title">{{ __('footer.newsletter') }}</h2>
+                                     <!-- <h2 class="footer-widget__title">{{ __('footer.newsletter') }}</h2>
                                      <p>{{ __('footer.newsletter_text') }}</p>
 
                                      <form class="subscribe-form" action="{{ route('subscribe.store', app()->getLocale()) }}" method="POST">
                                          @csrf
                                          <input type="email" name="email" placeholder="{{ __('footer.email_placeholder') }}" required>
                                          <button type="submit">{{__('footer.go')}}</button>
-                                     </form>
+                                     </form> -->
 
 
                                      <div class="footer_azerbaijan">

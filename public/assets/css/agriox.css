@@ -2446,10 +2446,11 @@ button {
 }
 
 .about-one__left {
-    position: relative;
-    display: block;
+   position: relative;
+    display: flex;
     max-width: 600px;
     width: 100%;
+    justify-content: end;
 }
 
 .about-one__left::before {
@@ -2492,8 +2493,8 @@ button {
 }
 
 .about-one__left-img-inner {
-    width: 570px;
-    height: 600px;
+       width: 500px;
+    height: 500px;
     position: relative;
     display: flex;
     align-items: center;
@@ -2611,7 +2612,7 @@ button {
     display: block;
     max-width: 485px;
     width: 100%;
-    margin-left: 70px;
+    /* margin-left: 70px; */
     z-index: 1;
 }
 
@@ -4771,7 +4772,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: end;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 .azerbaijan-logo {
     width: 160px;
@@ -7124,8 +7125,8 @@ button {
 }
 
 .about-three__img-box-img-inner {
-    width: 570px;
-    height: 681px;
+    width: 500px;
+    height: 500px;
     position: relative;
     display: flex;
     justify-content: center;

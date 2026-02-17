@@ -79,7 +79,8 @@
                             <h2>{{ $post->translation?->title }}</h2>
 
                             {{-- MAIN CONTENT --}}
-                            {!! $post->translation?->content !!}
+                            {!! optional($post->translation)->content !!}
+
                         </div>
                     </div>
 
@@ -90,7 +91,7 @@
             <!-- SIDEBAR -->
             <div class="col-xl-4 col-lg-5">
                 <div class="sidebar">
-
+ 
                     <!-- SEARCH -->
                     <div class="sidebar__single sidebar__search">
                         <form action="{{ route('news', $locale) }}" method="GET"

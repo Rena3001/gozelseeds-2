@@ -23,7 +23,7 @@ $locale = app()->getLocale();
 </section>
 <!--Page Header End-->
 
-<!--About Three Start-->
+
 <!--About Three Start-->
 <section class="about-three">
     <div class="about-three__shape"></div><!-- /.about-three__shape -->
@@ -105,7 +105,7 @@ $locale = app()->getLocale();
 </section>
 <!--About Three End-->
 
-<!--About Three End-->
+
 
 
 <!--Company Logos One Start-->
