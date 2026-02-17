@@ -6,6 +6,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PostTranslation extends Resource
@@ -34,10 +35,10 @@ class PostTranslation extends Resource
             Text::make('Title')
                 ->rules('required'),
 
-            Textarea::make('Excerpt')
+            Trix::make('Excerpt')
                 ->hideFromIndex(),
 
-            Textarea::make('Content')
+            Trix::make('Content')
                 ->rules('required')
                 ->hideFromIndex(),
         ];
