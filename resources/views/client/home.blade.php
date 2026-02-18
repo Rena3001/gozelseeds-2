@@ -361,7 +361,7 @@ $t = $about?->translation;
                         <div class="title">
                             <h2>{{__('watch.video')}}</h2>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

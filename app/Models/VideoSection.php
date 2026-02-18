@@ -27,4 +27,6 @@ class VideoSection extends Model
         return $this->hasOne(VideoSectionTranslation::class)
             ->where('locale', app()->getLocale());
     }
+
+
 }

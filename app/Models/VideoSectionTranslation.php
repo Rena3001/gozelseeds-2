@@ -21,4 +21,5 @@ class VideoSectionTranslation extends Model
     {
         return $this->belongsTo(VideoSection::class);
     }
+
 }

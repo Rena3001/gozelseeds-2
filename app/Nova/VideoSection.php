@@ -45,40 +45,43 @@ class VideoSection extends Resource
 
     /* ================= LOCALE PANEL ================= */
 
-    protected function localePanel(string $locale, string $label)
-    {
-        return new NovaPanel($label . ' Content', [
+protected function localePanel(string $locale, string $label)
+{
+    return new NovaPanel($label . ' Content', [
 
-            Text::make('Title')
-                ->resolveUsing(fn() => $this->tr($locale)?->title)
-                ->fillUsing(
-                    fn($req, $model) =>
-                    $this->saveTranslation($model, $locale, [
-                        'title'       => $req->input("title_$locale"),
-                        'video_title' => $req->input("video_title_$locale"),
-                        'button_url'  => $req->input("button_url_$locale"),
-                        'video_url'   => $req->input("video_url_$locale"),
-                    ])
-                )
-                ->onlyOnForms()
-                ->withMeta(['extraAttributes' => ['name' => "title_$locale"]]),
+        Text::make('Title')
+            ->resolveUsing(fn() => $this->tr($locale)?->title)
+            ->fillUsing(function ($request, $model) use ($locale) {
+                $this->saveTranslation($model, $locale, [
+                    'title'       => $request->input("title_$locale"),
+                    'video_title' => $request->input("video_title_$locale"),
+                    'button_url'  => $request->input("button_url_$locale"),
+                    'video_url'   => $request->input("video_url_$locale"),
+                ]);
+            })
+            ->withMeta(['extraAttributes' => ['name' => "title_$locale"]])
+            ->onlyOnForms(),
 
-            Text::make('Video Title')
-                ->resolveUsing(fn() => $this->tr($locale)?->video_title)
-                ->fillUsing(function () {}) // 🔥 ƏSAS FIX
-                ->onlyOnForms(),
+        Text::make('Video Title')
+            ->resolveUsing(fn() => $this->tr($locale)?->video_title)
+            ->withMeta(['extraAttributes' => ['name' => "video_title_$locale"]])
+            ->fillUsing(function () {})
+            ->onlyOnForms(),
 
-            Text::make('Button URL')
-                ->resolveUsing(fn() => $this->tr($locale)?->button_url)
-                ->fillUsing(function () {}) // 🔥
-                ->onlyOnForms(),
+        Text::make('Button URL')
+            ->resolveUsing(fn() => $this->tr($locale)?->button_url)
+            ->withMeta(['extraAttributes' => ['name' => "button_url_$locale"]])
+            ->fillUsing(function () {})
+            ->onlyOnForms(),
 
-            Text::make('Video URL')
-                ->resolveUsing(fn() => $this->tr($locale)?->video_url)
-                ->fillUsing(function () {}) // 🔥
-                ->onlyOnForms(),
-        ]);
-    }
+        Text::make('Video URL')
+            ->resolveUsing(fn() => $this->tr($locale)?->video_url)
+            ->withMeta(['extraAttributes' => ['name' => "video_url_$locale"]])
+            ->fillUsing(function () {})
+            ->onlyOnForms(),
+    ]);
+}
+
 
     /* ================= HELPERS ================= */
 
