@@ -178,7 +178,7 @@ $locale = app()->getLocale();
                             ?? 'Agriculture Matters to <br>the Future of Development' !!}
                         </h2>
                         <div class="video-one__btn">
-                            <a href="{{ $videoSection->button_url ?? '#' }}" class="thm-btn">{{__('discover.more')}}</a>
+                            <a href="{{ $videoSection->translation?->button_url ?? '#' }}" class="thm-btn">{{__('discover.more')}}</a>
                         </div>
                     </div>
                     <div class="video-one__right">
