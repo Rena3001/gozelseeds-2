@@ -66,9 +66,7 @@ $icons = $services->pluck('icon')->toArray();
 
                                     {{-- Text --}}
                                     <p class="main-slider__text">
-                                         {!! $slider->translation?->text
-                                    ?? 'There are many of passages of lorem Ipsum, but
-                                       the majority have suffered alteration in some form.' !!}
+                                         {!! $slider->translation?->text !!}
                                     </p>
 
                                 </div>
