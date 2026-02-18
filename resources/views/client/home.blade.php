@@ -65,9 +65,10 @@ $icons = $services->pluck('icon')->toArray();
                                     </h2>
 
                                     {{-- Text --}}
-                                    <p class="main-slider__text">
-                                         {!! $slider->translation?->text !!}
-                                    </p>
+                                    <div class="main-slider__text">
+                                        {!! $slider->translation?->text !!}
+                                    </div>
+
 
                                 </div>
 
@@ -122,7 +123,7 @@ $t = $about?->translation;
     <div class="container">
         <div class="row">
 
-         <!--Start About One Content-->
+            <!--Start About One Content-->
             <div class="col-xl-6">
                 <div class="about-one__content">
 
@@ -243,7 +244,7 @@ $t = $about?->translation;
                 </div>
             </div>
             <!--End About One Left-->
- 
+
 
         </div>
     </div>
@@ -323,7 +324,7 @@ $t = $about?->translation;
 
 <!--Video One Start-->
 <section class="video-one jarallax clearfix" data-jarallax="" data-speed="0.2" data-imgposition="50% 0%">
-      <video class="video-bg__video" autoplay muted loop playsinline>
+    <video class="video-bg__video" autoplay muted loop playsinline>
         <source src="{{ asset('storage/'.$videoSection?->background_image) }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -359,7 +360,7 @@ $t = $about?->translation;
                         <div class="title">
                             <h2>{{__('watch.video')}}</h2>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -465,7 +466,7 @@ $t = $about?->translation;
 <!--Blog One Start-->
 <section class="blog-one">
     <div class="blog-one__bg wow slideInDown" data-wow-delay="100ms" data-wow-duration="2500ms"></div>
-    
+
     <div class="container">
         <div class="sec-title text-center">
             <!-- <div class="icon">
