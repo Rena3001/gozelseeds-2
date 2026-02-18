@@ -3040,7 +3040,7 @@ button {
 .video-one {
     position: relative;
     display: block;
-    padding: 140px 0px 150px;
+    padding: 50pxpx 0px 150px;
     background-attachment: scroll;
     background-position: center center;
     background-repeat: no-repeat;
@@ -3240,6 +3240,7 @@ button {
     .video-one {
         margin: 0;
         padding: 35px 0;
+        padding-bottom: 65px;
     }
     .video-one .video-bg__video {
         width: 100%;
