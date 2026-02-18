@@ -146,7 +146,7 @@
                          </div>
 
                          <div class="contact-box">
-                             <div class="icon"><span class="fa fa-phone"></span></div>
+                             <div class="icon"><span class="fab fa-whatsapp"></span></div>
                              <div class="text">
                                  <p>{{ __('call.anytime') }}</p>
                                  <a href="tel:{{ $settings?->phone ?? '123456789' }}">
