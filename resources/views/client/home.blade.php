@@ -21,9 +21,6 @@ $icons = $services->pluck('icon')->toArray();
             "navigation": {
             "nextEl": "#main-slider__swiper-button-next",
             "prevEl": "#main-slider__swiper-button-prev"
-            },
-            "autoplay": {
-            "delay": 7000
             }}'>
 
         <div class="swiper-wrapper">

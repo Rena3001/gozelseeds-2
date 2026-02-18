@@ -16,7 +16,9 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.4/dist/min/tiny-slider.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-<script>new WOW().init();</script>
+<script>
+    new WOW().init();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-countdown@2.2.0/dist/jquery.countdown.min.js"></script>
@@ -49,5 +51,30 @@
     document.querySelectorAll('.thm-swiper__slider').forEach(function(el) {
         const options = JSON.parse(el.getAttribute('data-swiper-options'));
         new Swiper(el, options);
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const isMobile = window.innerWidth < 768;
+
+        const swiper = new Swiper(".thm-swiper__slider", {
+            slidesPerView: 1,
+            loop: true,
+            effect: "fade",
+            pagination: {
+                el: "#main-slider-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: "#main-slider__swiper-button-next",
+                prevEl: "#main-slider__swiper-button-prev",
+            },
+
+            // ⬇️ Əsas hissə
+            autoplay: isMobile ? false : {
+                delay: 7000,
+                disableOnInteraction: false,
+            }
+        });
+
     });
 </script>
