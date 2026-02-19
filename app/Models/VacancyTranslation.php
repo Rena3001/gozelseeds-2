@@ -23,11 +23,13 @@ class VacancyTranslation extends Model
     {
         return $this->belongsTo(Vacancy::class);
     }
+
+    
         protected static function boot()
     {
         parent::boot();
 
-        static::creating(function ($translation) {
+        static::saving(function ($translation) {
 
             if (!$translation->slug && $translation->title) {
 
@@ -38,6 +40,7 @@ class VacancyTranslation extends Model
                 while (
                     self::where('slug', $slug)
                         ->where('locale', $translation->locale)
+                        ->where('id', '!=', $translation->id)
                         ->exists()
                 ) {
                     $slug = $baseSlug . '-' . $i;
