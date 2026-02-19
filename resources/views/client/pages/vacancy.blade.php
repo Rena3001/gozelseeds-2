@@ -144,8 +144,208 @@
             <!-- END SIDEBAR -->
 
         </div>
+
     </div>
 </section>
 <!--Vacancy Details End-->
+        {{-- LATEST VACANCIES --}}
+@if(isset($latestVacancies) && $latestVacancies->count())
+
+<section class="blog-one pt-80 pb-80">
+    <div class="container">
+
+        <div class="sec-title text-center">
+            <span class="sec-title__tagline">
+                {{ __('vacancies.latest') }}
+            </span>
+            <h2 class="sec-title__title">
+                {{ __('vacancies.other_positions') }}
+            </h2>
+        </div>
+
+        <div class="blog-slider-wrapper">
+
+            <div class="swiper-container thm-swiper__slider"
+                 data-swiper-options='{
+                    "slidesPerView": 3,
+                    "spaceBetween": 30,
+                    "loop": true,
+                    "slidesPerGroup": 1,
+                    "navigation": {
+                        "nextEl": "#vacancy-slider-next",
+                        "prevEl": "#vacancy-slider-prev"
+                    },
+                    "breakpoints": {
+                        "0": { "slidesPerView": 1 },
+                        "768": { "slidesPerView": 2 },
+                        "1200": { "slidesPerView": 3 }
+                    }
+                 }'>
+
+                <div class="swiper-wrapper">
+
+                    @foreach($latestVacancies as $item)
+                    <div class="swiper-slide">
+                        <div class="blog-one__single">
+
+                            @if($item->image)
+                            <div class="blog-one__single-img">
+                                <img src="{{ asset('storage/'.$item->image) }}"
+                                     alt="{{ $item->translation?->title }}">
+                                <div class="date-box">
+                                    <span>
+                                        {{ $item->created_at?->translatedFormat('d F, Y') }}
+                                    </span>
+                                </div>
+                            </div>
+                            @endif
+
+                            <div class="blog-one__single-content">
+
+                                <h2>
+                                    <a href="{{ route('vacancies.show', [$locale, $item->translation?->slug]) }}">
+                                        {{ $item->translation?->title }}
+                                    </a>
+                                </h2>
+
+                                <p>
+                                    {!! Str::limit(strip_tags($item->translation?->description), 60) !!}
+                                </p>
+
+                                @if($item->email)
+                                    <a class="thm-btn"
+                                       href="mailto:{{ $item->email }}?subject={{ urlencode($item->translation?->title) }}">
+                                        {{ __('vacancies.apply_now') }}
+                                    </a>
+                                @endif
+
+                            </div>
+
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="swiper-button-prev" id="vacancy-slider-prev"></div>
+            <div class="swiper-button-next" id="vacancy-slider-next"></div>
+
+        </div>
+
+    </div>
+</section>
+
+@endif
+
+<section class="contact-one">
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
+            </div>
+            <span class="sec-title__tagline">{{__('contact.with_us')}}</span>
+            <h2 class="sec-title__title">{{__('contact.desc')}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @if($contactSection && $contactSection->translation)
+                <div class="contact-one__content">
+
+                    <p class="contact-one__text">
+                        {{ $contactSection->translation->text }}
+                    </p>
+
+                    <ul class="list-unstyled ml-0 contact-one__lists">
+                        @foreach(['list_1','list_2','list_3'] as $item)
+                        @if($contactSection->translation->$item)
+                        <li>
+                            <i class="fa fa-check-circle"></i>
+                            {{ $contactSection->translation->$item }}
+                        </li>
+                        @endif
+                        @endforeach
+                    </ul>
+
+                    <div class="contact-one__images">
+                        <div class="contact-one__images__shape"></div>
+
+                        @if($contactSection->image_1)
+                        <img src="{{ asset('storage/'.$contactSection->image_1) }}"
+                            class="contact-one__images-1">
+                        @endif
+
+                        @if($contactSection->image_2)
+                        <img src="{{ asset('storage/'.$contactSection->image_2) }}"
+                            class="contact-one__images-2">
+                        @endif
+                    </div>
+
+                </div>
+                @endif
+             
+            </div>
+            <div class="col-lg-6">
+                @if(session('status') === 'success')
+                <div class="alert alert-success">
+                    {{ __('contact.success') }}
+                </div>
+                @endif
+
+                @if(session('status') === 'error')
+                <div class="alert alert-danger">
+                    {{ __('contact.error') }}
+                </div>
+                @endif
+                <form method="POST"
+                    action="{{ route('contact.send', ['locale' => app()->getLocale()]) }}"
+                    class="contact-one__form comment-one__form"
+                    enctype="multipart/form-data">
+
+
+                    @csrf
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="comment-form__input-box">
+                                <input type="text" placeholder="{{ __('contact.name') }}" name="name" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="comment-form__input-box">
+                                <input type="email" placeholder="{{ __('contact.email') }}" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="comment-form__input-box">
+                                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="comment-form__input-box">
+                                <textarea name="message" placeholder="{{ __('contact.message') }}" required></textarea>
+                            </div>
+                            <button type="submit" class="thm-btn comment-form__btn">
+                                {{ __('contact.send') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="result"></div>
+
+                <div class="result"></div>
+            </div>
+        </div>
+    </div>
+</section> 
 
 @endsection

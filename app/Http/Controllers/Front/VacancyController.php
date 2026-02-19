@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactSection;
 use App\Models\Page;
 use App\Models\Vacancy;
 use App\Models\VacancyTranslation;
@@ -26,9 +27,12 @@ class VacancyController extends Controller
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
+            $contactSection = ContactSection::where('is_active', true)
+            ->with('translation')
+            ->first();
 
 
-        return view('client.pages.vacancies', compact('page', 'vacancies'));
+        return view('client.pages.vacancies', compact('page', 'vacancies','contactSection'));
     }
 
     public function show($locale, $slug)
@@ -46,7 +50,7 @@ class VacancyController extends Controller
     if (!$vacancy->is_active) {
         abort(404);
     }
-
+ 
     $page = Page::where('slug', 'about')
         ->with('translation')
         ->where('is_active', true)
@@ -58,11 +62,15 @@ class VacancyController extends Controller
         ->latest()
         ->take(5)
         ->get();
+        $contactSection = ContactSection::where('is_active', true)
+            ->with('translation')
+            ->first();
 
     return view('client.pages.vacancy', compact(
         'vacancy',
         'latestVacancies',
-        'page'
+        'page',
+        'contactSection'
     ));
 }
     

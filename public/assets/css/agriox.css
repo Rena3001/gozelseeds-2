@@ -683,7 +683,7 @@ button {
 
 .main-menu .main-menu__list > li + li,
 .stricky-header .main-menu__list > li + li {
-    margin-left: 60px;
+    margin-left: 50px;
 }
 
 .main-menu .main-menu__list > li > a,
