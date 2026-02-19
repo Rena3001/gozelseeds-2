@@ -58,7 +58,7 @@ $locale = app()->getLocale();
                     @endif
 
                     <!-- CONTENT -->
-                    <div class="blog-one__single-content">
+                    <div class="blog-one__single-content vacancy-btn">
 
                         <!-- TITLE -->
                         <h2>
