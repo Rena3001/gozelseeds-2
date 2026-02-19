@@ -16,6 +16,7 @@ class SettingTranslation extends Model
         'setting_id',
         'locale',
         'address',
+        'catalog_link'
     ];
 
     public function setting()

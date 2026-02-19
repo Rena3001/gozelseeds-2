@@ -39,7 +39,9 @@ class SettingTranslation extends Resource
 
             Text::make('Address (Uzbekistan)', 'address_uzbekistan'),
 
-
+            Text::make('Catalog Link', 'catalog_link')
+                ->hideFromIndex()
+                ->rules('nullable', 'url'),
 
         ];
     }

@@ -21,7 +21,7 @@ class Setting extends Model
         'youtube',
         'copyright_link',
         'map_iframe',   
-        'catalog_link',
+        
     ];
     public function translations()
     {

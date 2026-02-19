@@ -24,7 +24,7 @@ class Setting extends Resource
      * The single value that should be used to represent the resource.
      */
     public static $title = 'id';
-
+ 
     /**
      * The columns that should be searched.
      */
@@ -101,9 +101,7 @@ class Setting extends Resource
             Text::make('Telegram', 'telegram')->nullable(),
             Text::make('WhatsApp', 'whatsapp')->nullable(),
             Text::make('Youtube')->nullable(),
-            Text::make('Catalog Link', 'catalog_link')
-                ->hideFromIndex()
-                ->rules('nullable', 'url'),
+            
             // =====================
             // FOOTER
             // =====================
