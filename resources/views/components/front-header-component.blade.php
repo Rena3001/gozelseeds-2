@@ -94,7 +94,7 @@
                                  <ul class="main-menu__list">
                                      <li><a href="/{{ app()->getLocale() }}">{{ __('menu.home') }}</a></li>
                                      <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('menu.about') }}</a></li>
-                                     <li><a href="{{ $settings->catalog_link }}" target="_blank">{{ __('menu.services') }}</a></li>
+                                     <li><a href="{{ $settings->translation?->catalog_link }}" target="_blank">{{ __('menu.services') }}</a></li>
                                      <li class="menu-item-has-children">
                                          <a href="{{ route('products', app()->getLocale()) }}">
                                              {{ __('menu.products') }}
