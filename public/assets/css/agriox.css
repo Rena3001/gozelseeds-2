@@ -4888,7 +4888,7 @@ button {
 .footer_azerbaijan {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: end;
     /* padding-top: 20px; */
 }
 .azerbaijan-logo {
