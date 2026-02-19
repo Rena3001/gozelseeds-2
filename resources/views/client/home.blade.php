@@ -93,14 +93,14 @@ $icons = $services->pluck('icon')->toArray();
         <!-- If we need navigation buttons -->
         <div class="swiper-pagination" id="main-slider-pagination"></div>
 
-        <!-- <div class="main-slider__nav">
+        <div class="main-slider__nav">
             <div class="swiper-button-prev" id="main-slider__swiper-button-prev">
-                <span class="fa fa-angle-left"></span>
+                <span class="fa fa-angle-right"></span>
             </div>
             <div class="swiper-button-next" id="main-slider__swiper-button-next">
-                <span class="fa fa-angle-left"></span>
+                <span class="fa fa-angle-right"></span>
             </div>
-        </div> -->
+        </div>
 
     </div>
 </section>
@@ -458,7 +458,7 @@ $t = $about?->translation;
 
 
 
- 
+
 
 <!--Blog One Start-->
 <section class="blog-one">
@@ -474,7 +474,7 @@ $t = $about?->translation;
         <div class="blog-slider-wrapper">
 
             <div class="swiper-container thm-swiper__slider"
-                 data-swiper-options='{
+                data-swiper-options='{
                     "slidesPerView": 3,
                     "spaceBetween": 30,
                     "loop": true,
@@ -530,6 +530,7 @@ $t = $about?->translation;
 
 
 
+
 <!--Kateqoriyalar start-->
 <section class="services-one">
     <div class="services-one__bg wow slideInDown"
@@ -540,10 +541,6 @@ $t = $about?->translation;
 
         {{-- SECTION TITLE --}}
         <div class="sec-title text-center">
-            <!-- <div class="icon">
-                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div> -->
-
             <span class="sec-title__tagline">
                 {{ $serviceSection->translation?->tagline ?? 'What we’re doing' }}
             </span>
@@ -553,54 +550,78 @@ $t = $about?->translation;
             </h2>
         </div>
 
-        {{-- SERVICES LIST --}}
-        <div class="row">
-            @foreach($services as $service)
-            <div class="col-xl-3 col-lg-6 wow fadeInUp"
-                data-wow-delay="{{ $loop->index * 100 }}ms"
-                data-wow-duration="1000ms">
+        <div class="services-slider-wrapper">
 
-                <div class="services-one__single">
+            <div class="swiper-container thm-swiper__slider"
+                data-swiper-options='{
+                    "slidesPerView": 4,
+                    "spaceBetween": 30,
+                    "loop": true,
+                    "slidesPerGroup": 1,
+                    "navigation": {
+                        "nextEl": "#blog-slider__swiper-button-next",
+                        "prevEl": "#blog-slider__swiper-button-prev"
+                    },
+                    "breakpoints": {
+                        "0": { "slidesPerView": 1 },
+                        "576": { "slidesPerView": 2 },
+                        "992": { "slidesPerView": 3 },
+                        "1200": { "slidesPerView": 4 }
+                    }
+                 }'>
 
-                    {{-- IMAGE --}}
-                    <div class="services-one__single-img">
-                        <div class="services-one__single-img-inner">
-                            <img src="{{ asset('storage/'.$service->image) }}" alt="">
+                <div class="swiper-wrapper">
+
+                    @foreach($services as $service)
+                    <div class="swiper-slide">
+
+                        <div class="services-one__single">
+
+                            {{-- IMAGE --}}
+                            <div class="services-one__single-img">
+                                <div class="services-one__single-img-inner">
+                                    <img src="{{ asset('storage/'.$service->image) }}" alt="">
+                                </div>
+                            </div>
+
+                            {{-- CONTENT --}}
+                            <div class="services-one__single-content text-center">
+
+                                <div class="services-one__single-img-icon">
+                                    <img src="{{ asset('storage/'.$service->icon) }}"
+                                        alt=""
+                                        class="service-icon-img">
+                                </div>
+
+                                <h3>
+                                    <a href="{{ $service->link ?? '#' }}">
+                                        {!! $service->translation?->title ?? 'Service Title' !!}
+                                    </a>
+                                </h3>
+
+                                <p>
+                                    {{ $service->translation?->text ?? 'Service description goes here.' }}
+                                </p>
+
+                                <a href="{{ $service->link ?? '#' }}"
+                                    class="read-more-btn">
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+
+                            </div>
+
                         </div>
-                    </div>
-
-                    {{-- CONTENT --}}
-                    <div class="services-one__single-content text-center">
-
-                        <div class="services-one__single-img-icon">
-                            <img src="{{ asset('storage/'.$service->icon) }}" alt="" class="service-icon-img">
-                        </div>
-
-
-
-
-                        {{-- TITLE --}}
-                        <h3>
-                            <a href="{{ $service->link ?? '#' }}">
-                                {!! $service->translation?->title ?? 'Service Title' !!}
-                            </a>
-                        </h3>
-
-                        {{-- TEXT --}}
-                        <p>
-                            {{ $service->translation?->text ?? 'Service description goes here.' }}
-                        </p>
-
-                        {{-- READ MORE --}}
-                        <a href="{{ $service->link ?? '#' }}"
-                            class="read-more-btn">
-                            <span class="fa fa-angle-right"></span>
-                        </a>
 
                     </div>
+                    @endforeach
+
                 </div>
+
             </div>
-            @endforeach
+
+            <!-- Navigation -->
+            <div class="swiper-button-prev" id="blog-slider__swiper-button-prev"></div>
+            <div class="swiper-button-next" id="blog-slider__swiper-button-next"></div>
         </div>
 
     </div>

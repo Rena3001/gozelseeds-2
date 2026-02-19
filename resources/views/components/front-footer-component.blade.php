@@ -12,7 +12,7 @@
                          <!-- <div class="footer-one__bg"><img src="assets/images/backgrounds/footer-one-bg.png" alt=""></div> -->
                          <div class="row">
                              <!--Start Footer Widget Column-->
-                             <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
+                             <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.1s">
                                  <div class="footer-widget__column footer-widget__about">
                                      <div class="footer-widget__about-logo">
                                          <a href="/{{ app()->getLocale() }}">
@@ -25,20 +25,20 @@
                                      </p> -->
 
                                      <div class="footer-widget__about-contact-box">
-                                         <p class="phone">
+                                         <h5 class="phone">
                                              <a href="tel:{{ $settings?->phone ?? '123456789' }}">
                                                  <i class="fas fa-phone-square-alt"></i>{{ $settings?->phone ?? '123456789' }}
                                              </a>
-                                         </p>
-                                         <p>
+</h5>
+                                         <h5>
                                              <a href="mailto:{{ $settings?->email ?? 'admin@admin.com' }}">
                                                  <i class="fa fa-envelope"></i>{{ $settings?->email ?? 'admin@admin.com' }}
                                              </a>
-                                         </p>
-                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address }}</p>
-                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_turkey }}</p>
-                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_spain }}</p>
-                                         <p class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_uzbekistan }}</p>
+                                         </h5>
+                                         <h5 class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address }}</h5>
+                                         <h5 class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_turkey }}</h5>
+                                         <h5 class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_spain }}</h5>
+                                         <h5 class="text"><i class="fas fa-map-marker-alt"></i> {{ $settings?->translation?->address_uzbekistan }}</h5>
 
 
                                      </div>
@@ -47,7 +47,7 @@
                              <!--End Footer Widget Column-->
 
                              <!--Start Footer Widget Column-->
-                             <div class="col-xl-3 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
+                             <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.3s">
                                  <div class="footer-widget__column footer-widget__news">
                                      <h2 class="footer-widget__title">{{ __('footer.blogs') }}</h2>
                                      <ul class="footer-widget__news-list">
@@ -72,7 +72,7 @@
                              <!--End Footer Widget Column-->
 
                              <!--Start Footer Widget Column-->
-                             <div class="col-xl-2 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.5s">
+                             <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.5s">
                                  <div class="footer-widget__column footer-widget__explore">
                                      <h2 class="footer-widget__title">{{ __('footer.follow_us') }}</h2>
                                      <ul class="footer-widget__explore-list">
@@ -133,16 +133,16 @@
                              <!--End Footer Widget Column-->
 
                              <!--Start Footer Widget Column-->
-                             <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.7s">
+                             <!-- <div class="col-xl-4 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.7s">
                                  <div class="footer-widget__column footer-widget__newletter">
-                                     <!-- <h2 class="footer-widget__title">{{ __('footer.newsletter') }}</h2>
+                                     <h2 class="footer-widget__title">{{ __('footer.newsletter') }}</h2>
                                      <p>{{ __('footer.newsletter_text') }}</p>
 
                                      <form class="subscribe-form" action="{{ route('subscribe.store', app()->getLocale()) }}" method="POST">
                                          @csrf
                                          <input type="email" name="email" placeholder="{{ __('footer.email_placeholder') }}" required>
                                          <button type="submit">{{__('footer.go')}}</button>
-                                     </form> -->
+                                     </form>
 
 
                                      <div class="footer_azerbaijan">
@@ -151,7 +151,7 @@
                                          </div>
                                      </div>
                                  </div>
-                             </div>
+                             </div> -->
                              <!--End Footer Widget Column-->
                          </div>
                      </div>
@@ -170,6 +170,11 @@
                          <div class="footer-one__bottom-text">
                              <p>&copy; {{__('footer.copyright')}} <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a></p>
                          </div>
+                         <div class="footer_azerbaijan">
+                                         <div class="footer-widget__about-logo azerbaijan-logo">
+                                             <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
+                                         </div>
+                                     </div>
                          <!-- <div class="footer-one__bottom-social-links">
                              <ul class="footer-widget__explore-list">
                                  <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>

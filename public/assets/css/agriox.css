@@ -2311,6 +2311,90 @@ button {
     left: -2px;
     opacity: 1;
 }
+.main-slider {
+    position: relative;
+}
+
+/* main nav container fix */
+.main-slider__nav {
+    width: 100% !important;
+    position: absolute;
+    top: 64%;
+    left: 0;
+    transform: translateY(-50%);
+    display: block !important; /* flex ləğv edilir */
+}
+
+/* hər ox ayrı absolute */
+.main-slider__nav .swiper-button-prev {
+    position: absolute;
+    left: 15px;
+}
+
+.main-slider__nav .swiper-button-next {
+    position: absolute;
+    right: 15px;
+}
+
+/* DEFAULT (Desktop) */
+.main-slider__nav .swiper-button-prev,
+.main-slider__nav .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    background-color: none !important;
+    border: none;
+    color: #fff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .main-slider__nav .swiper-button-prev,
+    .main-slider__nav .swiper-button-next {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .main-slider__nav {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .main-slider__nav .swiper-button-prev {
+        left: 10px;
+    }
+
+    .main-slider__nav .swiper-button-next {
+        right: 10px;
+    }
+    #main-slider__swiper-button-prev {
+        left: 8px;
+    }
+    #main-slider__swiper-button-next {
+        right: 8px;
+    }
+}
+
+.main-slider__nav .swiper-button-prev {
+    position: absolute;
+    left: 40px;
+}
+
+.main-slider__nav .swiper-button-next {
+    position: absolute;
+    right: 40px;
+}
+
+/* Hover effekti */
+.main-slider__nav .swiper-button-prev:hover,
+.main-slider__nav .swiper-button-next:hover {
+
+    color: #fff;
+}
 
 /***
 =============================================
@@ -4448,16 +4532,16 @@ button {
 
 /* ===== NAVIGATION BUTTONS ===== */
 #blog-slider__swiper-button-prev,
-#blog-slider__swiper-button-next {
+#blog-slider__swiper-button-next{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #000 !important;          /* QARA OX */
+    color: #000 !important; /* QARA OX */
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: #fff;                /* Ağ dairə fon */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    background: #fff; /* Ağ dairə fon */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     transition: 0.3s ease;
 }
 
@@ -4494,58 +4578,55 @@ button {
     #blog-slider__swiper-button-next {
         right: -40px;
     }
-    
-.blog-slider-wrapper {
-    position: relative;
+
+    .blog-slider-wrapper {
+        position: relative;
+    }
+
+    .blog-slider-wrapper .swiper-container {
+        overflow: hidden;
+    }
+
+    .blog-slider-wrapper .swiper-slide {
+        height: auto;
+    }
+
+    /* NAVIGATION */
+    #blog-slider__swiper-button-prev,
+    #blog-slider__swiper-button-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000 !important;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
+        z-index: 10;
+    }
+
+    #blog-slider__swiper-button-prev {
+        left: 10px; /* Mobilde çölə yox içə yaxın */
+    }
+
+    #blog-slider__swiper-button-next {
+        right: 10px;
+    }
+
+    #blog-slider__swiper-button-prev::after,
+    #blog-slider__swiper-button-next::after {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    #blog-slider__swiper-button-prev:hover,
+    #blog-slider__swiper-button-next:hover {
+        background: #000;
+        color: #fff !important;
+    }
 }
-
-.blog-slider-wrapper .swiper-container {
-    overflow: hidden;
-}
-
-.blog-slider-wrapper .swiper-slide {
-    height: auto;
-}
-
-/* NAVIGATION */
-#blog-slider__swiper-button-prev,
-#blog-slider__swiper-button-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #000 !important;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s ease;
-    z-index: 10;
-}
-
-#blog-slider__swiper-button-prev {
-    left: 10px; /* Mobilde çölə yox içə yaxın */
-}
-
-#blog-slider__swiper-button-next {
-    right: 10px;
-}
-
-#blog-slider__swiper-button-prev::after,
-#blog-slider__swiper-button-next::after {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#blog-slider__swiper-button-prev:hover,
-#blog-slider__swiper-button-next:hover {
-    background: #000;
-    color: #fff !important;
-}
-}
-
-
-
 
 /***
 =============================================
@@ -4876,7 +4957,7 @@ button {
 
 .footer-widget__about-logo,
 .logo {
-    width: 200px;
+    width: 230px;
     height: 100px;
     position: relative;
     display: inline-block;
@@ -4888,7 +4969,7 @@ button {
 .footer_azerbaijan {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     /* padding-top: 20px; */
 }
 .azerbaijan-logo {
@@ -4994,7 +5075,7 @@ button {
     color: #ffffff;
     font-size: 15px;
     line-height: 36px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .footer-widget__about-contact-box .text i::before {
@@ -5009,7 +5090,7 @@ button {
     position: relative;
     display: block;
     margin-right: -50px;
-        margin-left: 15px;
+    margin-left: 15px;
 }
 
 .footer-widget__title {
@@ -7130,7 +7211,6 @@ button {
     position: relative;
     display: block;
     margin-top: 38px;
-
 }
 
 .about-three__products-list ul {
@@ -7262,7 +7342,7 @@ button {
     overflow: hidden;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 .about-three__img-box-img-inner img {
@@ -8274,8 +8354,8 @@ button {
     padding: 20px 0px 0px;
     height: 188px;
 }
-.blog-one__single-content a{
-        display: flex;
+.blog-one__single-content a {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -10657,6 +10737,7 @@ Sidebar
     .story-one__img::before {
         display: none;
     }
+
 }
 
 @media only screen and (max-width: 450px) {

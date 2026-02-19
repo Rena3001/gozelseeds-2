@@ -150,9 +150,8 @@
                              <div class="icon"><span class="fab fa-whatsapp"></span></div>
                              <div class="text">
                                  <p>{{ __('call.anytime') }}</p>
-                                 <a href="tel:{{ $settings?->phone ?? '123456789' }}">
-                                     {{ $settings?->phone ?? '123456789' }}
-                                 </a>
+                                 <a href="https://wa.me/{{ $settings->phone }}" target="_blank">{{ $settings->phone }}</a>
+
                              </div>
                          </div>
                      </div>

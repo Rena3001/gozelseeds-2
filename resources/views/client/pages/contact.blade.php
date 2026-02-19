@@ -175,7 +175,10 @@ $locale = app()->getLocale();
                                 </div>
                                 <div class="title">
                                     <span>{{__('call.anytime')}}</span>
-                                    <p><a href="tel:{{ $settings?->phone ?? '123456789' }}">{{ $settings?->phone ?? '123456789' }}</a></p>
+                                    <p>
+                                        <a href="https://wa.me/{{ $settings->phone }}" target="_blank">{{ $settings->phone }}</a>
+
+                                    </p>
                                 </div>
                             </li>
                         </ul>
@@ -188,15 +191,15 @@ $locale = app()->getLocale();
 
 <section class="contact-page-google-map">
     @if(!empty($settings?->map_iframe))
-        <iframe
-            src="{{ $settings->map_iframe }}"
-            width="100%"
-            height="455"
-            style="border:0;"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <iframe
+        src="{{ $settings->map_iframe }}"
+        width="100%"
+        height="455"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
     @endif
 </section>
 
