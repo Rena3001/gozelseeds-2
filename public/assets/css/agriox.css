@@ -8361,7 +8361,9 @@ button {
 }
 .vacancy-btn{
     justify-content: center;
-    align-items: center;
+    align-items: self-start;
+    gap: 8px;
+
 }
 
 .news-sidebar__left .blog-one__single-content h2 {
@@ -13454,7 +13456,7 @@ Sidebar
     line-height: 1.5em;
 }
 .blog-one__single-content {
-    height: 188px;
+    height: 270px;
 }
 
 /*--------------------------------------------------------------
