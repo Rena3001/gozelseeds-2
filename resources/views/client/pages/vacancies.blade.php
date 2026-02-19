@@ -4,12 +4,12 @@
 
 @section('content')
 @php
-    $locale = app()->getLocale();
+$locale = app()->getLocale();
 @endphp
 
 <!--Page Header Start-->
 <section class="page-header clearfix"
-         style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
+    style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
     <div class="container">
         <div class="page-header__inner text-center clearfix">
 
@@ -62,10 +62,17 @@
 
                         <!-- TITLE -->
                         <h2>
-                            <a href="{{ route('vacancies.show', ['locale' => $locale,$vacancy->translation?->slug]) }}">
-
+                            @if($vacancy->translation?->slug)
+                            <a href="{{ route('vacancies.show', [
+        'locale' => $locale,
+        'slug' => $vacancy->translation->slug
+    ]) }}">
                                 {{ $vacancy->translation?->title }}
                             </a>
+                            @else
+                            <span>{{ $vacancy->translation?->title }}</span>
+                            @endif
+
                         </h2>
 
                         <!-- SHORT INFO -->
@@ -75,10 +82,10 @@
 
                         <!-- APPLY BUTTON -->
                         @if($vacancy->email)
-                            <a class="thm-btn"
-                               href="mailto:{{ $vacancy->email }}?subject={{ urlencode($vacancy->translation?->title) }}">
-                                {{ __('vacancies.apply_now') }}
-                            </a>
+                        <a class="thm-btn"
+                            href="mailto:{{ $vacancy->email }}?subject={{ urlencode($vacancy->translation?->title) }}">
+                            {{ __('vacancies.apply_now') }}
+                        </a>
                         @endif
 
                     </div>
@@ -137,7 +144,7 @@
 
                 </div>
                 @endif
-             
+
             </div>
             <div class="col-lg-6">
                 @if(session('status') === 'success')
@@ -198,6 +205,6 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 @endsection

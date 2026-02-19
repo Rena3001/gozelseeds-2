@@ -4,12 +4,12 @@
 
 @section('content')
 @php
-    $locale = app()->getLocale();
+$locale = app()->getLocale();
 @endphp
 
 <!--Page Header Start-->
 <section class="page-header clearfix"
-         style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
+    style="background-image:url({{ asset('storage/'.$page->header_bg) }});">
     <div class="container">
         <div class="page-header__inner text-center clearfix">
 
@@ -45,10 +45,10 @@
                 <div class="news-details__left">
 
                     @if($vacancy->image)
-                        <div class="blog-one__single-img mb-4">
-                            <img src="{{ asset('storage/'.$vacancy->image) }}"
-                                 alt="{{ $vacancy->translation?->title }}">
-                        </div>
+                    <div class="blog-one__single-img mb-4">
+                        <img src="{{ asset('storage/'.$vacancy->image) }}"
+                            alt="{{ $vacancy->translation?->title }}">
+                    </div>
                     @endif
 
                     <div class="blog-one__single-content blog-details">
@@ -57,18 +57,18 @@
 
                         {{-- DESCRIPTION --}}
                         @if($vacancy->translation?->description)
-                            <div class="mb-4">
-                                <h3>{{ __('vacancies.description') }}</h3>
-                                {!! $vacancy->translation->description !!}
-                            </div>
+                        <div class="mb-4">
+                            <h3>{{ __('vacancies.description') }}</h3>
+                            {!! $vacancy->translation->description !!}
+                        </div>
                         @endif
 
                         {{-- REQUIREMENTS --}}
                         @if($vacancy->translation?->requirements)
-                            <div class="mb-4">
-                                <h3>{{ __('vacancies.requirements') }}</h3>
-                                {!! $vacancy->translation->requirements !!}
-                            </div>
+                        <div class="mb-4">
+                            <h3>{{ __('vacancies.requirements') }}</h3>
+                            {!! $vacancy->translation->requirements !!}
+                        </div>
                         @endif
 
                     </div>
@@ -91,50 +91,50 @@
                         <ul class="meta-info">
 
                             @if($vacancy->translation?->location)
-                                <li>
-                                    <strong>{{ __('vacancies.location') }}:</strong>
-                                    {{ $vacancy->translation->location }}
-                                </li>
+                            <li>
+                                <strong>{{ __('vacancies.location') }}:</strong>
+                                {{ $vacancy->translation->location }}
+                            </li>
                             @endif
 
                             @if($vacancy->translation?->category)
-                                <li>
-                                    <strong>{{ __('vacancies.category') }}:</strong>
-                                    {{ $vacancy->translation->category }}
-                                </li>
+                            <li>
+                                <strong>{{ __('vacancies.category') }}:</strong>
+                                {{ $vacancy->translation->category }}
+                            </li>
                             @endif
 
                             @if($vacancy->translation?->employment_type)
-                                <li>
-                                    <strong>{{ __('vacancies.type') }}:</strong>
-                                    {{ $vacancy->translation->employment_type }}
-                                </li>
+                            <li>
+                                <strong>{{ __('vacancies.type') }}:</strong>
+                                {{ $vacancy->translation->employment_type }}
+                            </li>
                             @endif
 
                             @if($vacancy->salary)
-                                <li>
-                                    <strong>{{ __('vacancies.salary') }}:</strong>
-                                    {{ $vacancy->salary }}
-                                </li>
+                            <li>
+                                <strong>{{ __('vacancies.salary') }}:</strong>
+                                {{ $vacancy->salary }}
+                            </li>
                             @endif
 
                             @if($vacancy->deadline)
-                                <li>
-                                    <strong>{{ __('vacancies.deadline') }}:</strong>
-                                    {{ $vacancy->deadline->translatedFormat('d F, Y') }}
-                                </li>
+                            <li>
+                                <strong>{{ __('vacancies.deadline') }}:</strong>
+                                {{ $vacancy->deadline->translatedFormat('d F, Y') }}
+                            </li>
                             @endif
 
                         </ul>
 
                         {{-- APPLY BUTTON --}}
                         @if($vacancy->email)
-                            <div class="mt-4">
-                                <a href="mailto:{{ $vacancy->email }}?subject={{ urlencode($vacancy->translation?->title) }}"
-                                   class="thm-btn">
-                                    {{ __('vacancies.apply_now') }}
-                                </a>
-                            </div>
+                        <div class="mt-4">
+                            <a href="mailto:{{ $vacancy->email }}?subject={{ urlencode($vacancy->translation?->title) }}"
+                                class="thm-btn">
+                                {{ __('vacancies.apply_now') }}
+                            </a>
+                        </div>
                         @endif
 
                     </div>
@@ -148,7 +148,7 @@
     </div>
 </section>
 <!--Vacancy Details End-->
-        {{-- LATEST VACANCIES --}}
+{{-- LATEST VACANCIES --}}
 @if(isset($latestVacancies) && $latestVacancies->count())
 
 <section class="blog-one pt-80 pb-80">
@@ -166,7 +166,7 @@
         <div class="blog-slider-wrapper">
 
             <div class="swiper-container thm-swiper__slider"
-                 data-swiper-options='{
+                data-swiper-options='{
                     "slidesPerView": 3,
                     "spaceBetween": 30,
                     "loop": true,
@@ -191,7 +191,7 @@
                             @if($item->image)
                             <div class="blog-one__single-img">
                                 <img src="{{ asset('storage/'.$item->image) }}"
-                                     alt="{{ $item->translation?->title }}">
+                                    alt="{{ $item->translation?->title }}">
                                 <div class="date-box">
                                     <span>
                                         {{ $item->created_at?->translatedFormat('d F, Y') }}
@@ -203,9 +203,18 @@
                             <div class="blog-one__single-content">
 
                                 <h2>
-                                    <a href="{{ route('vacancies.show', [$locale, $item->translation?->slug]) }}">
+
+                                    @if($item->translation?->slug)
+                                    <a href="{{ route('vacancies.show', [
+        'locale' => $locale,
+        'slug' => $item->translation->slug
+    ]) }}">
                                         {{ $item->translation?->title }}
                                     </a>
+                                    @else
+                                    <span>{{ $item->translation?->title }}</span>
+                                    @endif
+
                                 </h2>
 
                                 <p>
@@ -213,10 +222,10 @@
                                 </p>
 
                                 @if($item->email)
-                                    <a class="thm-btn"
-                                       href="mailto:{{ $item->email }}?subject={{ urlencode($item->translation?->title) }}">
-                                        {{ __('vacancies.apply_now') }}
-                                    </a>
+                                <a class="thm-btn"
+                                    href="mailto:{{ $item->email }}?subject={{ urlencode($item->translation?->title) }}">
+                                    {{ __('vacancies.apply_now') }}
+                                </a>
                                 @endif
 
                             </div>
@@ -285,7 +294,7 @@
 
                 </div>
                 @endif
-             
+
             </div>
             <div class="col-lg-6">
                 @if(session('status') === 'success')
@@ -346,6 +355,6 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 @endsection
