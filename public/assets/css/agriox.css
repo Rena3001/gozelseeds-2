@@ -2446,7 +2446,7 @@ button {
 }
 
 .about-one__left {
-   position: relative;
+    position: relative;
     display: flex;
     max-width: 600px;
     width: 100%;
@@ -2493,7 +2493,7 @@ button {
 }
 
 .about-one__left-img-inner {
-       width: 500px;
+    width: 500px;
     height: 500px;
     position: relative;
     display: flex;
@@ -4431,6 +4431,122 @@ button {
     transform-origin: left center;
 }
 
+/* ===== BLOG SLIDER WRAPPER ===== */
+.blog-slider-wrapper {
+    position: relative;
+}
+
+/* ===== SWIPER CONTAINER ===== */
+.blog-slider-wrapper .swiper-container {
+    overflow: hidden;
+}
+
+/* ===== SLIDE HEIGHT FIX ===== */
+.blog-slider-wrapper .swiper-slide {
+    height: auto;
+}
+
+/* ===== NAVIGATION BUTTONS ===== */
+#blog-slider__swiper-button-prev,
+#blog-slider__swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000 !important;          /* QARA OX */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #fff;                /* Ağ dairə fon */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+/* Sol tərəf */
+#blog-slider__swiper-button-prev {
+    left: -70px;
+}
+
+/* Sağ tərəf */
+#blog-slider__swiper-button-next {
+    right: -70px;
+}
+
+/* OX İKON ÖLÇÜ */
+#blog-slider__swiper-button-prev::after,
+#blog-slider__swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* HOVER EFFEKT */
+#blog-slider__swiper-button-prev:hover,
+#blog-slider__swiper-button-next:hover {
+    background: #000;
+    color: #fff !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    #blog-slider__swiper-button-prev {
+        left: -40px;
+    }
+
+    #blog-slider__swiper-button-next {
+        right: -40px;
+    }
+    
+.blog-slider-wrapper {
+    position: relative;
+}
+
+.blog-slider-wrapper .swiper-container {
+    overflow: hidden;
+}
+
+.blog-slider-wrapper .swiper-slide {
+    height: auto;
+}
+
+/* NAVIGATION */
+#blog-slider__swiper-button-prev,
+#blog-slider__swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+#blog-slider__swiper-button-prev {
+    left: 10px; /* Mobilde çölə yox içə yaxın */
+}
+
+#blog-slider__swiper-button-next {
+    right: 10px;
+}
+
+#blog-slider__swiper-button-prev::after,
+#blog-slider__swiper-button-next::after {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#blog-slider__swiper-button-prev:hover,
+#blog-slider__swiper-button-next:hover {
+    background: #000;
+    color: #fff !important;
+}
+}
+
+
+
+
 /***
 =============================================
     Company Logos One
@@ -4772,12 +4888,12 @@ button {
 .footer_azerbaijan {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
     /* padding-top: 20px; */
 }
 .azerbaijan-logo {
-    width: 160px;
-    height: 100px;
+    width: 200px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4798,9 +4914,9 @@ button {
     /* margin-top: 46px;
         margin-left: 198px; */
 }
-.azerbaijan-logo img {
+/* .azerbaijan-logo img {
     width: 160px;
-}
+} */
 
 .footer-widget__about-logo a {
     position: relative;
@@ -4893,6 +5009,7 @@ button {
     position: relative;
     display: block;
     margin-right: -50px;
+        margin-left: 15px;
 }
 
 .footer-widget__title {
@@ -4975,14 +5092,23 @@ button {
     display: block;
     margin-top: -4px;
 }
-.footer-widget__explore-list a{
+.footer-widget__explore-list a {
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
     -webkit-transition-delay: 0.1s;
     transition-delay: 0.1s;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-widget__explore-list i {
+    width: 20px;
+    height: 20px;
 }
 .footer-widget__explore-list a:hover {
-    color: #fff;
+    color: var(--agriox-base, #f1cf69);
     transition: all 200ms linear;
     -webkit-transition-delay: 0.1s;
     transition-delay: 0.1s;
@@ -7004,6 +7130,7 @@ button {
     position: relative;
     display: block;
     margin-top: 38px;
+
 }
 
 .about-three__products-list ul {
@@ -7135,6 +7262,7 @@ button {
     overflow: hidden;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 .about-three__img-box-img-inner img {
@@ -8145,6 +8273,11 @@ button {
     box-shadow: none;
     padding: 20px 0px 0px;
     height: 188px;
+}
+.blog-one__single-content a{
+        display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-sidebar__left .blog-one__single-content h2 {

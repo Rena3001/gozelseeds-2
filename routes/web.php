@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\SubscribeController;
+use App\Http\Controllers\Front\VacancyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,8 @@ Route::group([
 
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+    Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancies');
+    Route::get('/vacancies/{slug}',[VacancyController::class, 'show'])->name('vacancies.show');
 
 
 

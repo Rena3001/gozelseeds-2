@@ -15,23 +15,23 @@ class BlogsController extends Controller
         if (in_array($locale, ['az', 'en', 'ru'])) {
             app()->setLocale($locale);
         }
-     $posts = Post::with('translation')
-    ->where('is_active', true)
-    ->orderBy('order')
-    ->orderByDesc('published_at')
-    ->get();
+        $posts = Post::with('translation')
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->orderByDesc('published_at')
+            ->get();
 
-             $page = Page::where('slug', 'about')
+        $page = Page::where('slug', 'about')
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
 
-        return view('client.pages.blogs', compact('posts', 'locale','page'));
+        return view('client.pages.blogs', compact('posts', 'locale', 'page'));
     }
     public function show($locale, $post)
     {
         app()->setLocale($locale);
- $page = Page::where('slug', 'about')
+        $page = Page::where('slug', 'about')
             ->with('translation')
             ->where('is_active', true)
             ->firstOrFail();
@@ -47,6 +47,6 @@ class BlogsController extends Controller
             ->limit(3)
             ->get();
 
-        return view('client.pages.blogs-details', compact('post', 'latestPosts','page'));
+        return view('client.pages.blogs-details', compact('post', 'latestPosts', 'page'));
     }
 }

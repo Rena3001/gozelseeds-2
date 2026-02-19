@@ -74,17 +74,62 @@
                              <!--Start Footer Widget Column-->
                              <div class="col-xl-2 col-lg-6 col-md-6 wow animated fadeInUp" data-wow-delay="0.5s">
                                  <div class="footer-widget__column footer-widget__explore">
-                                     <h2 class="footer-widget__title">{{ __('footer.explore') }}</h2>
+                                     <h2 class="footer-widget__title">{{ __('footer.follow_us') }}</h2>
                                      <ul class="footer-widget__explore-list">
-                                         <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>
-                                         <li><a href="{{ route('news', app()->getLocale()) }}">{{ __('menu.news') }}</a></li>
 
-                                         <li><a href="{{ $settings->catalog_link }}">{{ __('footer.links.services') }}</a></li>
-                                         <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('footer.links.about') }}</a></li>
-                                         <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('footer.links.contact') }}</a></li>
+                                         <li>
+                                             <a href="{{ $settings?->facebook ?? '#' }}">
+                                                 <i class="fab fa-facebook"></i>
+                                                 <span>{{ __('facebook') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->instagram ?? '#' }}">
+                                                 <i class="fab fa-instagram"></i>
+                                                 <span>{{ __('instagram') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->youtube ?? '#' }}">
+                                                 <i class="fab fa-youtube"></i>
+                                                 <span>{{ __('youtube') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->tiktok ?? '#' }}">
+                                                 <i class="fab fa-tiktok"></i>
+                                                 <span>{{ __('tiktok') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->linkedin ?? '#' }}">
+                                                 <i class="fab fa-linkedin"></i>
+                                                 <span>{{ __('linkedin') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->telegram ?? '#' }}">
+                                                 <i class="fab fa-telegram"></i>
+                                                 <span>{{ __('telegram') }}</span>
+                                             </a>
+                                         </li>
+
+                                         <li>
+                                             <a href="{{ $settings?->whatsapp ?? '#' }}">
+                                                 <i class="fab fa-whatsapp"></i>
+                                                 <span>{{ __('whatsapp') }}</span>
+                                             </a>
+                                         </li>
+
                                      </ul>
                                  </div>
                              </div>
+
                              <!--End Footer Widget Column-->
 
                              <!--Start Footer Widget Column-->
@@ -125,17 +170,16 @@
                          <div class="footer-one__bottom-text">
                              <p>&copy; {{__('footer.copyright')}} <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a></p>
                          </div>
-                         <div class="footer-one__bottom-social-links">
-                             <ul>
-                                 <li><a href="{{ $settings?->facebook ?? '#' }}"><i class="fab fa-facebook"></i></a></li>
-                                 <li><a href="{{ $settings?->instagram ?? '#' }}"><i class="fab fa-instagram"></i></a></li>
-                                 <li><a href="{{ $settings?->youtube ?? '#' }}"><i class="fab fa-youtube"></i></a></li>
-                                 <li><a href="{{ $settings?->tiktok ?? '#' }}"><i class="fab fa-tiktok"></i></a></li>
-                                 <li><a href="{{ $settings?->linkedin ?? '#' }}"><i class="fab fa-linkedin"></i></a></li>
-                                 <li><a href="{{ $settings?->telegram ?? '#' }}"><i class="fab fa-telegram"></i></a></li>
-                                 <li><a href="{{ $settings?->whatsapp ?? '#' }}"><i class="fab fa-whatsapp"></i></a></li>
+                         <!-- <div class="footer-one__bottom-social-links">
+                             <ul class="footer-widget__explore-list">
+                                 <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>
+                                 <li><a href="{{ route('news', app()->getLocale()) }}">{{ __('menu.news') }}</a></li>
+
+                                 <li><a href="{{ $settings->catalog_link }}">{{ __('footer.links.services') }}</a></li>
+                                 <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('footer.links.about') }}</a></li>
+                                 <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('footer.links.contact') }}</a></li>
                              </ul>
-                         </div>
+                         </div> -->
                      </div>
                  </div>
              </div>

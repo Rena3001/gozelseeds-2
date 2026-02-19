@@ -52,29 +52,5 @@
         const options = JSON.parse(el.getAttribute('data-swiper-options'));
         new Swiper(el, options);
     });
-    document.addEventListener("DOMContentLoaded", function() {
 
-        const isMobile = window.innerWidth < 768;
-
-        const swiper = new Swiper(".thm-swiper__slider", {
-            slidesPerView: 1,
-            loop: true,
-            effect: "fade",
-            pagination: {
-                el: "#main-slider-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: "#main-slider__swiper-button-next",
-                prevEl: "#main-slider__swiper-button-prev",
-            },
-
-            // ⬇️ Əsas hissə
-            autoplay: isMobile ? false : {
-                delay: 7000,
-                disableOnInteraction: false,
-            }
-        });
-
-    });
 </script>

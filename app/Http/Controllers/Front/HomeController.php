@@ -68,7 +68,6 @@ class HomeController extends Controller
             ->where('is_active', true)
             ->orderBy('order')
             ->orderByDesc('published_at')
-            ->take(3)
             ->get();
         $contactSection = ContactSection::where('is_active', true)
             ->with('translation')

@@ -116,6 +116,7 @@
                                      </li>
 
                                      <li><a href="{{ route('news', app()->getLocale()) }}">{{ __('menu.news') }}</a></li>
+                                     <li><a href="{{ route('vacancies', app()->getLocale()) }}">{{ __('menu.vacancies') }}</a></li>
                                      <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('menu.contact') }}</a></li>
                                  </ul>
                              </div>

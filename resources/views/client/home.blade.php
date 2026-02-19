@@ -458,7 +458,7 @@ $t = $about?->translation;
 
 
 
-
+ 
 
 <!--Blog One Start-->
 <section class="blog-one">
@@ -466,42 +466,66 @@ $t = $about?->translation;
 
     <div class="container">
         <div class="sec-title text-center">
-            <!-- <div class="icon">
-                <img src="{{ $settings?->logo_dark ? asset('storage/'.$settings->logo_dark) : 'https://via.placeholder.com/180x50?text=Logo' }}" alt="">
-            </div> -->
             <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
             <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
         </div>
-        <div class="row">
-            @foreach($posts as $post)
-            <!--Start Single Blog One-->
-            <div class="col-xl-4 col-lg-4  wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="blog-one__single">
-                    <div class="blog-one__single-img">
-                        <img src="{{ asset('storage/'.$post->image) }}" alt="">
-                        <div class="date-box">
-                            <span>{{ $post->published_at?->translatedFormat('d F, Y') }}
-                            </span>
-                        </div>
-                        <div class="overlay-icon">
-                            <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
 
+        <!-- WRAPPER əlavə etdik -->
+        <div class="blog-slider-wrapper">
+
+            <div class="swiper-container thm-swiper__slider"
+                 data-swiper-options='{
+                    "slidesPerView": 3,
+                    "spaceBetween": 30,
+                    "loop": true,
+                    "slidesPerGroup": 1,
+                    "navigation": {
+                        "nextEl": "#blog-slider__swiper-button-next",
+                        "prevEl": "#blog-slider__swiper-button-prev"
+                    },
+                    "breakpoints": {
+                        "0": { "slidesPerView": 1 },
+                        "768": { "slidesPerView": 2 },
+                        "1200": { "slidesPerView": 3 }
+                    }
+                 }'>
+
+                <div class="swiper-wrapper">
+
+                    @foreach($posts as $post)
+                    <div class="swiper-slide">
+                        <div class="blog-one__single">
+                            <div class="blog-one__single-img">
+                                <img src="{{ asset('storage/'.$post->image) }}" alt="">
+                                <div class="date-box">
+                                    <span>{{ $post->published_at?->translatedFormat('d F, Y') }}</span>
+                                </div>
+                            </div>
+
+                            <div class="blog-one__single-content">
+                                <h2>
+                                    <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
+                                        {{ $post->translation?->title }}
+                                    </a>
+                                </h2>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="blog-one__single-content">
-
-                        <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">{{ $post->translation?->title }}</a></h2>
-                    </div>
                 </div>
+
             </div>
-            <!--End Single Blog One-->
-            @endforeach
+
+            <!-- OXLAR İNDİ SLIDER-DƏN ÇÖLDƏDİR -->
+            <div class="swiper-button-prev" id="blog-slider__swiper-button-prev"></div>
+            <div class="swiper-button-next" id="blog-slider__swiper-button-next"></div>
+
         </div>
+
     </div>
 </section>
+
 <!--Blog One End-->
 
 
