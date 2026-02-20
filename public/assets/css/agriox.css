@@ -7346,7 +7346,7 @@ button {
 .about-three__img-box-img::before {
     position: absolute;
     top: 350px;
-    right: -30px;
+    right: 40px;
     bottom: 0;
     width: 30px;
     background: var(--agriox-base, #f1cf69);
