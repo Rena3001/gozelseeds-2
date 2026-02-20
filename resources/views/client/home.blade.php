@@ -13,12 +13,11 @@ $icons = $services->pluck('icon')->toArray();
 
 <!--Main Slider Start-->
 <section class="main-slider main-slider-one">
-        <div class="swiper-container thm-swiper__slider"
-         data-swiper-options='{
+    <div class="swiper-container thm-swiper__slider"
+        data-swiper-options='{
                 "slidesPerView": 1,
-                "loop": false,
-                "effect": "fade",
-                "watchOverflow": false,
+                "loop": true,
+                "effect": "slide",
                 "fadeEffect": {
                     "crossFade": true
                 },
@@ -567,6 +566,7 @@ $t = $about?->translation;
                     "slidesPerView": 4,
                     "spaceBetween": 30,
                     "loop": true,
+                "effect": "slide",
                     "slidesPerGroup": 1,
                     "navigation": {
                         "nextEl": "#blog-slider__swiper-button-next",
@@ -630,10 +630,12 @@ $t = $about?->translation;
             </div>
 
             <!-- Navigation -->
-            <div class="swiper-button-prev  services-prev" id="blog-slider__swiper-button-prev"></div>
-            <div class="swiper-button-next services-next" id="blog-slider__swiper-button-next"></div>
+           
         </div>
-
+ <div class="services-btn">
+                <div class="swiper-button-prev  services-prev" id="blog-slider__swiper-button-prev"></div>
+                <div class="swiper-button-next services-next" id="blog-slider__swiper-button-next"></div>
+            </div>
     </div>
 </section>
 <!--Kateqoriyalar end-->
