@@ -2065,6 +2065,7 @@ button {
 
 .main-slider .image-layer-overlay {
     position: absolute;
+    pointer-events: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -2223,7 +2224,7 @@ button {
     bottom: 50px;
     right: 0;
     width: 150px;
-    z-index: 100;
+    z-index: 999;
 }
 
 .main-slider__nav .swiper-button-next,
@@ -2235,6 +2236,7 @@ button {
     bottom: auto;
     z-index: 100;
     width: 50px;
+    pointer-events: all;
     height: 50px;
     color: rgba(255, 255, 255, 0.4);
     font-size: 15px;

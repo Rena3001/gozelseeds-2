@@ -13,15 +13,25 @@ $icons = $services->pluck('icon')->toArray();
 
 <!--Main Slider Start-->
 <section class="main-slider main-slider-one">
-    <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true, "effect": "fade", "pagination": {
-            "el": "#main-slider-pagination",
-            "type": "bullets",
-            "clickable": true
-            },
-            "navigation": {
-            "nextEl": "#main-slider__swiper-button-next",
-            "prevEl": "#main-slider__swiper-button-prev"
-            }}'>
+        <div class="swiper-container thm-swiper__slider"
+         data-swiper-options='{
+                "slidesPerView": 1,
+                "loop": false,
+                "effect": "fade",
+                "watchOverflow": false,
+                "fadeEffect": {
+                    "crossFade": true
+                },
+                "navigation": {
+                    "nextEl": "#main-slider__swiper-button-next",
+                    "prevEl": "#main-slider__swiper-button-prev"
+                },
+                "pagination": {
+                    "el": "#main-slider-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                }
+            }'>
 
         <div class="swiper-wrapper">
             @foreach($sliders as $slider)

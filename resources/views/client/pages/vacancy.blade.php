@@ -119,10 +119,10 @@ $locale = app()->getLocale();
                             @endif
 
                             @if($vacancy->deadline)
-                            <li>
+                            <!-- <li>
                                 <strong>{{ __('vacancies.deadline') }}:</strong>
                                 {{ $vacancy->deadline->translatedFormat('d F, Y') }}
-                            </li>
+                            </li> -->
                             @endif
 
                         </ul>
