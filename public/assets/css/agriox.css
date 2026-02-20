@@ -4533,7 +4533,9 @@ button {
 
 /* ===== NAVIGATION BUTTONS ===== */
 #blog-slider__swiper-button-prev,
-#blog-slider__swiper-button-next {
+#blog-slider__swiper-button-next,
+#service-slider__swiper-button-next,
+#service-slider__swiper-button-prev {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -4570,7 +4572,9 @@ button {
 
 /* OX İKON ÖLÇÜ */
 #blog-slider__swiper-button-prev::after,
-#blog-slider__swiper-button-next::after {
+#blog-slider__swiper-button-next::after,
+#service-slider__swiper-button-next::after,
+#service-slider__swiper-button-prev::after {
     font-size: 18px;
     font-weight: bold;
 }
