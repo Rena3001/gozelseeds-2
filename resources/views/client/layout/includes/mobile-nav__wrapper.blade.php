@@ -42,8 +42,8 @@
                     <a href="mailto:{{ $settings?->email ?? 'admin@admin.com' }}">{{ $settings?->email ?? 'admin@admin.com' }}</a>
                 </li>
                 <li>
-                    <i class="fa fa-phone"></i>
-                    <a href="tel:{{ $settings?->phone ?? '123456789' }}">{{ $settings?->phone ?? '123456789' }}</a>
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/{{ $settings?->phone ?? '123456789' }}">{{ $settings?->phone ?? '123456789' }}</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">

@@ -51,7 +51,7 @@ $locale = app()->getLocale();
                     </div>
                     @endif
 
-                    <div class="blog-one__single-content blog-details">
+                    <div class="blog-one__single-content">
 
                         <h2>{{ $vacancy->translation?->title }}</h2>
 
@@ -151,7 +151,7 @@ $locale = app()->getLocale();
 {{-- LATEST VACANCIES --}}
 @if(isset($latestVacancies) && $latestVacancies->count())
 
-<section class="blog-one pt-80 pb-80">
+<section class="blog-one pt-80 pb-80 vacancy-one">
     <div class="container">
 
         <div class="sec-title text-center">
@@ -170,10 +170,12 @@ $locale = app()->getLocale();
                     "slidesPerView": 3,
                     "spaceBetween": 30,
                     "loop": true,
+                    
+
                     "slidesPerGroup": 1,
                     "navigation": {
-                        "nextEl": "#vacancy-slider-next",
-                        "prevEl": "#vacancy-slider-prev"
+                        "nextEl": "#blog-slider__swiper-button-next",
+                        "prevEl": "#blog-slider__swiper-button-prev"
                     },
                     "breakpoints": {
                         "0": { "slidesPerView": 1 },
@@ -239,8 +241,8 @@ $locale = app()->getLocale();
             </div>
 
             <!-- NAVIGATION -->
-            <div class="swiper-button-prev" id="vacancy-slider-prev"></div>
-            <div class="swiper-button-next" id="vacancy-slider-next"></div>
+            <div class="swiper-button-prev vacancy-prev" id="blog-slider__swiper-button-next"></div>
+            <div class="swiper-button-next vacancy-next" id="blog-slider__swiper-button-prev"></div>
 
         </div>
 

@@ -620,8 +620,8 @@ $t = $about?->translation;
             </div>
 
             <!-- Navigation -->
-            <div class="swiper-button-prev" id="blog-slider__swiper-button-prev"></div>
-            <div class="swiper-button-next" id="blog-slider__swiper-button-next"></div>
+            <div class="swiper-button-prev  services-prev" id="blog-slider__swiper-button-prev"></div>
+            <div class="swiper-button-next services-next" id="blog-slider__swiper-button-next"></div>
         </div>
 
     </div>

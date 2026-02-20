@@ -16,9 +16,9 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Momo+Signature&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Momo+Signature&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="{{asset('assets/vendors/bootstrap/css/bootstrap.min.css')}}">
@@ -39,8 +39,6 @@
     <link rel="stylesheet" href="{{asset('assets/vendors/twentytwenty/twentytwenty.css')}}">
 
     <!-- template styles -->
-   <link rel="stylesheet" 
-      href="{{ asset('assets/css/agriox.css') }}?v={{ filemtime(public_path('assets/css/agriox.css')) }}">
 
 
     <!-- RTL CSS -->
@@ -53,41 +51,42 @@
     <!-- toolbar css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/toolbar/css/toolbar.css')}}">
 
+    <link rel="stylesheet"
+        href="{{ asset('assets/css/agriox.css') }}?v={{ filemtime(public_path('assets/css/agriox.css')) }}">
     @push('styles')
     <style>
         .menu-item-has-children {
-    position: relative;
-}
+            position: relative;
+        }
 
-.menu-item-has-children > .sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 220px;
-    background: #fff;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.25s ease;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    z-index: 999;
-}
+        .menu-item-has-children>.sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
 
-.menu-item-has-children:hover > .sub-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
+        .menu-item-has-children:hover>.sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-.sub-menu li a {
-    display: block;
-    padding: 10px 15px;
-    color: #333;
-}
+        .sub-menu li a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+        }
 
-.sub-menu li a:hover {
-    background: #f5f5f5;
-}
-
+        .sub-menu li a:hover {
+            background: #f5f5f5;
+        }
     </style>
     @endpush

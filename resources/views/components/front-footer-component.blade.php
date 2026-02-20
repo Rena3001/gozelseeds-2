@@ -26,8 +26,8 @@
 
                                      <div class="footer-widget__about-contact-box">
                                          <h5 class="phone">
-                                             <a href="tel:{{ $settings?->phone ?? '123456789' }}">
-                                                 <i class="fas fa-phone-square-alt"></i>{{ $settings?->phone ?? '123456789' }}
+                                             <a href="https://wa.me/{{ $settings?->phone ?? '123456789' }}">
+                                                 <i class="fab fa-whatsapp"></i>{{ $settings?->phone ?? '123456789' }}
                                              </a>
 </h5>
                                          <h5>

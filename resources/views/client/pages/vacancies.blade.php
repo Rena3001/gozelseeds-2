@@ -81,12 +81,14 @@ $locale = app()->getLocale();
                         </p>
 
                         <!-- APPLY BUTTON -->
-                        @if($vacancy->email)
+
                         <a class="thm-btn"
-                            href="mailto:{{ $vacancy->email }}?subject={{ urlencode($vacancy->translation?->title) }}">
-                            {{ __('vacancies.apply_now') }}
+                            href="{{ route('vacancies.show', [
+        'locale' => $locale,
+        'slug' => $vacancy->translation->slug
+    ]) }}">
+                            {{ __('vacancies.read_more') }}
                         </a>
-                        @endif
 
                     </div>
 

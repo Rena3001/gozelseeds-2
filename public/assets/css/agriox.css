@@ -2392,7 +2392,6 @@ button {
 /* Hover effekti */
 .main-slider__nav .swiper-button-prev:hover,
 .main-slider__nav .swiper-button-next:hover {
-
     color: #fff;
 }
 
@@ -4532,7 +4531,7 @@ button {
 
 /* ===== NAVIGATION BUTTONS ===== */
 #blog-slider__swiper-button-prev,
-#blog-slider__swiper-button-next{
+#blog-slider__swiper-button-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -4553,6 +4552,18 @@ button {
 /* Sağ tərəf */
 #blog-slider__swiper-button-next {
     right: -70px;
+}
+.vacancy-prev {
+    left: -4rem!important;
+}
+.vacancy-next {
+    left: 74.5rem!important;
+}
+.services-next {
+    left: 87rem!important;
+}
+.services-prev {
+    left: 90px !important;
 }
 
 /* OX İKON ÖLÇÜ */
@@ -4625,6 +4636,19 @@ button {
     #blog-slider__swiper-button-next:hover {
         background: #000;
         color: #fff !important;
+    }
+    .vacancy-prev {
+        left: 0.5rem!important;
+
+    }
+    .vacancy-next {
+        left: 22rem!important;
+    }
+    .services-next {
+        left: 23rem!important;
+    }
+    .services-prev {
+        left: 25px !important;
     }
 }
 
@@ -8359,11 +8383,10 @@ button {
     justify-content: center;
     align-items: center;
 }
-.vacancy-btn{
+.vacancy-btn {
     justify-content: center;
     align-items: self-start;
     gap: 8px;
-
 }
 
 .news-sidebar__left .blog-one__single-content h2 {
@@ -10743,7 +10766,6 @@ Sidebar
     .story-one__img::before {
         display: none;
     }
-
 }
 
 @media only screen and (max-width: 450px) {
@@ -13455,8 +13477,11 @@ Sidebar
     font-size: 20px;
     line-height: 1.5em;
 }
-.blog-one__single-content {
+.blog-details {
     height: 270px;
+}
+.vacancy-one {
+    padding: 0;
 }
 
 /*--------------------------------------------------------------
