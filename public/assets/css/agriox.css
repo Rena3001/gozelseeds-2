@@ -532,7 +532,6 @@ button {
     height: 70px;
     background: var(--agriox-base, #f1cf69);
     position: fixed;
-    bottom: 91px;
     right: 20px;
     z-index: 99;
     border-top-left-radius: 10px;
@@ -543,6 +542,8 @@ button {
     display: none;
     transition: all 0.25s ease;
     overflow: hidden;
+    bottom: 80px;
+    height: 61px;
 }
 
 .scroll-to-top::before {
@@ -4558,13 +4559,13 @@ button {
     right: -70px;
 }
 .vacancy-prev {
-    left: -4rem!important;
+    left: -4rem !important;
 }
 .vacancy-next {
-    left: 74.5rem!important;
+    left: 74.5rem !important;
 }
 .services-next {
-    left: 87rem!important;
+    left: 87rem !important;
 }
 .services-prev {
     left: 90px !important;
@@ -4644,14 +4645,13 @@ button {
         color: #fff !important;
     }
     .vacancy-prev {
-        left: 0.5rem!important;
-
+        left: 0.5rem !important;
     }
     .vacancy-next {
-        left: 22rem!important;
+        left: 22rem !important;
     }
     .services-next {
-        left: 84%!important;
+        left: 84% !important;
     }
     .services-prev {
         left: 25px !important;
