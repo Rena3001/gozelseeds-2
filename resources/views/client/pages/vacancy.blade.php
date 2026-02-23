@@ -184,7 +184,8 @@ $locale = app()->getLocale();
                     },
                     "autoplay": {
             "delay": 3000,
-            "disableOnInteraction": false
+            "disableOnInteraction": false,
+             "pauseOnMouseEnter": true
         }
                  }'>
 
