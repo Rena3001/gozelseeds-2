@@ -29,7 +29,11 @@ $icons = $services->pluck('icon')->toArray();
                     "el": "#main-slider-pagination",
                     "type": "bullets",
                     "clickable": true
-                }
+                },
+                "autoplay": {
+            "delay": 3000,
+            "disableOnInteraction": false
+        }
             }'>
 
         <div class="swiper-wrapper">
@@ -484,20 +488,24 @@ $t = $about?->translation;
 
             <div class="swiper-container thm-swiper__slider"
                 data-swiper-options='{
-                    "slidesPerView": 3,
-                    "spaceBetween": 30,
-                    "loop": true,
-                    "slidesPerGroup": 1,
-                    "navigation": {
-                        "nextEl": "#blog-slider__swiper-button-next",
-                        "prevEl": "#blog-slider__swiper-button-prev"
-                    },
-                    "breakpoints": {
-                        "0": { "slidesPerView": 1 },
-                        "768": { "slidesPerView": 2 },
-                        "1200": { "slidesPerView": 3 }
-                    }
-                 }'>
+        "slidesPerView": 3,
+        "spaceBetween": 30,
+        "loop": true,
+        "slidesPerGroup": 1,
+        "navigation": {
+            "nextEl": "#blog-slider__swiper-button-next",
+            "prevEl": "#blog-slider__swiper-button-prev"
+        },
+        "breakpoints": {
+            "0": { "slidesPerView": 1 },
+            "768": { "slidesPerView": 2 },
+            "1200": { "slidesPerView": 3 }
+        },
+        "autoplay": {
+            "delay": 3000,
+            "disableOnInteraction": false
+        }
+    }'>
 
                 <div class="swiper-wrapper">
 
@@ -511,7 +519,7 @@ $t = $about?->translation;
                                 </div>
                             </div>
 
-                            <div class="blog-one__single-content">
+                            <div class="blog-one__single-content blog-content-home">
                                 <h2>
                                     <a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
                                         {{ $post->translation?->title }}
@@ -572,95 +580,99 @@ $t = $about?->translation;
                         "576": { "slidesPerView": 2 },
                         "992": { "slidesPerView": 3 },
                         "1200": { "slidesPerView": 4 }
-                    }
+                    },
+                    "autoplay": {
+            "delay": 3000,
+            "disableOnInteraction": false
+        }
                 }'>
 
                 <div class="swiper-wrapper">
 
                     {{-- ƏSAS SLİDE-LAR --}}
                     @foreach($services as $service)
-                        <div class="swiper-slide">
-                            <div class="services-one__single">
+                    <div class="swiper-slide">
+                        <div class="services-one__single">
 
-                                <div class="services-one__single-img">
-                                    <div class="services-one__single-img-inner">
-                                        <img src="{{ asset('storage/'.$service->image) }}" alt="">
-                                    </div>
+                            <div class="services-one__single-img">
+                                <div class="services-one__single-img-inner">
+                                    <img src="{{ asset('storage/'.$service->image) }}" alt="">
+                                </div>
+                            </div>
+
+                            <div class="services-one__single-content text-center">
+
+                                <div class="services-one__single-img-icon">
+                                    <img src="{{ asset('storage/'.$service->icon) }}"
+                                        class="service-icon-img">
                                 </div>
 
-                                <div class="services-one__single-content text-center">
+                                <h3>
+                                    <a href="{{ $service->link ?? '#' }}">
+                                        {!! $service->translation?->title !!}
+                                    </a>
+                                </h3>
 
-                                    <div class="services-one__single-img-icon">
-                                        <img src="{{ asset('storage/'.$service->icon) }}"
-                                             class="service-icon-img">
-                                    </div>
-
-                                    <h3>
-                                        <a href="{{ $service->link ?? '#' }}">
-                                            {!! $service->translation?->title !!}
-                                        </a>
-                                    </h3>
-
-                                    <p>
-                                        {{ $service->translation?->text }}
-                                    </p>
-
-                                </div>
+                                <p>
+                                    {{ $service->translation?->text }}
+                                </p>
 
                             </div>
+
                         </div>
+                    </div>
                     @endforeach
 
                     {{-- Əgər 4 və ya azdırsa, yenidən əlavə edirik ki loop işləsin --}}
                     @if($services->count() <= 4)
                         @foreach($services as $service)
-                            <div class="swiper-slide">
-                                <div class="services-one__single">
+                        <div class="swiper-slide">
+                        <div class="services-one__single">
 
-                                    <div class="services-one__single-img">
-                                        <div class="services-one__single-img-inner">
-                                            <img src="{{ asset('storage/'.$service->image) }}" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="services-one__single-content text-center">
-
-                                        <div class="services-one__single-img-icon">
-                                            <img src="{{ asset('storage/'.$service->icon) }}"
-                                                 class="service-icon-img">
-                                        </div>
-
-                                        <h3>
-                                            <a href="{{ $service->link ?? '#' }}">
-                                                {!! $service->translation?->title !!}
-                                            </a>
-                                        </h3>
-
-                                        <p>
-                                            {{ $service->translation?->text }}
-                                        </p>
-
-                                    </div>
-
+                            <div class="services-one__single-img">
+                                <div class="services-one__single-img-inner">
+                                    <img src="{{ asset('storage/'.$service->image) }}" alt="">
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
 
+                            <div class="services-one__single-content text-center">
+
+                                <div class="services-one__single-img-icon">
+                                    <img src="{{ asset('storage/'.$service->icon) }}"
+                                        class="service-icon-img">
+                                </div>
+
+                                <h3>
+                                    <a href="{{ $service->link ?? '#' }}">
+                                        {!! $service->translation?->title !!}
+                                    </a>
+                                </h3>
+
+                                <p>
+                                    {{ $service->translation?->text }}
+                                </p>
+
+                            </div>
+
+                        </div>
                 </div>
+                @endforeach
+                @endif
 
-            </div>
-
-            <!-- OXLAR -->
-            <div class="services-btn">
-                <div class="swiper-button-prev services-prev"
-                     id="service-slider__swiper-button-prev"></div>
-
-                <div class="swiper-button-next services-next"
-                     id="service-slider__swiper-button-next"></div>
             </div>
 
         </div>
+
+        <!-- OXLAR -->
+        <div class="services-btn">
+            <div class="swiper-button-prev services-prev"
+                id="service-slider__swiper-button-prev"></div>
+
+            <div class="swiper-button-next services-next"
+                id="service-slider__swiper-button-next"></div>
+        </div>
+
+    </div>
 
     </div>
 

@@ -181,7 +181,11 @@ $locale = app()->getLocale();
                         "0": { "slidesPerView": 1 },
                         "768": { "slidesPerView": 2 },
                         "1200": { "slidesPerView": 3 }
-                    }
+                    },
+                    "autoplay": {
+            "delay": 3000,
+            "disableOnInteraction": false
+        }
                  }'>
 
                 <div class="swiper-wrapper">

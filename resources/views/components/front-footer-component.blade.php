@@ -29,7 +29,7 @@
                                              <a href="https://wa.me/{{ $settings?->phone ?? '123456789' }}">
                                                  <i class="fab fa-whatsapp"></i>{{ $settings?->phone ?? '123456789' }}
                                              </a>
-</h5>
+                                         </h5>
                                          <h5>
                                              <a href="mailto:{{ $settings?->email ?? 'admin@admin.com' }}">
                                                  <i class="fa fa-envelope"></i>{{ $settings?->email ?? 'admin@admin.com' }}
@@ -171,10 +171,10 @@
                              <p>&copy; {{__('footer.copyright')}} <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a></p>
                          </div>
                          <div class="footer_azerbaijan">
-                                         <div class="footer-widget__about-logo azerbaijan-logo">
-                                             <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
-                                         </div>
-                                     </div>
+                             <div class="footer-widget__about-logo azerbaijan-logo">
+                                 <img src="{{asset('/storage/' . $settings?->az_logo)}}" alt="">
+                             </div>
+                         </div>
                          <!-- <div class="footer-one__bottom-social-links">
                              <ul class="footer-widget__explore-list">
                                  <li><a href="{{ route('products', app()->getLocale()) }}">{{ __('footer.links.products') }}</a></li>
