@@ -11498,7 +11498,7 @@ Sidebar
 }
 
 .shop-one__sidebar__category__list li ul li:hover a,
-.shop-one__sidebar__category__list li:hover a {
+.shop-one__sidebar__category__list>li:hover a {
     color: var(--agriox-primary);
     text-shadow: 0 0 1px currentColor;
 }
