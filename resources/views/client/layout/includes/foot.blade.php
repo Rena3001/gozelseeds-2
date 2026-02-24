@@ -70,50 +70,5 @@ document.querySelectorAll('.category-item.has-children > .category-link')
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  const box = document.querySelector('.product-sticky-js');
-  const stopCol = document.querySelector('.product-stop-here');
-  if (!box || !stopCol) return;
 
-  const headerOffset = 120;
-
-  // box-un parent-i absolute üçün relative olmalıdır
-  const parent = box.parentElement;
-  parent.style.position = 'relative';
-
-  function update() {
-    const boxRect = box.getBoundingClientRect();
-    const stopRect = stopCol.getBoundingClientRect();
-
-    // fixed edəndə width col kimi qalsın
-    const colWidth = parent.getBoundingClientRect().width;
-    box.style.width = colWidth + 'px';
-
-    // stop nöqtəsi: sağ content-in altı ilə hizalanacaq
-    const stopPoint = stopRect.bottom - (boxRect.height + headerOffset);
-
-    if (stopPoint <= 0) {
-      box.classList.remove('is-fixed');
-      box.classList.add('is-absolute');
-      // absolute olanda parent-in içində ən aşağıda dayansın
-      box.style.top = (stopCol.offsetHeight - box.offsetHeight) + 'px';
-    } else {
-      // scroll yuxarıda olanda normal
-      const parentTop = parent.getBoundingClientRect().top;
-      if (parentTop <= headerOffset) {
-        box.classList.add('is-fixed');
-        box.classList.remove('is-absolute');
-        box.style.top = headerOffset + 'px';
-      } else {
-        box.classList.remove('is-fixed');
-        box.classList.remove('is-absolute');
-        box.style.top = '';
-      }
-    }
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-});
 </script>

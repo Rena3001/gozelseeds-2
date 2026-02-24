@@ -12375,17 +12375,7 @@ Sidebar
     object-fit: cover;
     object-position: center;
 }
-.product-sticky-js.is-fixed{
-  position: fixed;
-  top: 120px;
-  width: 540px; /* desktopda col genişliyi */
-}
 
-.product-sticky-js.is-absolute{
-  position: absolute;
-  top: auto;
-  bottom: 0;
-}
 @media (min-width: 992px) {
     .product-details__image {
         margin-bottom: 0;
