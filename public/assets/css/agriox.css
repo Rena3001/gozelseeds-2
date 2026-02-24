@@ -11473,7 +11473,7 @@ Sidebar
     margin-top: 10px;
 }
 
-.shop-one__sidebar__category__list > li::after {
+/* .shop-one__sidebar__category__list > li::after {
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     color: var(--agriox-color-1);
@@ -11482,14 +11482,44 @@ Sidebar
     top: 0;
     right: 0;
     font-size: 16px;
-}
+} */
 .shop-one__sidebar__category__list li ul li a::after {
     content: none !important;
 }
 .shop-one__sidebar__category__list li:hover::after {
     color: var(--agriox-primary);
 }
+.shop-one__sidebar__category__list a.active {
+    color: var(--agriox-primary);
+    text-shadow: 0 0 1px currentColor;
+    font-weight: 400;
+    position: relative;
+}
+/* Sub default bağlı */
+.sub-category {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
 
+/* Açıq olan */
+.category-item.active > .sub-category {
+    max-height: 500px;
+}
+
+/* Ox default sağa */
+.category-item.has-children > .category-link::after {
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+/* Aktivdə aşağı */
+.category-item.active > .category-link::after {
+    transform: rotate(90deg);
+}
 .shop-one__sidebar__category__list li a {
     font-size: 16px;
     color: var(--agriox-color-1);
@@ -11498,7 +11528,7 @@ Sidebar
 }
 
 .shop-one__sidebar__category__list li ul li:hover a,
-.shop-one__sidebar__category__list>ul>li:hover a {
+.shop-one__sidebar__category__list > ul > li:hover a {
     color: var(--agriox-primary);
     text-shadow: 0 0 1px currentColor;
 }

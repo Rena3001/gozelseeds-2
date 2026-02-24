@@ -44,7 +44,9 @@ $locale = app()->getLocale();
                             </button>
                         </form>
                     </div>
-
+                    @php
+                    $currentSlug = request()->route('slug');
+                    @endphp
                     <!-- CATEGORIES -->
                     <div class="shop-one__sidebar__item shop-one__sidebar__category">
                         <h3 class="shop-one__sidebar__item__title">
@@ -53,27 +55,39 @@ $locale = app()->getLocale();
 
                         <ul class="list-unstyled shop-one__sidebar__category__list">
                             @foreach($categories->whereNull('parent_id') as $category)
-                            <li>
-                                <a href="{{ route('shop.category', ['locale' => $locale,
-                                            'slug'   => $category->slug]) }}"
-                                    class="{{ request()->route('slug') === $category->slug ? 'active' : '' }}">
+
+                            <li class="category-item 
+        {{ $category->children->count() ? 'has-children' : '' }}
+        {{ 
+            $currentSlug === $category->slug || 
+            $category->children->pluck('slug')->contains($currentSlug) 
+            ? 'active' : '' 
+        }}">
+
+                                <a href="{{ $category->children->count() ? 'javascript:void(0);' : route('shop.category', ['locale'=>$locale,'slug'=>$category->slug]) }}"
+                                    class="category-link 
+           {{ 
+                $currentSlug === $category->slug || 
+                $category->children->pluck('slug')->contains($currentSlug) 
+                ? 'active' : '' 
+           }}">
                                     {{ $category->translation?->title }}
                                 </a>
 
                                 {{-- Subkateqoriyalar --}}
                                 @if($category->children->count())
-                                <ul class="list-unstyled pl-3 mt-2">
+                                <ul class="list-unstyled pl-3 mt-2 sub-category">
                                     @foreach($category->children as $child)
                                     <li>
-                                        <a href="{{ route('shop.category', ['locale' => $locale,
-                                            'slug'   => $child->slug]) }}"
-                                            class="{{ request()->route('slug') === $child->slug ? 'active' : '' }}">
+                                        <a href="{{ route('shop.category', ['locale'=>$locale,'slug'=>$child->slug]) }}"
+                                            class="{{ $currentSlug === $child->slug ? 'active' : '' }}">
                                             — {{ $child->translation?->title }}
                                         </a>
                                     </li>
                                     @endforeach
                                 </ul>
                                 @endif
+
                             </li>
                             @endforeach
                         </ul>
@@ -117,7 +131,7 @@ $locale = app()->getLocale();
                                                 'locale' => $locale,
                                                 'slug'   => $product->slug
                                             ]) }}"><img src="{{ asset('storage/'.$product->image) }}"
-                                    alt="{{ $product->translation?->title }}"></a>
+                                        alt="{{ $product->translation?->title }}"></a>
                             </div>
 
                             <div class="shop-one__content text-center">

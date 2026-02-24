@@ -52,5 +52,18 @@
         const options = JSON.parse(el.getAttribute('data-swiper-options'));
         new Swiper(el, options);
     });
+document.querySelectorAll('.category-item.has-children > .category-link')
+    .forEach(function(link){
 
+        link.addEventListener('click', function(e){
+
+            e.preventDefault();
+
+            const parent = this.parentElement;
+
+            parent.classList.toggle('active');
+
+        });
+
+});
 </script>
