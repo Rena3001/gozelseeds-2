@@ -12375,28 +12375,16 @@ Sidebar
     object-fit: cover;
     object-position: center;
 }
-/* product details sticky fix */
-.product-details .row{
-  align-items: flex-start !important; /* bootstrap stretch-i sındırırıq */
+.product-sticky-js.is-fixed{
+  position: fixed;
+  top: 120px;
+  width: 540px; /* desktopda col genişliyi */
 }
 
-.product-sticky{
-  position: sticky !important;
-  top: 120px; /* fixed header varsa 120-160 arası elə */
-  align-self: flex-start;
-}
-
-.product-details__image{
-  margin-bottom: 0 !important;
-}
-
-/* CRITICAL: sticky-ni öldürən şeylər */
-.product-details,
-.product-details .container,
-.product-details .row,
-.product-details .col-lg-6{
-  overflow: visible !important;
-  transform: none !important;
+.product-sticky-js.is-absolute{
+  position: absolute;
+  top: auto;
+  bottom: 0;
 }
 @media (min-width: 992px) {
     .product-details__image {

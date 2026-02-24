@@ -51,7 +51,7 @@ $locale = app()->getLocale();
 
             {{-- IMAGE --}}
             <div class="col-lg-6">
-                <div class="product-sticky">
+                <div class="product-sticky-js">
                     <div class="product-details__image">
                         <img src="{{ asset('storage/'.$product->image) }}"
                             alt="{{ $product->translation?->title }}">
