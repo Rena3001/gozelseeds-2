@@ -11473,7 +11473,7 @@ Sidebar
     margin-top: 10px;
 }
 
-.shop-one__sidebar__category__list li::after {
+.shop-one__sidebar__category__list > li::after {
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     color: var(--agriox-color-1);
@@ -11497,7 +11497,8 @@ Sidebar
     transition: all 500ms ease;
 }
 
-.shop-one__sidebar__category__list li ul li:hover a {
+.shop-one__sidebar__category__list li ul li:hover a,
+.shop-one__sidebar__category__list li:hover a {
     color: var(--agriox-primary);
     text-shadow: 0 0 1px currentColor;
 }
