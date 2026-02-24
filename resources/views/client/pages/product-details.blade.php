@@ -83,6 +83,7 @@ $locale = app()->getLocale();
                         @endforeach
                     </p>
                     @endif
+                     {!! $product->translation?->description !!}
 
                 </div>
             </div>
@@ -94,7 +95,7 @@ $locale = app()->getLocale();
 
 
 {{-- DESCRIPTION --}}
-<section class="product-content">
+<!-- <section class="product-content">
     <div class="container">
 
         <h2 class="product-content__title">
@@ -104,6 +105,6 @@ $locale = app()->getLocale();
         {!! $product->translation?->description !!}
 
     </div>
-</section>
+</section> -->
 {{-- DESCRIPTION END --}}
 @endsection
