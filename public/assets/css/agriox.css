@@ -11483,7 +11483,9 @@ Sidebar
     right: 0;
     font-size: 16px;
 }
-
+.shop-one__sidebar__category__list li ul li a::after {
+    content: none !important;
+}
 .shop-one__sidebar__category__list li:hover::after {
     color: var(--agriox-primary);
 }
@@ -11495,7 +11497,7 @@ Sidebar
     transition: all 500ms ease;
 }
 
-.shop-one__sidebar__category__list li:hover a {
+.shop-one__sidebar__category__list li ul li:hover a {
     color: var(--agriox-primary);
     text-shadow: 0 0 1px currentColor;
 }
