@@ -51,10 +51,11 @@ $locale = app()->getLocale();
 
             {{-- IMAGE --}}
             <div class="col-lg-6">
-                <div class="product-details__image">
-                    <img
-                        src="{{ asset('storage/'.$product->image) }}"
-                        alt="{{ $product->translation?->title }}">
+                <div class="product-sticky">
+                    <div class="product-details__image">
+                        <img src="{{ asset('storage/'.$product->image) }}"
+                            alt="{{ $product->translation?->title }}">
+                    </div>
                 </div>
             </div>
 
@@ -83,7 +84,7 @@ $locale = app()->getLocale();
                         @endforeach
                     </p>
                     @endif
-                     {!! $product->translation?->description !!}
+                    {!! $product->translation?->description !!}
 
                 </div>
             </div>
