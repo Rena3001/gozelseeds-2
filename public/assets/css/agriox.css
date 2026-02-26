@@ -4965,7 +4965,7 @@ button {
     position: relative;
     display: block;
     background: var(--agriox-primary, #334b35);
-    padding: 93px 0px 60px;
+    padding: 34px 0px 0px;
 }
 
 .footer-one__top-wrapper {
@@ -4997,7 +4997,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 17px;
+     margin-bottom: 5px;
 }
 .footer_azerbaijan {
     display: flex;
@@ -5205,6 +5205,7 @@ button {
     position: relative;
     display: block;
     margin-top: -4px;
+    font-size: 15px;
 }
 .footer-widget__explore-list a {
     -webkit-transition: all 200ms linear;
@@ -5365,7 +5366,7 @@ button {
     position: relative;
     display: block;
     background: var(--agriox-primary, #334b35);
-    padding: 29px 0px 27px;
+       padding: 0px 0px 0px;
 }
 
 .footer-one__bottom-inner {
