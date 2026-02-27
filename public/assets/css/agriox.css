@@ -3331,7 +3331,7 @@ button {
     .video-one .video-bg__video {
         width: 100%;
         height: 135vh; /* 598 / 1520 */
-        max-height: 777px;
+        max-height: 1000px;
     }
 }
 
