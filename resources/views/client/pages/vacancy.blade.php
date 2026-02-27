@@ -183,7 +183,7 @@ $locale = app()->getLocale();
                         "1200": { "slidesPerView": 3 }
                     },
                     "autoplay": {
-            "delay": 7000,
+            "delay": 9000,
             "disableOnInteraction": false,
              "pauseOnMouseEnter": true
         }

@@ -31,7 +31,7 @@ $icons = $services->pluck('icon')->toArray();
                     "clickable": true
                 },
                 "autoplay": {
-            "delay": 7000,
+            "delay": 9000,
             "disableOnInteraction": false,
              "pauseOnMouseEnter": true
         }
@@ -503,7 +503,7 @@ $t = $about?->translation;
             "1200": { "slidesPerView": 3 }
         },
         "autoplay": {
-            "delay": 7000,
+            "delay": 9000,
             "disableOnInteraction": false,
              "pauseOnMouseEnter": true
         }
@@ -584,7 +584,7 @@ $t = $about?->translation;
                         "1200": { "slidesPerView": 4 }
                     },
                     "autoplay": {
-            "delay": 7000,
+            "delay": 9000,
             "disableOnInteraction": false, "pauseOnMouseEnter": true
         }
                 }'>
