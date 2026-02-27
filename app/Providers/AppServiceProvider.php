@@ -53,7 +53,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
         // 1️⃣ Locale-ni erkən set et
-        // App::setLocale(request()->segment(1) ?? config('app.locale'));
 
         // 2️⃣ DB translations varsa – Lang-ə yüklə (cache YOX)
         if (Schema::hasTable('translations')) {
