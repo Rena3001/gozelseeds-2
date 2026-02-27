@@ -168,7 +168,9 @@
                  <div class="col-xl-12">
                      <div class="footer-one__bottom-inner">
                          <div class="footer-one__bottom-text">
-                             <p>&copy; {{__('footer.copyright')}} <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a></p>
+                             <p>&copy; {{__('footer.copyright')}} 
+                                <!-- <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a> -->
+                            </p>
                          </div>
                          <div class="footer_azerbaijan">
                              <div class="footer-widget__about-logo azerbaijan-logo">
