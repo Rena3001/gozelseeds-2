@@ -13,7 +13,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            App::setLocale(request()->segment(1) ?? config('app.locale'));
             $settings = Setting::first();
 
             $footerPosts = Post::where('is_active', true)
