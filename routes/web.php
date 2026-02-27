@@ -47,3 +47,6 @@ Route::group([
     Route::post('/subscribe', [SubscribeController::class, 'store'])
         ->name('subscribe.store');
 });
+Route::fallback(function () {
+    abort(404);
+});

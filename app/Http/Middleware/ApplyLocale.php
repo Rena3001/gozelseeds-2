@@ -12,12 +12,12 @@ class ApplyLocale
     {
         $locale = $request->route('locale');
 
-        // Əgər URL-də locale varsa → onu istifadə et
-        if (in_array($locale, ['az', 'en', 'ru'])) {
-            App::setLocale($locale);
-        } else {
-            App::setLocale('en'); // fallback
+        // Locale mövcud deyilsə və ya səhvdirsə → 404
+        if (!$locale || !in_array($locale, ['az', 'en', 'ru'])) {
+            abort(404);
         }
+
+        App::setLocale($locale);
 
         return $next($request);
     }
