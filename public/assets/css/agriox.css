@@ -4614,7 +4614,9 @@ button {
 
     /* NAVIGATION */
     #blog-slider__swiper-button-prev,
-    #blog-slider__swiper-button-next {
+    #blog-slider__swiper-button-next,
+    #service-slider__swiper-button-next,
+    #service-slider__swiper-button-prev {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -4657,7 +4659,7 @@ button {
         left: 84% !important;
     }
     .services-prev {
-        left: 25px !important;
+        left: 15px !important;
     }
 }
 
