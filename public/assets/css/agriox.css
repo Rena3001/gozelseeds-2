@@ -4629,7 +4629,10 @@ button {
         transition: 0.3s ease;
         z-index: 10;
     }
-
+    #service-slider__swiper-button-next,
+    #service-slider__swiper-button-prev {
+        top: 64%;
+    }
     #blog-slider__swiper-button-prev {
         left: 10px; /* Mobilde çölə yox içə yaxın */
     }
