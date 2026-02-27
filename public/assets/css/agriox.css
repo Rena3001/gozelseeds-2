@@ -3331,7 +3331,7 @@ button {
     .video-one .video-bg__video {
         width: 100%;
         height: 135vh; /* 598 / 1520 */
-        max-height: 598px;
+        max-height: 777px;
     }
 }
 
@@ -4997,7 +4997,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-     margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 .footer_azerbaijan {
     display: flex;
@@ -5366,7 +5366,7 @@ button {
     position: relative;
     display: block;
     background: var(--agriox-primary, #334b35);
-       padding: 0px 0px 0px;
+    padding: 0px 0px 0px;
 }
 
 .footer-one__bottom-inner {
