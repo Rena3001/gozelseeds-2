@@ -150,7 +150,13 @@
                              <div class="icon"><span class="fab fa-whatsapp"></span></div>
                              <div class="text">
                                  <p>{{ __('call.anytime') }}</p>
-                                 <a href="https://wa.me/{{ $settings->phone }}" target="_blank">{{ $settings->phone }}</a>
+                                 @php
+                                 $cleanPhone = preg_replace('/[^0-9]/', '', $settings->phone);
+                                 @endphp
+
+                                 <a href="https://wa.me/{{ $cleanPhone }}" target="_blank">
+                                     {{ $settings->phone }}
+                                 </a>
 
                              </div>
                          </div>

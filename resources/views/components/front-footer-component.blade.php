@@ -26,7 +26,10 @@
 
                                      <div class="footer-widget__about-contact-box">
                                          <h5 class="phone">
-                                             <a href="https://wa.me/{{ $settings?->phone ?? '123456789' }}">
+                                             @php
+                                             $cleanPhone = preg_replace('/[^0-9]/', '', $settings->phone);
+                                             @endphp
+                                             <a href="https://wa.me/{{ $cleanPhone }}">
                                                  <i class="fab fa-whatsapp"></i>{{ $settings?->phone ?? '123456789' }}
                                              </a>
                                          </h5>
@@ -168,9 +171,9 @@
                  <div class="col-xl-12">
                      <div class="footer-one__bottom-inner">
                          <div class="footer-one__bottom-text">
-                             <p>&copy; {{__('footer.copyright')}} 
-                                <!-- <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a> -->
-                            </p>
+                             <p>&copy; {{__('footer.copyright')}}
+                                 <!-- <a href="{{ $settings?->copyright_link }}">{{__('company.name')}}</a> -->
+                             </p>
                          </div>
                          <div class="footer_azerbaijan">
                              <div class="footer-widget__about-logo azerbaijan-logo">
