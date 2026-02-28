@@ -10307,7 +10307,7 @@ Sidebar
     }
     /** About One**/
     .about-one__content {
-        margin-top: 100px;
+        /* margin-top: 100px; */
         max-width: none;
         width: 100%;
         margin-left: 0px;
@@ -10337,6 +10337,7 @@ Sidebar
     }
     .about-one__left-img-inner {
         border-bottom-left-radius: 10px;
+        margin-bottom: 100px;
     }
     .about-one__content-title {
         font-size: 23px;
