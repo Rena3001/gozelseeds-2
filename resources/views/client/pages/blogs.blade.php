@@ -38,13 +38,15 @@ $locale = app()->getLocale();
             @if(request('search'))
             <div class="text-center mb-4">
                 <h4>
-                    "{{ request('search') }}" üzrə nəticələr
+                    "{{ request('search') }}" 
+                 {{ __('blogs.search_results') }}
                 </h4>
             </div>
             @endif
             @if($posts->isEmpty())
 <div class="text-center">
-    <p>Heç bir nəticə tapılmadı</p>
+    <p> {{ __('blogs.no_results') }}</p>
+
 </div>
 @endif
             @foreach($posts as $post)
