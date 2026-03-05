@@ -4250,6 +4250,9 @@ button {
     overflow: hidden;
     z-index: 1;
 }
+.cover-news{
+    height: 252px;
+}
 
 .blog-one__single-img img {
     width: 100%;
