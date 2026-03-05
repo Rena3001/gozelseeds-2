@@ -514,7 +514,7 @@ $t = $about?->translation;
                     @foreach($posts as $post)
                     <div class="swiper-slide">
                         <div class="blog-one__single">
-                            <div class="blog-one__single-img">
+                            <div class="blog-one__single-img cover-news">
                                 <img src="{{ asset('storage/'.$post->image) }}" alt="">
                                 <div class="date-box">
                                     <span>{{ $post->published_at?->translatedFormat('d F, Y') }}</span>
