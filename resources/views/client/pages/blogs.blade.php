@@ -35,10 +35,22 @@ $locale = app()->getLocale();
             <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
         </div>
         <div class="row">
+            @if(request('search'))
+            <div class="text-center mb-4">
+                <h4>
+                    "{{ request('search') }}" üzrə nəticələr
+                </h4>
+            </div>
+            @endif
+            @if($posts->isEmpty())
+<div class="text-center">
+    <p>Heç bir nəticə tapılmadı</p>
+</div>
+@endif
             @foreach($posts as $post)
             <!--Start Single Blog One-->
             <div class="col-xl-4 col-lg-4  wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <div class="blog-one__single"> 
+                <div class="blog-one__single">
                     <div class="blog-one__single-img">
                         <img src="{{ asset('storage/'.$post->image) }}" alt="">
                         <div class="date-box">
@@ -54,10 +66,10 @@ $locale = app()->getLocale();
                     </div>
 
                     <div class="blog-one__single-content">
-                        
+
                         <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
-                            {{ $post->translation?->title }}
-                        </a></h2>
+                                {{ $post->translation?->title }}
+                            </a></h2>
                     </div>
                 </div>
             </div>

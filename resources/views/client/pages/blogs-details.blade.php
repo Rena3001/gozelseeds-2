@@ -71,7 +71,7 @@
                                 @if($post->author)
                                     <li>
                                         <i class="far fa-user-circle"></i>
-                                        {{ $post->author }}
+                                         {{ $post->author }}
                                     </li>
                                 @endif
                             </ul>

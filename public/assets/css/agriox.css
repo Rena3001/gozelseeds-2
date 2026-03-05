@@ -4240,7 +4240,7 @@ button {
 
 .blog-one__single-img {
     width: 100%;
-    height: 271px;
+    height: 100%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -8711,7 +8711,11 @@ Sidebar
     width: 115px;
     overflow: hidden;
 }
-
+.sidebar__latest-posts-list-item .img-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .sidebar__latest-posts-list-item .title {
     position: relative;
     display: block;

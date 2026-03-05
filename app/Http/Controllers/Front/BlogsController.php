@@ -10,15 +10,27 @@ use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
-    public function index(Request $request, $locale, Post $post)
+    public function index(Request $request, $locale)
     {
         if (in_array($locale, ['az', 'en', 'ru'])) {
             app()->setLocale($locale);
         }
+
+        $search = $request->search;
+
         $posts = Post::with('translation')
             ->where('is_active', true)
+
+            ->when($search, function ($query) use ($search, $locale) {
+
+                $query->whereHas('translations', function ($q) use ($search, $locale) {
+                    $q->where('locale', $locale)
+                        ->where('title', 'like', "%{$search}%");
+                });
+            })
+
             ->orderBy('order')
-            ->orderByDesc('published_at')
+            ->orderBy('published_at')
             ->get();
 
         $page = Page::where('slug', 'about')
