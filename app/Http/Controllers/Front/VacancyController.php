@@ -20,7 +20,7 @@ class VacancyController extends Controller
         $vacancies = Vacancy::with('translation')
             ->where('is_active', true)
             ->orderBy('order')
-            ->orderBy('created_at')
+            ->orderByDesc('created_at')
             ->latest()
             ->get();
 
