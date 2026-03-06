@@ -49,7 +49,7 @@ $locale = app()->getLocale();
 
                     <!-- IMAGE -->
                     @if($vacancy->image)
-                    <div class="blog-one__single-img">
+                    <div class="blog-one__single-img vacancies-img">
                         <img src="{{ asset('storage/'.$vacancy->image) }}" alt="">
                         <div class="date-box">
                             <span>{{ $vacancy->created_at?->translatedFormat('d F, Y') }}</span>

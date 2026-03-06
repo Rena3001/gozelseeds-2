@@ -196,7 +196,7 @@ $locale = app()->getLocale();
                         <div class="blog-one__single">
 
                             @if($item->image)
-                            <div class="blog-one__single-img">
+                            <div class="blog-one__single-img vacancy-img">
                                 <img src="{{ asset('storage/'.$item->image) }}"
                                     alt="{{ $item->translation?->title }}">
                                 <div class="date-box">

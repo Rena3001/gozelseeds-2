@@ -8407,8 +8407,22 @@ button {
     justify-content: center;
     align-items: self-start;
     gap: 8px;
+        height: 240px;
 }
-
+.vacancy-img{
+    width: 770px;
+    height: 436px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vacancies-img{
+    width: 370px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .news-sidebar__left .blog-one__single-content h2 {
     font-size: 26px;
 }
@@ -13546,9 +13560,9 @@ Sidebar
     font-size: 20px;
     line-height: 1.5em;
 }
-.blog-details {
+/* .blog-details {
     height: 270px;
-}
+} */
 .vacancy-one {
     padding: 0;
 }

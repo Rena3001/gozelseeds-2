@@ -33,8 +33,8 @@ class VacancyTranslation extends Resource
 
             Text::make('Title')
                 ->rules('required'),
-                Text::make('Slug')
-    ->nullable(),
+            Text::make('Slug')
+                ->rules('required')->nullable(),
 
             Trix::make('Description')
                 ->alwaysShow(),
