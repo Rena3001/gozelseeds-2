@@ -45,7 +45,7 @@ $locale = app()->getLocale();
                 <div class="news-details__left">
 
                     @if($vacancy->image)
-                    <div class="blog-one__single-img mb-4">
+                    <div class="blog-one__single-img mb-4 vacancy-img">
                         <img src="{{ asset('storage/'.$vacancy->image) }}"
                             alt="{{ $vacancy->translation?->title }}">
                     </div>
@@ -196,7 +196,7 @@ $locale = app()->getLocale();
                         <div class="blog-one__single">
 
                             @if($item->image)
-                            <div class="blog-one__single-img vacancy-img">
+                            <div class="blog-one__single-img ">
                                 <img src="{{ asset('storage/'.$item->image) }}"
                                     alt="{{ $item->translation?->title }}">
                                 <div class="date-box">
