@@ -12418,6 +12418,10 @@ Sidebar
 .product-details__image img {
     max-width: 100%;
 }
+.product-details__content__top div, .product-details__content__top p{
+    font-size: 16px;
+
+}
 
 @media (min-width: 992px) {
     .product-details__content__top {
