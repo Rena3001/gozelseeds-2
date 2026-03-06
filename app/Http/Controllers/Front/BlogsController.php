@@ -37,8 +37,7 @@ class BlogsController extends Controller
 
         })
 
-        ->orderBy('order')
-        ->orderByDesc('published_at')
+        ->latest("published_at")
         ->get();
 
     $page = Page::where('slug','about')
@@ -57,13 +56,14 @@ class BlogsController extends Controller
             ->firstOrFail();
         $post = Post::with('translations')
             ->where('id', $post)
+            ->latest('published_at')
             ->where('is_active', true)
             ->firstOrFail();
 
         $latestPosts = Post::with('translations')
             ->where('is_active', true)
             ->where('id', '!=', $post->id)
-            ->latest()
+            ->latest('published_at')
             ->limit(3)
             ->get();
 
