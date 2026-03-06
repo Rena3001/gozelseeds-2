@@ -36,4 +36,20 @@ class Post extends Model
             'id'
         )->where('locale', app()->getLocale());
     }
+    public function getTranslationAttribute()
+{
+    $locale = app()->getLocale();
+
+    $translation = $this->translations
+        ->where('locale', $locale)
+        ->first();
+
+    if (!$translation) {
+        $translation = $this->translations
+            ->where('locale', 'az')
+            ->first();
+    }
+
+    return $translation;
+}
 }

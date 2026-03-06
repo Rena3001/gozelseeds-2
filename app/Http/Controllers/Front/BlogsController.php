@@ -11,35 +11,43 @@ use Illuminate\Http\Request;
 class BlogsController extends Controller
 {
     public function index(Request $request, $locale)
-    {
-        if (in_array($locale, ['az', 'en', 'ru'])) {
-            app()->setLocale($locale);
-        }
-
-        $search = $request->search;
-
-        $posts = Post::with('translation')
-            ->where('is_active', true)
-
-            ->when($search, function ($query) use ($search, $locale) {
-
-                $query->whereHas('translations', function ($q) use ($search, $locale) {
-                    $q->where('locale', $locale)
-                        ->where('title', 'like', "%{$search}%");
-                });
-            })
-
-            ->orderBy('order')
-            ->orderBy('published_at')
-            ->get();
-
-        $page = Page::where('slug', 'about')
-            ->with('translation')
-            ->where('is_active', true)
-            ->firstOrFail();
-
-        return view('client.pages.blogs', compact('posts', 'locale', 'page'));
+{
+    if (in_array($locale, ['az','en','ru'])) {
+        app()->setLocale($locale);
     }
+
+    $search = $request->search;
+
+    $posts = Post::with('translations')
+        ->where('is_active', true)
+
+        ->when($search, function ($query) use ($search, $locale) {
+
+            $query->whereHas('translations', function ($q) use ($search, $locale) {
+
+                $q->where(function ($sub) use ($search, $locale) {
+
+                    $sub->where('locale', $locale)
+                        ->orWhere('locale','az');
+
+                })
+                ->where('title','like',"%{$search}%");
+
+            });
+
+        })
+
+        ->orderBy('order')
+        ->orderBy('published_at')
+        ->get();
+
+    $page = Page::where('slug','about')
+        ->with('translation')
+        ->where('is_active',true)
+        ->firstOrFail();
+
+    return view('client.pages.blogs', compact('posts','locale','page'));
+}
     public function show($locale, $post)
     {
         app()->setLocale($locale);
