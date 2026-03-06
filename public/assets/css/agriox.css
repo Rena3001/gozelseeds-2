@@ -8423,6 +8423,9 @@ button {
     justify-content: center;
     align-items: center;
 }
+.blog-height{
+    height: 188px;
+}
 .news-sidebar__left .blog-one__single-content h2 {
     font-size: 26px;
 }

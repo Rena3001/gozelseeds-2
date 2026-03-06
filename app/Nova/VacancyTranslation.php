@@ -29,7 +29,7 @@ class VacancyTranslation extends Resource
             BelongsTo::make('Vacancy'),
 
             Text::make('Locale')
-                ->rules('required'),
+                ->rules('required')->placeholder('az / en / ru'),
 
             Text::make('Title')
                 ->rules('required'),

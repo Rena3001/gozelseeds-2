@@ -67,7 +67,7 @@ $locale = app()->getLocale();
                         </div>
                     </div>
 
-                    <div class="blog-one__single-content">
+                    <div class="blog-one__single-content blog-height">
 
                         <h2><a href="{{ route('blogs.show', ['locale' => $locale, 'post' => $post->id]) }}">
                                 {{ $post->translation?->title }}
