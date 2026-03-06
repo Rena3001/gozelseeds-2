@@ -38,7 +38,7 @@ class BlogsController extends Controller
         })
 
         ->orderBy('order')
-        ->orderBy('published_at')
+        ->orderByDesc('published_at')
         ->get();
 
     $page = Page::where('slug','about')
