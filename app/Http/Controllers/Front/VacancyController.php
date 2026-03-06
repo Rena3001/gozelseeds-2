@@ -19,9 +19,7 @@ class VacancyController extends Controller
         }
         $vacancies = Vacancy::with('translation')
             ->where('is_active', true)
-            ->orderBy('order')
-            ->orderByDesc('created_at')
-            ->latest()
+            ->latest('created_at')
             ->get();
 
         $page = Page::where('slug', 'about')
