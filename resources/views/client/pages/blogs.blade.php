@@ -28,9 +28,9 @@ $locale = app()->getLocale();
     <div class="blog-one__shape"></div><!-- /.blog-one__shape -->
     <div class="container">
         <div class="sec-title text-center">
-            <div class="icon">
+            <!-- <div class="icon">
                 <img src="{{asset('assets/images/resources/sec-title-icon1.png')}}" alt="">
-            </div>
+            </div> -->
             <span class="sec-title__tagline">{{ __('blog.tagline') }}</span>
             <h2 class="sec-title__title">{{ __('blog.title') }}</h2>
         </div>
