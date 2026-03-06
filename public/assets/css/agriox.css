@@ -12418,7 +12418,7 @@ Sidebar
 .product-details__image img {
     max-width: 100%;
 }
-.product-details__content__top div, .product-details__content__top p{
+.product-details__content div, .product-details__content p{
     font-size: 16px;
 
 }
